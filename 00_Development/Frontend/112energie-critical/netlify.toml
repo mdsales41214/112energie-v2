@@ -1,77 +1,5 @@
-﻿:root {
-    --primary: #047857;
-    --secondary: #0ea5e9;
-    --dark: #1f2937;
-    --light: #f9fafb;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    line-height: 1.6;
-    color: var(--dark);
-}
-
-header {
-    background: var(--light);
-    padding: 1rem 0;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-nav {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 2rem;
-}
-
-.logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--primary);
-}
-
-nav ul {
-    display: flex;
-    list-style: none;
-    gap: 2rem;
-}
-
-nav a {
-    color: var(--dark);
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-nav a:hover {
-    color: var(--primary);
-}
-
-.hero {
-    min-height: 60vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 4rem 2rem;
-    background: linear-gradient(135deg, #047857 0%, #059669 100%);
-    color: white;
-}
-
-.hero h# Navigate to the critical project
-cd "00_Development\Frontend\112energie-critical"
-
-# Create netlify.toml configuration
-@"
-[build]
+﻿[build]
+  base = "00_Development/Frontend/112energie-critical"
   publish = "src"
   
 [[redirects]]
@@ -81,10 +9,3 @@ cd "00_Development\Frontend\112energie-critical"
 
 [build.environment]
   NODE_VERSION = "18"
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
