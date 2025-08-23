@@ -97,91 +97,201 @@
         </div>
     </div>
 
-    <!-- Hero Section -->
-    <section class="hero-section" id="home">
-        <div class="container hero-container">
-            <div class="hero-content">
-                <h1 class="hero-title">
-                    <span class="highlight-green">Energie Zonder Borg</span><br>
-                    Direct Aangesloten!
-                </h1>
-                <p class="hero-subtitle">
-                    Geen borg, geen gedoe. Binnen 24 uur aangesloten op energie.
-                    Join 50.000+ tevreden klanten die kozen voor 112Energie.
-                </p>
-                
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <span class="stat-number" data-count="24">0</span>
-                        <span class="stat-label">Uur Aansluiting</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number" data-count="0">0</span>
-                        <span class="stat-label">Euro Borg</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number" data-count="100">0</span>%
-                        <span class="stat-label">Groene Energie</span>
-                    </div>
+<!-- Hero Section -->
+<section class="hero">
+    <!-- 3D Grid Background -->
+    <div class="grid-3d">
+        <div class="grid-plane"></div>
+    </div>
+
+    <!-- Particle System -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Hero Content -->
+    <div class="hero-container">
+        <div class="hero-content">
+            <h1>
+                <span class="glitch" data-text="The Future of">The Future of</span><br>
+                <span class="glitch" data-text="Energy is Here">Energy is Here</span>
+            </h1>
+
+            <p class="subtitle">
+                <span class="subtitle-highlight">AI-optimized</span> energy distribution. 
+                <span class="subtitle-highlight">Zero deposit</span>. 
+                <span class="subtitle-highlight">Instant activation</span>. 
+                Join the decentralized energy revolution powered by 
+                <span class="quantum-text">quantum computing</span> and 
+                <span class="neural-text">neural networks</span>.
+            </p>
+
+            <!-- Heartbeat Line -->
+            <div class="heartbeat-container">
+                <svg class="heartbeat-line" viewBox="0 0 400 40" preserveAspectRatio="none">
+                    <path class="heartbeat-path" d="M0,20 L80,20 L90,10 L100,30 L110,5 L120,35 L130,20 L400,20" 
+                          stroke="url(#heartbeat-gradient)" 
+                          stroke-width="2" 
+                          fill="none"/>
+                    <defs>
+                        <linearGradient id="heartbeat-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#0A84FF;stop-opacity:0" />
+                            <stop offset="50%" style="stop-color:#5E5CE6;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#30D158;stop-opacity:0" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <div class="heartbeat-glow"></div>
+            </div>
+
+            <!-- AI Features -->
+            <div class="ai-features">
+                <div class="ai-feature">
+                    <div class="ai-dot"></div>
+                    <span>AI Price Prediction</span>
                 </div>
-                
-                <div class="hero-cta">
-                    <button class="btn-large btn-primary" onclick="startCalculator()">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <path d="M9 2V4M15 2V4M9 20V22M15 20V22M20 9H22M20 14H22M2 9H4M2 14H4" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                            <rect x="5" y="5" width="14" height="14" rx="2" stroke="white" stroke-width="2"/>
-                        </svg>
-                        Bereken Je Maandbedrag
-                    </button>
-                    <button class="btn-large btn-secondary" onclick="showDemo()">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <polygon points="5 3 19 12 5 21 5 3" fill="currentColor"/>
-                        </svg>
-                        Bekijk Demo
-                    </button>
+                <div class="ai-feature">
+                    <div class="ai-dot"></div>
+                    <span>Quantum Optimization</span>
+                </div>
+                <div class="ai-feature">
+                    <div class="ai-dot"></div>
+                    <span>Neural Grid</span>
                 </div>
             </div>
-            
-            <div class="hero-visual">
-                <div class="energy-monitor">
-                    <div class="monitor-screen">
-                        <div class="monitor-header">
-                            <h3>Live Energie Monitor</h3>
-                            <span class="status-indicator online">● Online</span>
+
+            <!-- CTA Section -->
+            <div class="cta-section">
+                <a href="#start" class="cta-primary">
+                    <span class="cta-text">Initialize Connection</span>
+                    <span class="cta-arrow">→</span>
+                </a>
+                <a href="#learn" class="cta-secondary">
+                    <span>Explore Tech</span>
+                </a>
+            </div>
+
+            <!-- Live Stats -->
+            <div class="live-stats">
+                <div class="stat">
+                    <div class="stat-value" id="activeNodes">127,439</div>
+                    <div class="stat-label">Active Nodes</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" id="energySaved">€3,859</div>
+                    <div class="stat-label">Saved Today</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" id="aiAccuracy">99.7%</div>
+                    <div class="stat-label">AI Accuracy</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hero Visual - Static Card + Energy Chart -->
+        <div class="hero-visual">
+            <!-- Main Metrics Card (Static) -->
+            <div class="metrics-card-main">
+                <div class="card-header">
+                    <h3 class="card-title">Real-Time Metrics</h3>
+                    <div class="card-status">
+                        <span class="status-dot"></span>
+                        <span class="status-text">LIVE</span>
+                    </div>
+                </div>
+                
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <span class="metric-title">Energy Usage</span>
+                            <span class="metric-badge metric-badge-live">LIVE</span>
                         </div>
-                        
-                        <div class="monitor-stats">
-                            <div class="monitor-stat">
-                                <span class="stat-icon">⚡</span>
-                                <div class="stat-info">
-                                    <span class="stat-value" id="currentUsage">3.2</span> kW
-                                    <span class="stat-name">Huidig Verbruik</span>
-                                </div>
-                            </div>
-                            
-                            <div class="monitor-stat">
-                                <span class="stat-icon">☀️</span>
-                                <div class="stat-info">
-                                    <span class="stat-value" id="solarProduction">1.8</span> kW
-                                    <span class="stat-name">Zonne-energie</span>
-                                </div>
-                            </div>
-                            
-                            <div class="monitor-stat">
-                                <span class="stat-icon">💰</span>
-                                <div class="stat-info">
-                                    €<span class="stat-value" id="dailyCost">12.45</span>
-                                    <span class="stat-name">Kosten Vandaag</span>
-                                </div>
-                            </div>
+                        <div class="metric-value">248<span class="metric-unit">kWh</span></div>
+                        <div class="metric-change metric-change-down">↓ 12% from yesterday</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <span class="metric-title">Cost Prediction</span>
+                            <span class="metric-badge metric-badge-ai">AI</span>
                         </div>
-                        
-                        <canvas id="energyChart" width="400" height="200"></canvas>
+                        <div class="metric-value">€89<span class="metric-unit">/mo</span></div>
+                        <div class="metric-change metric-change-down">↓ €45 optimized</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <span class="metric-title">Grid Status</span>
+                            <span class="metric-badge metric-badge-optimal">OPTIMAL</span>
+                        </div>
+                        <div class="metric-value">98.7<span class="metric-unit">%</span></div>
+                        <div class="metric-change">Neural balanced</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <span class="metric-title">Carbon Offset</span>
+                            <span class="metric-badge metric-badge-eco">ECO</span>
+                        </div>
+                        <div class="metric-value">-2.4<span class="metric-unit">t</span></div>
+                        <div class="metric-change metric-change-eco">100% renewable</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Energy Chart Card (Half Size) -->
+            <div class="energy-chart-card">
+                <div class="chart-header">
+                    <span class="chart-title">Energy Flow</span>
+                    <span class="chart-time">24H</span>
+                </div>
+                <div class="energy-visualization">
+                    <!-- Energy Bars -->
+                    <div class="energy-bars">
+                        <div class="energy-bar" style="--height: 60%;"></div>
+                        <div class="energy-bar" style="--height: 75%;"></div>
+                        <div class="energy-bar" style="--height: 45%;"></div>
+                        <div class="energy-bar" style="--height: 80%;"></div>
+                        <div class="energy-bar" style="--height: 65%;"></div>
+                        <div class="energy-bar" style="--height: 90%;"></div>
+                        <div class="energy-bar" style="--height: 70%;"></div>
+                        <div class="energy-bar" style="--height: 85%;"></div>
+                        <div class="energy-bar" style="--height: 50%;"></div>
+                        <div class="energy-bar" style="--height: 75%;"></div>
+                        <div class="energy-bar" style="--height: 60%;"></div>
+                        <div class="energy-bar" style="--height: 95%;"></div>
+                    </div>
+                    <!-- Energy Wave -->
+                    <svg class="energy-wave" viewBox="0 0 300 100" preserveAspectRatio="none">
+                        <path class="wave-path" d="M0,50 Q25,30 50,50 T100,50 T150,50 T200,50 T250,50 T300,50" 
+                              stroke="url(#wave-gradient)" 
+                              stroke-width="3" 
+                              fill="none"/>
+                        <defs>
+                            <linearGradient id="wave-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#0A84FF;stop-opacity:0.8">
+                                    <animate attributeName="stop-color" values="#0A84FF;#5E5CE6;#30D158;#0A84FF" dur="4s" repeatCount="indefinite"/>
+                                </stop>
+                                <stop offset="100%" style="stop-color:#30D158;stop-opacity:0.8">
+                                    <animate attributeName="stop-color" values="#30D158;#0A84FF;#5E5CE6;#30D158" dur="4s" repeatCount="indefinite"/>
+                                </stop>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <div class="chart-stats">
+                    <div class="chart-stat">
+                        <span class="chart-stat-value">↑ 24%</span>
+                        <span class="chart-stat-label">Peak Load</span>
+                    </div>
+                    <div class="chart-stat">
+                        <span class="chart-stat-value">3.2MW</span>
+                        <span class="chart-stat-label">Current</span>
+                    </div>
+                    <div class="chart-stat">
+                        <span class="chart-stat-value">€0.18</span>
+                        <span class="chart-stat-label">per kWh</span>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- Services Section -->
     <section class="services-section" id="producten">
