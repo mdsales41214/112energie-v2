@@ -23,8 +23,9 @@
     <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
     
     <!-- CSS Files -->
-    <link rel="stylesheet" href="../assets/css/112energie.css">
-    <link rel="stylesheet" href="../assets/css/hero.css">
+    <link rel="stylesheet" href="http://127.0.0.1:5500/00_Development/Frontend/112energie-critical/assets/css/112energie.css">
+    <link rel="stylesheet" href="http://127.0.0.1:5500/00_Development/Frontend/112energie-critical/assets/css/hero.css">
+    <link rel="stylesheet" href="http://127.0.0.1:5500/00_Development/Frontend/112energie-critical/assets/css/button-styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -88,16 +89,6 @@
             </svg>
         </div>
     </div>
-
-    <!-- Emergency Alert Banner -->
-    <div class="emergency-banner" id="emergencyBanner" style="display: none;">
-        <div class="container">
-            <span class="emergency-icon">⚠️</span>
-            <span class="emergency-text">Storing in uw regio? Bel direct: <strong>0800-112-3637</strong></span>
-            <button class="close-banner" onclick="closeEmergencyBanner()">×</button>
-        </div>
-    </div>
-
 <!-- Hero Section -->
 <section class="hero">
     <!-- 3D Grid Background -->
@@ -370,68 +361,117 @@
     </section>
 
     <!-- Calculator Section -->
-    <section class="calculator-section" id="tarieven">
-        <div class="container">
-            <div class="calculator-wrapper">
-                <div class="calculator-header">
-                    <h2>Bereken Je Maandbedrag</h2>
-                    <p>Krijg direct inzicht in je energiekosten</p>
-                </div>
-                
-                <div class="calculator-body">
+<section class="calculator-section" id="calculator">
+    <div class="container">
+        <div class="calculator-wrapper">
+            <div class="calculator-header">
+                <h2>Bereken Je Energiekosten</h2>
+                <p>Krijg direct inzicht in je maandelijkse energiekosten</p>
+            </div>
+            
+            <div class="calculator-body">
+                <!-- Step 1: Basic Info -->
+                <div class="calc-step active" data-step="1">
+                    <h3>Stap 1: Basis Informatie</h3>
+                    
                     <div class="calc-input-group">
-                        <label for="householdSize">Huishoudgrootte</label>
-                        <select id="householdSize" onchange="updateCalculation()">
-                            <option value="1">1 persoon</option>
-                            <option value="2" selected>2 personen</option>
-                            <option value="3">3 personen</option>
-                            <option value="4">4 personen</option>
-                            <option value="5">5+ personen</option>
-                        </select>
+                        <label for="householdSize">Aantal Personen</label>
+                        <div class="input-stepper">
+                            <button type="button" onclick="stepperDecrease('householdSize')">-</button>
+                            <input type="number" id="householdSize" value="2" min="1" max="10" readonly>
+                            <button type="button" onclick="stepperIncrease('householdSize')">+</button>
+                        </div>
                     </div>
                     
                     <div class="calc-input-group">
                         <label for="homeType">Type Woning</label>
-                        <select id="homeType" onchange="updateCalculation()">
+                        <select id="homeType">
                             <option value="apartment">Appartement</option>
                             <option value="row-house" selected>Rijtjeshuis</option>
                             <option value="corner-house">Hoekwoning</option>
-                            <option value="detached">Vrijstaand</option>
+                            <option value="detached">Vrijstaand Huis</option>
                         </select>
+                    </div>
+                </div>
+                
+                <!-- Step 2: Energy Usage -->
+                <div class="calc-step" data-step="2">
+                    <h3>Stap 2: Energieverbruik</h3>
+                    
+                    <div class="calc-input-group">
+                        <label for="electricityUsage">Stroom Verbruik (kWh/jaar)</label>
+                        <input type="number" id="electricityUsage" value="2800" min="0" max="50000">
                     </div>
                     
                     <div class="calc-input-group">
-                        <label for="solarPanels">Zonnepanelen</label>
-                        <div class="switch-container">
-                            <input type="checkbox" id="solarPanels" onchange="updateCalculation()">
-                            <label for="solarPanels" class="switch"></label>
-                        </div>
+                        <label for="gasUsage">Gas Verbruik (m³/jaar)</label>
+                        <input type="number" id="gasUsage" value="1200" min="0" max="10000">
+                    </div>
+                </div>
+                
+                <!-- Step 3: Preferences -->
+                <div class="calc-step" data-step="3">
+                    <h3>Stap 3: Voorkeuren</h3>
+                    
+                    <div class="calc-input-group">
+                        <label>
+                            <input type="checkbox" id="greenEnergy" checked>
+                            100% Groene Energie
+                        </label>
                     </div>
                     
-                    <div class="calc-results">
+                    <div class="calc-input-group">
+                        <label>
+                            <input type="checkbox" id="solarPanels">
+                            Ik heb zonnepanelen
+                        </label>
+                    </div>
+                </div>
+                
+                <!-- Navigation -->
+                <div class="calc-navigation">
+                    <button class="btn-secondary" onclick="calcPrevStep()" id="calcPrev" style="display: none;">
+                        Vorige
+                    </button>
+                    <div class="calc-steps-indicator">
+                        <span class="step-dot active" data-step="1"></span>
+                        <span class="step-dot" data-step="2"></span>
+                        <span class="step-dot" data-step="3"></span>
+                    </div>
+                    <button class="btn-primary" onclick="calcNextStep()" id="calcNext">
+                        Volgende
+                    </button>
+                </div>
+                
+                <!-- Results -->
+                <div class="calc-results" id="calcResults" style="display: none;">
+                    <h3>Jouw Persoonlijke Energieadvies</h3>
+                    
+                    <div class="results-summary">
                         <div class="result-item">
-                            <span class="result-label">Geschat Stroomverbruik</span>
-                            <span class="result-value"><span id="estimatedPower">2800</span> kWh/jaar</span>
-                        </div>
-                        <div class="result-item">
-                            <span class="result-label">Geschat Gasverbruik</span>
-                            <span class="result-value"><span id="estimatedGas">1200</span> m³/jaar</span>
-                        </div>
-                        <div class="result-divider"></div>
-                        <div class="result-item total">
                             <span class="result-label">Maandbedrag</span>
-                            <span class="result-value">€<span id="monthlyAmount">145</span>,-</span>
+                            <span class="result-value">€<span id="monthlyAmount">145</span></span>
+                        </div>
+                        
+                        <div class="result-item">
+                            <span class="result-label">Jaarbedrag</span>
+                            <span class="result-value">€<span id="yearlyAmount">1740</span></span>
+                        </div>
+                        
+                        <div class="result-item">
+                            <span class="result-label">Besparing</span>
+                            <span class="result-value">€<span id="savingsAmount">240</span></span>
                         </div>
                     </div>
                     
-                    <button class="btn-primary btn-large full-width" onclick="proceedWithCalculation()">
-                        Start Aanvraag Met Deze Gegevens
+                    <button class="btn-primary" onclick="proceedWithOffer()">
+                        Direct Overstappen
                     </button>
                 </div>
             </div>
         </div>
-    </section>
-
+    </div>
+</section>
     <!-- Trust Indicators -->
     <section class="trust-section">
         <div class="container">
@@ -493,5 +533,11 @@
             }, 500);
         });
     </script>
+     <!-- Voeg deze toe onderaan voor cursor effects -->
+    <div class="mouse-follower"></div>
+    <div class="cursor-glow"></div>
+    
+    <!-- Voeg het script toe -->
+    <script src="button-system.js"></script>
 </body>
 </html>

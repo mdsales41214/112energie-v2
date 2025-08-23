@@ -1,862 +1,348 @@
-﻿/**
- * 112Energie Main JavaScript File
- * Version: 2.0
- * Updated: 2025
- * Description: Core functionality for 112Energie website
- */
-
-// ==================== CONFIGURATION ====================
-const CONFIG = {
-    API_ENDPOINT: 'https://api.112energie.nl/v2',
-    WEBSOCKET_URL: 'wss://ws.112energie.nl',
-    UPDATE_INTERVAL: 5000, // 5 seconds
-    ANIMATION_DURATION: 300,
-    SESSION_TIMEOUT: 1800000, // 30 minutes
-    DEBUG_MODE: false
-};
-
-// ==================== UTILITIES ====================
-const Utils = {
-    // Debounce function for performance
-    debounce(func, wait) {
-        let timeout;
-        return function executedFunction(...args) {
-            const later = () => {
-                clearTimeout(timeout);
-                func(...args);
-            };
-            clearTimeout(timeout);
-            timeout = setTimeout(later, wait);
-        };
-    },
-
-    // Throttle function for performance
-    throttle(func, limit) {
-        let inThrottle;
-        return function(...args) {
-            if (!inThrottle) {
-                func.apply(this, args);
-                inThrottle = true;
-                setTimeout(() => inThrottle = false, limit);
-            }
-        };
-    },
-
-    // Format currency
-    formatCurrency(amount) {
-        return new Intl.NumberFormat('nl-NL', {
-            style: 'currency',
-            currency: 'EUR'
-        }).format(amount);
-    },
-
-    // Format number
-    formatNumber(number, decimals = 0) {
-        return new Intl.NumberFormat('nl-NL', {
-            minimumFractionDigits: decimals,
-            maximumFractionDigits: decimals
-        }).format(number);
-    },
-
-    // Generate unique ID
-    generateId() {
-        return '_' + Math.random().toString(36).substr(2, 9);
-    },
-
-    // Check if element is in viewport
-    isInViewport(element) {
-        const rect = element.getBoundingClientRect();
-        return (
-            rect.top >= 0 &&
-            rect.left >= 0 &&
-            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-        );
-    }
-};
-
-// ==================== ENERGY MONITOR ====================
-class EnergyMonitor {
+﻿// ==================== PARTICLE WAVE ANIMATION ====================
+class ParticleWave {
     constructor() {
-        this.ws = null;
-        this.chart = null;
-        this.data = {
-            usage: [],
-            production: [],
-            timestamps: []
-        };
-        this.maxDataPoints = 60;
+        this.canvas = document.getElementById('particle-wave');
+        if (!this.canvas) return;
+        
+        this.ctx = this.canvas.getContext('2d');
+        this.particles = [];
+        this.numberOfParticles = window.innerWidth < 768 ? 40 : 60;
+        this.waveAmplitude = 80;
+        this.waveFrequency = 0.008;
+        this.waveSpeed = 0.015;
+        this.time = 0;
+        this.mouseX = 0;
+        this.mouseY = 0;
+        this.mouseRadius = 120;
+        this.isActive = true;
+        
+        this.init();
+        this.animate();
+        this.setupEventListeners();
+    }
+    
+    init() {
+        this.resize();
+        this.createParticles();
+    }
+    
+    resize() {
+        this.canvas.width = window.innerWidth;
+        this.canvas.height = window.innerHeight;
+        this.centerY = this.canvas.height / 2;
+    }
+    
+    createParticles() {
+        this.particles = [];
+        const spacing = this.canvas.width / (this.numberOfParticles - 1);
+        
+        for (let i = 0; i < this.numberOfParticles; i++) {
+            this.particles.push({
+                x: i * spacing,
+                y: this.centerY,
+                baseY: this.centerY,
+                size: Math.random() * 2 + 1.5,
+                speed: Math.random() * 0.3 + 0.3,
+                offset: Math.random() * Math.PI * 2,
+                originalX: i * spacing
+            });
+        }
+    }
+    
+    setupEventListeners() {
+        window.addEventListener('resize', Utils.debounce(() => {
+            this.resize();
+            this.createParticles();
+        }, 250));
+        
+        if ('ontouchstart' in window) {
+            // Touch events
+            this.canvas.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                const touch = e.touches[0];
+                const rect = this.canvas.getBoundingClientRect();
+                this.mouseX = touch.clientX - rect.left;
+                this.mouseY = touch.clientY - rect.top;
+            });
+            
+            this.canvas.addEventListener('touchmove', (e) => {
+                e.preventDefault();
+                const touch = e.touches[0];
+                const rect = this.canvas.getBoundingClientRect();
+                this.mouseX = touch.clientX - rect.left;
+                this.mouseY = touch.clientY - rect.top;
+            });
+            
+            this.canvas.addEventListener('touchend', () => {
+                this.mouseX = 0;
+                this.mouseY = 0;
+            });
+        } else {
+            // Mouse events
+            this.canvas.addEventListener('mousemove', (e) => {
+                const rect = this.canvas.getBoundingClientRect();
+                this.mouseX = e.clientX - rect.left;
+                this.mouseY = e.clientY - rect.top;
+            });
+            
+            this.canvas.addEventListener('mouseleave', () => {
+                this.mouseX = 0;
+                this.mouseY = 0;
+            });
+        }
+
+        // Pause animation when not visible for performance
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                this.isActive = entry.isIntersecting;
+            });
+        }, { threshold: 0.1 });
+
+        observer.observe(this.canvas);
+    }
+    
+    updateParticles() {
+        if (!this.isActive) return;
+        
+        this.particles.forEach((particle, index) => {
+            // Base wave motion
+            const waveOffset = Math.sin(index * this.waveFrequency + this.time) * this.waveAmplitude;
+            particle.y = particle.baseY + waveOffset;
+            
+            // Mouse/touch interaction
+            if (this.mouseX && this.mouseY) {
+                const dx = this.mouseX - particle.x;
+                const dy = this.mouseY - particle.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                
+                if (distance < this.mouseRadius) {
+                    const force = (1 - distance / this.mouseRadius) * 40;
+                    const angle = Math.atan2(dy, dx);
+                    particle.x -= Math.cos(angle) * force * 0.5;
+                    particle.y -= Math.sin(angle) * force;
+                }
+            }
+            
+            // Return to original position
+            particle.x += (particle.originalX - particle.x) * 0.05;
+            
+            // Add subtle floating motion
+            particle.y += Math.sin(this.time * particle.speed + particle.offset) * 1;
+        });
+    }
+    
+    drawParticles() {
+        if (!this.isActive) return;
+        
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        
+        // Draw connecting lines
+        this.ctx.strokeStyle = 'rgba(0, 166, 81, 0.3)';
+        this.ctx.lineWidth = 2;
+        this.ctx.beginPath();
+        
+        for (let i = 0; i < this.particles.length; i++) {
+            const particle = this.particles[i];
+            
+            if (i === 0) {
+                this.ctx.moveTo(particle.x, particle.y);
+            } else {
+                // Create smooth curves between particles
+                const prevParticle = this.particles[i - 1];
+                const cpx = (prevParticle.x + particle.x) / 2;
+                const cpy = (prevParticle.y + particle.y) / 2;
+                this.ctx.quadraticCurveTo(cpx, cpy, particle.x, particle.y);
+            }
+        }
+        
+        this.ctx.stroke();
+        
+        // Draw particles with glow effect
+        this.particles.forEach((particle, index) => {
+            // Main glow
+            const glowGradient = this.ctx.createRadialGradient(
+                particle.x, particle.y, 0,
+                particle.x, particle.y, particle.size * 4
+            );
+            glowGradient.addColorStop(0, 'rgba(0, 212, 255, 0.8)');
+            glowGradient.addColorStop(0.5, 'rgba(0, 166, 81, 0.4)');
+            glowGradient.addColorStop(1, 'rgba(0, 212, 255, 0)');
+            
+            this.ctx.fillStyle = glowGradient;
+            this.ctx.beginPath();
+            this.ctx.arc(particle.x, particle.y, particle.size * 4, 0, Math.PI * 2);
+            this.ctx.fill();
+            
+            // Core particle
+            this.ctx.fillStyle = `rgba(255, 255, 255, ${0.9 + Math.sin(this.time * 2 + index) * 0.1})`;
+            this.ctx.beginPath();
+            this.ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+            this.ctx.fill();
+        });
+        
+        // Add floating particles for extra effect
+        this.drawFloatingParticles();
+    }
+    
+    drawFloatingParticles() {
+        const floatingCount = 15;
+        for (let i = 0; i < floatingCount; i++) {
+            const x = (this.time * 20 + i * 100) % (this.canvas.width + 100) - 50;
+            const y = this.centerY + Math.sin(this.time + i) * 200;
+            const opacity = Math.sin(this.time * 2 + i) * 0.3 + 0.2;
+            
+            this.ctx.fillStyle = `rgba(0, 212, 255, ${opacity})`;
+            this.ctx.beginPath();
+            this.ctx.arc(x, y, 1, 0, Math.PI * 2);
+            this.ctx.fill();
+        }
+    }
+    
+    animate() {
+        this.time += this.waveSpeed;
+        this.updateParticles();
+        this.drawParticles();
+        
+        requestAnimationFrame(() => this.animate());
+    }
+    
+    destroy() {
+        this.isActive = false;
+    }
+}
+
+// ==================== ENHANCED ENERGY CALCULATOR ====================
+class EnergyCalculator {
+    constructor() {
+        this.currentStep = 1;
+        this.totalSteps = 3;
+        this.results = {};
         this.init();
     }
 
     init() {
-        this.connectWebSocket();
-        this.initChart();
-        this.startSimulation(); // For demo purposes
+        this.bindEvents();
+        this.updateStepIndicators();
+        this.updateNavigationButtons();
     }
 
-    connectWebSocket() {
-        if ('WebSocket' in window) {
-            try {
-                this.ws = new WebSocket(CONFIG.WEBSOCKET_URL);
-                
-                this.ws.onopen = () => {
-                    console.log('WebSocket connected');
-                    this.updateStatus('online');
-                };
-
-                this.ws.onmessage = (event) => {
-                    const data = JSON.parse(event.data);
-                    this.handleRealtimeData(data);
-                };
-
-                this.ws.onerror = (error) => {
-                    console.error('WebSocket error:', error);
-                    this.updateStatus('offline');
-                };
-
-                this.ws.onclose = () => {
-                    console.log('WebSocket disconnected');
-                    this.updateStatus('offline');
-                    // Attempt reconnection after 5 seconds
-                    setTimeout(() => this.connectWebSocket(), 5000);
-                };
-            } catch (error) {
-                console.error('WebSocket connection failed:', error);
-                this.startSimulation();
-            }
-        } else {
-            this.startSimulation();
-        }
+    bindEvents() {
+        // Input change listeners for real-time updates
+        const inputs = document.querySelectorAll('#householdSize, #homeType, #electricityUsage, #gasUsage');
+        inputs.forEach(input => {
+            input.addEventListener('change', Utils.debounce(() => this.estimateUsage(), 500));
+        });
     }
 
-    handleRealtimeData(data) {
-        // Update UI with real-time data
-        if (data.currentUsage !== undefined) {
-            this.updateDisplay('currentUsage', data.currentUsage);
-        }
-        if (data.solarProduction !== undefined) {
-            this.updateDisplay('solarProduction', data.solarProduction);
-        }
-        if (data.dailyCost !== undefined) {
-            this.updateDisplay('dailyCost', data.dailyCost);
-        }
-
-        // Update chart data
-        this.updateChartData(data);
-    }
-
-    updateDisplay(elementId, value) {
-        const element = document.getElementById(elementId);
-        if (element) {
-            const formattedValue = typeof value === 'number' ? 
-                Utils.formatNumber(value, 2) : value;
-            
-            // Animate value change
-            element.style.transition = 'all 0.3s ease';
-            element.style.transform = 'scale(1.1)';
-            element.textContent = formattedValue;
-            
-            setTimeout(() => {
-                element.style.transform = 'scale(1)';
-            }, 300);
-        }
-    }
-
-    updateStatus(status) {
-        const indicator = document.querySelector('.status-indicator');
-        if (indicator) {
-            indicator.classList.remove('online', 'offline');
-            indicator.classList.add(status);
-            indicator.textContent = status === 'online' ? '● Online' : '● Offline';
-        }
-    }
-
-    initChart() {
-        const canvas = document.getElementById('energyChart');
-        if (canvas && canvas.getContext) {
-            const ctx = canvas.getContext('2d');
-            
-            // Simple line chart implementation
-            this.chart = {
-                ctx: ctx,
-                width: canvas.width,
-                height: canvas.height,
-                padding: 20
-            };
-
-            this.drawChart();
-        }
-    }
-
-    drawChart() {
-        if (!this.chart) return;
-
-        const { ctx, width, height, padding } = this.chart;
+    estimateUsage() {
+        const householdSize = parseInt(document.getElementById('householdSize')?.value || 2);
+        const homeType = document.getElementById('homeType')?.value || 'row-house';
         
-        // Clear canvas
-        ctx.clearRect(0, 0, width, height);
+        // Base consumption values
+        const baseElectricity = 2800;
+        const baseGas = 1200;
         
-        // Set styles
-        ctx.strokeStyle = '#00A651';
-        ctx.lineWidth = 2;
-        ctx.fillStyle = 'rgba(0, 166, 81, 0.1)';
+        // Household size multiplier
+        const sizeMultiplier = 1 + ((householdSize - 2) * 0.25);
         
-        // Draw grid
-        ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
-        ctx.lineWidth = 1;
-        
-        for (let i = 0; i <= 5; i++) {
-            const y = padding + (height - 2 * padding) * i / 5;
-            ctx.beginPath();
-            ctx.moveTo(padding, y);
-            ctx.lineTo(width - padding, y);
-            ctx.stroke();
-        }
-        
-        // Draw data
-        if (this.data.usage.length > 1) {
-            // Draw usage line
-            ctx.strokeStyle = '#00A651';
-            ctx.lineWidth = 2;
-            ctx.beginPath();
-            
-            const xStep = (width - 2 * padding) / (this.maxDataPoints - 1);
-            const yScale = (height - 2 * padding) / 10; // Max 10kW
-            
-            this.data.usage.forEach((value, index) => {
-                const x = padding + index * xStep;
-                const y = height - padding - value * yScale;
-                
-                if (index === 0) {
-                    ctx.moveTo(x, y);
-                } else {
-                    ctx.lineTo(x, y);
-                }
-            });
-            
-            ctx.stroke();
-            
-            // Fill area under curve
-            ctx.lineTo(width - padding, height - padding);
-            ctx.lineTo(padding, height - padding);
-            ctx.closePath();
-            ctx.fillStyle = 'rgba(0, 166, 81, 0.1)';
-            ctx.fill();
-            
-            // Draw production line if available
-            if (this.data.production.length > 1) {
-                ctx.strokeStyle = '#FFB700';
-                ctx.beginPath();
-                
-                this.data.production.forEach((value, index) => {
-                    const x = padding + index * xStep;
-                    const y = height - padding - value * yScale;
-                    
-                    if (index === 0) {
-                        ctx.moveTo(x, y);
-                    } else {
-                        ctx.lineTo(x, y);
-                    }
-                });
-                
-                ctx.stroke();
-            }
-        }
-    }
-
-    updateChartData(newData) {
-        // Add new data points
-        this.data.usage.push(newData.currentUsage || 0);
-        this.data.production.push(newData.solarProduction || 0);
-        this.data.timestamps.push(new Date());
-        
-        // Remove old data points if exceeding max
-        if (this.data.usage.length > this.maxDataPoints) {
-            this.data.usage.shift();
-            this.data.production.shift();
-            this.data.timestamps.shift();
-        }
-        
-        // Redraw chart
-        this.drawChart();
-    }
-
-    startSimulation() {
-        // Simulate real-time data for demo
-        setInterval(() => {
-            const simulatedData = {
-                currentUsage: 2 + Math.random() * 3,
-                solarProduction: Math.max(0, 1 + Math.random() * 2 - 0.5),
-                dailyCost: 10 + Math.random() * 10
-            };
-            
-            this.handleRealtimeData(simulatedData);
-        }, CONFIG.UPDATE_INTERVAL);
-    }
-
-    destroy() {
-        if (this.ws) {
-            this.ws.close();
-        }
-    }
-}
-
-// ==================== CALCULATOR ====================
-class EnergyCalculator {
-    constructor() {
-        this.rates = {
-            electricity: 0.45, // EUR per kWh
-            gas: 1.50, // EUR per m³
-            solarDiscount: 0.15 // 15% discount with solar panels
-        };
-        
-        this.consumption = {
-            1: { power: 1800, gas: 800 },
-            2: { power: 2800, gas: 1200 },
-            3: { power: 3500, gas: 1400 },
-            4: { power: 4200, gas: 1600 },
-            5: { power: 5000, gas: 1800 }
-        };
-        
-        this.homeTypeMultiplier = {
-            'apartment': 0.8,
+        // Home type multipliers
+        const homeMultipliers = {
+            'apartment': 0.6,
             'row-house': 1.0,
             'corner-house': 1.1,
-            'detached': 1.3
+            'semi-detached': 1.2,
+            'detached': 1.4,
+            'villa': 1.6
         };
+        
+        const homeMultiplier = homeMultipliers[homeType] || 1.0;
+        
+        // Calculate estimated usage
+        const estimatedElectricity = Math.round(baseElectricity * sizeMultiplier * homeMultiplier);
+        const estimatedGas = Math.round(baseGas * sizeMultiplier * homeMultiplier);
+        
+        // Update inputs if they haven't been manually changed
+        const electricityInput = document.getElementById('electricityUsage');
+        const gasInput = document.getElementById('gasUsage');
+        
+        if (electricityInput && !electricityInput.dataset.manuallySet) {
+            electricityInput.value = estimatedElectricity;
+        }
+        
+        if (gasInput && !gasInput.dataset.manuallySet) {
+            gasInput.value = estimatedGas;
+        }
     }
 
     calculate() {
-        const householdSize = document.getElementById('householdSize').value;
-        const homeType = document.getElementById('homeType').value;
-        const hasSolar = document.getElementById('solarPanels').checked;
+        const data = this.gatherData();
         
-        // Get base consumption
-        const baseConsumption = this.consumption[householdSize];
-        const multiplier = this.homeTypeMultiplier[homeType];
+        // Enhanced calculation with AI optimization factors
+        const electricityRate = data.greenEnergy ? 0.24 : 0.28;
+        const gasRate = 1.45;
+        const networkCosts = 456; // Fixed annual network costs
         
-        // Calculate adjusted consumption
-        const powerConsumption = baseConsumption.power * multiplier;
-        const gasConsumption = baseConsumption.gas * multiplier;
+        // Calculate base costs
+        let electricityCost = data.electricityUsage * electricityRate;
+        let gasCost = data.gasUsage * gasRate;
         
-        // Calculate costs
-        let electricityCost = powerConsumption * this.rates.electricity;
-        const gasCost = gasConsumption * this.rates.gas;
-        
-        // Apply solar discount
-        if (hasSolar) {
-            electricityCost *= (1 - this.rates.solarDiscount);
+        // Apply solar panel discount
+        if (data.solarPanels) {
+            electricityCost *= 0.3; // 70% reduction for solar
         }
         
-        // Calculate monthly amount
-        const yearlyTotal = electricityCost + gasCost;
-        const monthlyAmount = yearlyTotal / 12;
+        // AI optimization discount (smart meter required)
+        let aiDiscount = 0;
+        if (data.smartMeter) {
+            aiDiscount = (electricityCost + gasCost) * 0.08; // 8% AI optimization
+        }
         
+        const totalYearly = electricityCost + gasCost + networkCosts - aiDiscount;
+        const totalMonthly = totalYearly / 12;
+        
+        // Calculate savings compared to market average
+        const marketAverage = (data.electricityUsage * 0.32 + data.gasUsage * 1.65 + 520);
+        const savings = marketAverage - totalYearly;
+        
+        // CO2 calculations
+        const co2Electricity = data.greenEnergy ? 0 : data.electricityUsage * 0.392; // kg CO2 per kWh
+        const co2Gas = data.gasUsage * 1.784; // kg CO2 per m³
+        const co2Total = (co2Electricity + co2Gas) / 1000; // Convert to tons
+        const co2Reduction = data.greenEnergy ? co2Total : co2Total * 0.8; // 80% reduction with green energy
+        
+        this.results = {
+            monthlyAmount: Math.round(totalMonthly),
+            yearlyAmount: Math.round(totalYearly),
+            savingsAmount: Math.round(Math.max(0, savings)),
+            electricityCost: Math.round(electricityCost),
+            gasCost: Math.round(gasCost),
+            networkCost: networkCosts,
+            aiDiscount: Math.round(aiDiscount),
+            co2Reduction: co2Reduction.toFixed(1),
+            data: data
+        };
+        
+        return this.results;
+    }
+
+    gatherData() {
         return {
-            power: Math.round(powerConsumption),
-            gas: Math.round(gasConsumption),
-            monthly: Math.round(monthlyAmount)
+            householdSize: parseInt(document.getElementById('householdSize')?.value || 2),
+            homeType: document.getElementById('homeType')?.value || 'row-house',
+            electricityUsage: parseInt(document.getElementById('electricityUsage')?.value || 2800),
+            gasUsage: parseInt(document.getElementById('gasUsage')?.value || 1200),
+            greenEnergy: document.getElementById('greenEnergy')?.checked || false,
+            solarPanels: document.getElementById('solarPanels')?.checked || false,
+            smartMeter: document.getElementById('smartMeter')?.checked || false
         };
     }
 
     update() {
-        const results = this.calculate();
-        
-        // Update display with animation
-        this.animateValue('estimatedPower', results.power);
-        this.animateValue('estimatedGas', results.gas);
-        this.animateValue('monthlyAmount', results.monthly);
-    }
-
-    animateValue(elementId, endValue) {
-        const element = document.getElementById(elementId);
-        if (!element) return;
-        
-        const startValue = parseInt(element.textContent) || 0;
-        const duration = 500;
-        const startTime = performance.now();
-        
-        const animate = (currentTime) => {
-            const elapsed = currentTime - startTime;
-            const progress = Math.min(elapsed / duration, 1);
-            
-            // Easing function
-            const easeOutQuad = progress * (2 - progress);
-            
-            const currentValue = Math.round(startValue + (endValue - startValue) * easeOutQuad);
-            element.textContent = currentValue;
-            
-            if (progress < 1) {
-                requestAnimationFrame(animate);
-            }
-        };
-        
-        requestAnimationFrame(animate);
+        this.estimateUsage();
     }
 }
 
-// ==================== NAVIGATION ====================
-class Navigation {
-    constructor() {
-        this.header = document.getElementById('mainHeader');
-        this.mobileToggle = document.getElementById('mobileMenuToggle');
-        this.navMenu = document.getElementById('navMenu');
-        this.lastScroll = 0;
-        
-        this.init();
-    }
-
-    init() {
-        // Mobile menu toggle
-        if (this.mobileToggle) {
-            this.mobileToggle.addEventListener('click', () => this.toggleMobileMenu());
-        }
-        
-        // Smooth scroll for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', (e) => this.smoothScroll(e));
-        });
-        
-        // Header scroll behavior
-        window.addEventListener('scroll', Utils.throttle(() => this.handleScroll(), 100));
-        
-        // Close mobile menu on outside click
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('.navbar') && this.navMenu?.classList.contains('active')) {
-                this.closeMobileMenu();
-            }
-        });
-        
-        // Handle dropdown menus
-        this.initDropdowns();
-    }
-
-    toggleMobileMenu() {
-        this.navMenu?.classList.toggle('active');
-        this.mobileToggle?.classList.toggle('active');
-        
-        // Animate hamburger icon
-        const spans = this.mobileToggle?.querySelectorAll('span');
-        if (spans && this.navMenu?.classList.contains('active')) {
-            spans[0].style.transform = 'rotate(45deg) translateY(10px)';
-            spans[1].style.opacity = '0';
-            spans[2].style.transform = 'rotate(-45deg) translateY(-10px)';
-        } else if (spans) {
-            spans[0].style.transform = 'none';
-            spans[1].style.opacity = '1';
-            spans[2].style.transform = 'none';
-        }
-    }
-
-    closeMobileMenu() {
-        this.navMenu?.classList.remove('active');
-        this.mobileToggle?.classList.remove('active');
-        
-        const spans = this.mobileToggle?.querySelectorAll('span');
-        if (spans) {
-            spans[0].style.transform = 'none';
-            spans[1].style.opacity = '1';
-            spans[2].style.transform = 'none';
-        }
-    }
-
-    smoothScroll(e) {
-        e.preventDefault();
-        const targetId = e.currentTarget.getAttribute('href');
-        const targetSection = document.querySelector(targetId);
-        
-        if (targetSection) {
-            const headerOffset = this.header?.offsetHeight || 0;
-            const elementPosition = targetSection.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-            
-            window.scrollTo({
-                top: offsetPosition,
-                behavior: 'smooth'
-            });
-            
-            // Close mobile menu after navigation
-            this.closeMobileMenu();
-        }
-    }
-
-    handleScroll() {
-        const currentScroll = window.pageYOffset;
-        
-        // Add scrolled class for header styling
-        if (currentScroll > 50) {
-            this.header?.classList.add('scrolled');
-        } else {
-            this.header?.classList.remove('scrolled');
-        }
-        
-        // Hide/show header on scroll
-        if (currentScroll > this.lastScroll && currentScroll > 200) {
-            this.header?.classList.add('hidden');
-        } else {
-            this.header?.classList.remove('hidden');
-        }
-        
-        this.lastScroll = currentScroll;
-    }
-
-    initDropdowns() {
-        const dropdowns = document.querySelectorAll('.nav-item.dropdown');
-        
-        dropdowns.forEach(dropdown => {
-            const link = dropdown.querySelector('.nav-link');
-            const menu = dropdown.querySelector('.dropdown-menu');
-            
-            if (link && menu) {
-                // Touch device support
-                link.addEventListener('touchstart', (e) => {
-                    if (!dropdown.classList.contains('active')) {
-                        e.preventDefault();
-                        dropdown.classList.add('active');
-                    }
-                });
-                
-                // Close on outside click
-                document.addEventListener('click', (e) => {
-                    if (!dropdown.contains(e.target)) {
-                        dropdown.classList.remove('active');
-                    }
-                });
-            }
-        });
-    }
-}
-
-// ==================== FORM HANDLING ====================
-class FormHandler {
-    constructor() {
-        this.forms = document.querySelectorAll('form');
-        this.init();
-    }
-
-    init() {
-        this.forms.forEach(form => {
-            form.addEventListener('submit', (e) => this.handleSubmit(e));
-            
-            // Real-time validation
-            const inputs = form.querySelectorAll('input, select, textarea');
-            inputs.forEach(input => {
-                input.addEventListener('blur', () => this.validateField(input));
-                input.addEventListener('input', Utils.debounce(() => this.validateField(input), 500));
-            });
-        });
-    }
-
-    handleSubmit(e) {
-        e.preventDefault();
-        const form = e.target;
-        
-        // Validate all fields
-        const isValid = this.validateForm(form);
-        
-        if (isValid) {
-            // Show loading state
-            const submitBtn = form.querySelector('[type="submit"]');
-            const originalText = submitBtn.textContent;
-            submitBtn.textContent = 'Bezig...';
-            submitBtn.disabled = true;
-            
-            // Simulate API call
-            setTimeout(() => {
-                // Reset form
-                form.reset();
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-                
-                // Show success message
-                this.showNotification('Formulier succesvol verzonden!', 'success');
-            }, 1500);
-        }
-    }
-
-    validateForm(form) {
-        const inputs = form.querySelectorAll('input, select, textarea');
-        let isValid = true;
-        
-        inputs.forEach(input => {
-            if (!this.validateField(input)) {
-                isValid = false;
-            }
-        });
-        
-        return isValid;
-    }
-
-    validateField(field) {
-        const value = field.value.trim();
-        const type = field.type;
-        const required = field.hasAttribute('required');
-        
-        // Remove existing error
-        this.removeError(field);
-        
-        // Check if required
-        if (required && !value) {
-            this.showError(field, 'Dit veld is verplicht');
-            return false;
-        }
-        
-        // Email validation
-        if (type === 'email' && value) {
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(value)) {
-                this.showError(field, 'Voer een geldig e-mailadres in');
-                return false;
-            }
-        }
-        
-        // Phone validation
-        if (type === 'tel' && value) {
-            const phoneRegex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
-            if (!phoneRegex.test(value)) {
-                this.showError(field, 'Voer een geldig telefoonnummer in');
-                return false;
-            }
-        }
-        
-        // Password validation
-        if (type === 'password' && value) {
-            if (value.length < 8) {
-                this.showError(field, 'Wachtwoord moet minimaal 8 karakters bevatten');
-                return false;
-            }
-        }
-        
-        // Add success state
-        field.classList.add('valid');
-        return true;
-    }
-
-    showError(field, message) {
-        field.classList.add('error');
-        field.classList.remove('valid');
-        
-        const errorElement = document.createElement('span');
-        errorElement.className = 'field-error';
-        errorElement.textContent = message;
-        
-        field.parentElement.appendChild(errorElement);
-    }
-
-    removeError(field) {
-        field.classList.remove('error');
-        const errorElement = field.parentElement.querySelector('.field-error');
-        if (errorElement) {
-            errorElement.remove();
-        }
-    }
-
-    showNotification(message, type = 'info') {
-        const notification = document.createElement('div');
-        notification.className = `notification notification-${type}`;
-        notification.textContent = message;
-        
-        document.body.appendChild(notification);
-        
-        // Animate in
-        setTimeout(() => {
-            notification.classList.add('show');
-        }, 10);
-        
-        // Remove after 5 seconds
-        setTimeout(() => {
-            notification.classList.remove('show');
-            setTimeout(() => notification.remove(), 300);
-        }, 5000);
-    }
-}
-
-// ==================== ANIMATION CONTROLLER ====================
-class AnimationController {
-    constructor() {
-        this.observers = new Map();
-        this.init();
-    }
-
-    init() {
-        // Animate elements on scroll
-        this.initScrollAnimations();
-        
-        // Counter animations
-        this.initCounterAnimations();
-        
-        // Parallax effects
-        this.initParallaxEffects();
-    }
-
-    initScrollAnimations() {
-        const animatedElements = document.querySelectorAll('[data-animate]');
-        
-        if ('IntersectionObserver' in window) {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const element = entry.target;
-                        const animation = element.dataset.animate;
-                        element.classList.add(`animate-${animation}`);
-                        observer.unobserve(element);
-                    }
-                });
-            }, {
-                threshold: 0.1,
-                rootMargin: '50px'
-            });
-            
-            animatedElements.forEach(element => {
-                observer.observe(element);
-            });
-            
-            this.observers.set('scroll', observer);
-        }
-    }
-
-    initCounterAnimations() {
-        const counters = document.querySelectorAll('.stat-number[data-count]');
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const counter = entry.target;
-                    const target = parseInt(counter.dataset.count);
-                    this.animateCounter(counter, target);
-                    observer.unobserve(counter);
-                }
-            });
-        }, {
-            threshold: 0.5
-        });
-        
-        counters.forEach(counter => {
-            observer.observe(counter);
-        });
-        
-        this.observers.set('counter', observer);
-    }
-
-    animateCounter(element, target) {
-        const duration = 2000;
-        const start = 0;
-        const startTime = performance.now();
-        
-        const animate = (currentTime) => {
-            const elapsed = currentTime - startTime;
-            const progress = Math.min(elapsed / duration, 1);
-            
-            // Easing function
-            const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-            
-            const current = Math.round(start + (target - start) * easeOutQuart);
-            element.textContent = current;
-            
-            if (progress < 1) {
-                requestAnimationFrame(animate);
-            }
-        };
-        
-        requestAnimationFrame(animate);
-    }
-
-    initParallaxEffects() {
-        const parallaxElements = document.querySelectorAll('[data-parallax]');
-        
-        if (parallaxElements.length > 0) {
-            window.addEventListener('scroll', Utils.throttle(() => {
-                const scrolled = window.pageYOffset;
-                
-                parallaxElements.forEach(element => {
-                    const speed = element.dataset.parallax || 0.5;
-                    const yPos = -(scrolled * speed);
-                    element.style.transform = `translateY(${yPos}px)`;
-                });
-            }, 10));
-        }
-    }
-
-    destroy() {
-        this.observers.forEach(observer => observer.disconnect());
-        this.observers.clear();
-    }
-}
-
-// ==================== COOKIE CONSENT ====================
-class CookieConsent {
-    constructor() {
-        this.cookieName = '112energie_consent';
-        this.cookieExpiry = 365; // days
-        
-        if (!this.hasConsent()) {
-            this.showBanner();
-        }
-    }
-
-    hasConsent() {
-        return document.cookie.includes(this.cookieName + '=true');
-    }
-
-    showBanner() {
-        const banner = document.createElement('div');
-        banner.className = 'cookie-banner';
-        banner.innerHTML = `
-            <div class="cookie-content">
-                <p>Wij gebruiken cookies om je ervaring te verbeteren. Door verder te gaan, accepteer je ons cookiebeleid.</p>
-                <div class="cookie-actions">
-                    <button class="btn btn-secondary" onclick="cookieConsent.reject()">Weigeren</button>
-                    <button class="btn btn-primary" onclick="cookieConsent.accept()">Accepteren</button>
-                </div>
-            </div>
-        `;
-        
-        document.body.appendChild(banner);
-        
-        // Animate in
-        setTimeout(() => {
-            banner.classList.add('show');
-        }, 100);
-    }
-
-    accept() {
-        this.setCookie(true);
-        this.hideBanner();
-        this.initAnalytics();
-    }
-
-    reject() {
-        this.setCookie(false);
-        this.hideBanner();
-    }
-
-    setCookie(value) {
-        const date = new Date();
-        date.setTime(date.getTime() + (this.cookieExpiry * 24 * 60 * 60 * 1000));
-        const expires = 'expires=' + date.toUTCString();
-        document.cookie = `${this.cookieName}=${value};${expires};path=/;SameSite=Strict`;
-    }
-
-    hideBanner() {
-        const banner = document.querySelector('.cookie-banner');
-        if (banner) {
-            banner.classList.remove('show');
-            setTimeout(() => banner.remove(), 300);
-        }
-    }
-
-    initAnalytics() {
-        // Initialize Google Analytics or other tracking
-        if (typeof gtag !== 'undefined') {
-            gtag('consent', 'update', {
-                'analytics_storage': 'granted'
-            });
-        }
-    }
-}
-
-// ==================== MAIN APPLICATION ====================
+// ==================== ENHANCED APP INITIALIZATION ====================
 class App112Energie {
     constructor() {
         this.modules = {};
@@ -864,7 +350,6 @@ class App112Energie {
     }
 
     init() {
-        // Wait for DOM to be ready
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', () => this.start());
         } else {
@@ -875,106 +360,180 @@ class App112Energie {
     start() {
         console.log('112Energie Application Starting...');
         
-        // Initialize modules
-        this.modules.navigation = new Navigation();
-        this.modules.energyMonitor = new EnergyMonitor();
-        this.modules.calculator = new EnergyCalculator();
-        this.modules.formHandler = new FormHandler();
-        this.modules.animations = new AnimationController();
-        this.modules.cookieConsent = new CookieConsent();
+        // Initialize modules with error handling
+        try {
+            this.modules.particleWave = new ParticleWave();
+            this.modules.navigation = new Navigation();
+            this.modules.energyMonitor = new EnergyMonitor();
+            this.modules.calculator = new EnergyCalculator();
+            this.modules.formHandler = new FormHandler();
+            this.modules.animations = new AnimationController();
+            this.modules.cookieConsent = new CookieConsent();
+        } catch (error) {
+            console.warn('Some modules failed to initialize:', error);
+        }
         
-        // Bind global functions
         this.bindGlobalFunctions();
+        this.initEnhancedFeatures();
         
-        // Initialize emergency banner check
-        this.checkEmergencyStatus();
-        
-        // Log successful initialization
         console.log('112Energie Application Started Successfully');
     }
 
+    initEnhancedFeatures() {
+        // Initialize enhanced counter animations
+        this.initLiveCounters();
+        
+        // Performance monitoring
+        this.initPerformanceMonitoring();
+        
+        // Enhanced mobile experience
+        this.initMobileEnhancements();
+    }
+
+    initLiveCounters() {
+        // Animate live stats in hero section
+        const liveStats = document.querySelectorAll('#activeConnections, #dailySavings, #systemEfficiency');
+        
+        liveStats.forEach(stat => {
+            const baseValue = parseInt(stat.textContent.replace(/[^\d]/g, ''));
+            
+            setInterval(() => {
+                const variation = Math.floor(Math.random() * 10) - 5;
+                let newValue = baseValue + variation;
+                
+                if (stat.id === 'systemEfficiency') {
+                    newValue = Math.max(98.5, Math.min(99.9, baseValue + (Math.random() - 0.5)));
+                    stat.textContent = newValue.toFixed(1) + '%';
+                } else if (stat.id === 'dailySavings') {
+                    stat.textContent = '€' + Utils.formatNumber(newValue);
+                } else {
+                    stat.textContent = Utils.formatNumber(newValue);
+                }
+            }, 5000 + Math.random() * 3000);
+        });
+    }
+
+    initPerformanceMonitoring() {
+        if ('PerformanceObserver' in window) {
+            try {
+                const observer = new PerformanceObserver((list) => {
+                    for (const entry of list.getEntries()) {
+                        if (entry.entryType === 'navigation') {
+                            console.log('Page load time:', entry.loadEventEnd - entry.loadEventStart, 'ms');
+                        }
+                    }
+                });
+                observer.observe({ entryTypes: ['navigation'] });
+            } catch (error) {
+                console.warn('Performance monitoring not available:', error);
+            }
+        }
+    }
+
+    initMobileEnhancements() {
+        // Add mobile-specific optimizations
+        if ('ontouchstart' in window) {
+            document.body.classList.add('touch-device');
+            
+            // Reduce particle count on mobile for performance
+            if (this.modules.particleWave) {
+                this.modules.particleWave.numberOfParticles = Math.min(30, this.modules.particleWave.numberOfParticles);
+            }
+        }
+
+        // Handle viewport changes on mobile
+        if (window.visualViewport) {
+            window.visualViewport.addEventListener('resize', Utils.throttle(() => {
+                document.documentElement.style.setProperty('--vh', `${window.visualViewport.height * 0.01}px`);
+            }, 250));
+        }
+    }
+
     bindGlobalFunctions() {
-        // Make functions available globally for onclick handlers
-        window.updateCalculation = () => this.modules.calculator.update();
-        window.proceedWithCalculation = () => this.proceedWithCalculation();
-        window.startCalculator = () => this.startCalculator();
+        // Calculator functions
+        window.calcNextStep = calcNextStep;
+        window.calcPrevStep = calcPrevStep;
+        window.stepperIncrease = (inputId) => {
+            const input = document.getElementById(inputId);
+            if (input) {
+                const max = parseInt(input.getAttribute('max')) || 10;
+                const current = parseInt(input.value) || 0;
+                if (current < max) {
+                    input.value = current + 1;
+                    this.modules.calculator?.update();
+                }
+            }
+        };
+        window.stepperDecrease = (inputId) => {
+            const input = document.getElementById(inputId);
+            if (input) {
+                const min = parseInt(input.getAttribute('min')) || 1;
+                const current = parseInt(input.value) || 0;
+                if (current > min) {
+                    input.value = current - 1;
+                    this.modules.calculator?.update();
+                }
+            }
+        };
+        
+        // Service selection
         window.selectService = (service) => this.selectService(service);
+        
+        // Modal functions
         window.openLoginModal = () => this.openModal('loginModal');
         window.closeLoginModal = () => this.closeModal('loginModal');
         window.handleLogin = (e) => this.handleLogin(e);
-        window.startDirectAanvraag = () => this.startDirectAanvraag();
-        window.showDemo = () => this.showDemo();
+        
+        // Utility functions
+        window.proceedWithCalculation = () => this.proceedWithCalculation();
         window.closeEmergencyBanner = () => this.closeEmergencyBanner();
         window.cookieConsent = this.modules.cookieConsent;
     }
 
-    checkEmergencyStatus() {
-        // Check for emergency situations (mock API call)
+    selectService(service) {
+        sessionStorage.setItem('selectedService', service);
+        
+        const messages = {
+            'no-deposit': 'Energie zonder borg geselecteerd',
+            'emergency': '24h spoedaansluiting wordt voorbereid',
+            'smart-green': 'Smart groene energie optie geselecteerd'
+        };
+        
+        if (this.modules.formHandler) {
+            this.modules.formHandler.showNotification(messages[service] || 'Service geselecteerd', 'success');
+        }
+        
+        // Scroll to calculator
         setTimeout(() => {
-            const hasEmergency = Math.random() > 0.8; // 20% chance for demo
-            if (hasEmergency) {
-                const banner = document.getElementById('emergencyBanner');
-                if (banner) {
-                    banner.style.display = 'block';
-                }
-            }
+            document.getElementById('calculator')?.scrollIntoView({ behavior: 'smooth' });
+        }, 1000);
+    }
+
+    proceedWithCalculation() {
+        if (!this.modules.calculator) return;
+        
+        const results = this.modules.calculator.calculate();
+        sessionStorage.setItem('calculationResults', JSON.stringify(results));
+        
+        if (this.modules.formHandler) {
+            this.modules.formHandler.showNotification(
+                'Berekening opgeslagen! U wordt doorgestuurd naar de aanvraag...', 
+                'success'
+            );
+        }
+        
+        // Simulate navigation to application form
+        setTimeout(() => {
+            window.location.hash = 'aanvraag';
         }, 2000);
     }
 
     closeEmergencyBanner() {
         const banner = document.getElementById('emergencyBanner');
         if (banner) {
-            banner.style.animation = 'slideUp 0.5s ease-out';
-            setTimeout(() => {
-                banner.style.display = 'none';
-            }, 500);
+            banner.style.transform = 'translateY(-100%)';
+            setTimeout(() => banner.style.display = 'none', 300);
         }
-    }
-
-    proceedWithCalculation() {
-        const results = this.modules.calculator.calculate();
-        
-        // Store in session
-        sessionStorage.setItem('calculationResults', JSON.stringify(results));
-        
-        // Navigate to sign-up or next step
-        console.log('Proceeding with calculation:', results);
-        this.modules.formHandler.showNotification('Berekening opgeslagen! Je wordt doorgestuurd...', 'success');
-        
-        // Simulate navigation
-        setTimeout(() => {
-            window.location.href = '#aanvraag';
-        }, 2000);
-    }
-
-    startCalculator() {
-        const calculatorSection = document.getElementById('tarieven');
-        if (calculatorSection) {
-            calculatorSection.scrollIntoView({ behavior: 'smooth' });
-        }
-    }
-
-    selectService(service) {
-        console.log('Service selected:', service);
-        
-        // Store selected service
-        sessionStorage.setItem('selectedService', service);
-        
-        // Show appropriate next step
-        switch(service) {
-            case 'no-deposit':
-                this.modules.formHandler.showNotification('Energie zonder borg geselecteerd', 'info');
-                break;
-            case 'emergency':
-                this.modules.formHandler.showNotification('Spoedaansluiting wordt gestart', 'warning');
-                break;
-            case 'green':
-                this.modules.formHandler.showNotification('Groene energie optie geselecteerd', 'success');
-                break;
-        }
-        
-        // Navigate to calculator
-        this.startCalculator();
     }
 
     openModal(modalId) {
@@ -995,77 +554,27 @@ class App112Energie {
 
     handleLogin(e) {
         e.preventDefault();
-        const form = e.target;
-        const email = form.email.value;
-        const password = form.password.value;
+        const formData = new FormData(e.target);
+        const email = formData.get('email');
         
-        // Simulate login
-        console.log('Login attempt:', { email });
-        
-        // Show loading
-        const submitBtn = form.querySelector('[type="submit"]');
+        // Simulate login process
+        const submitBtn = e.target.querySelector('[type="submit"]');
+        const originalText = submitBtn.textContent;
         submitBtn.textContent = 'Bezig met inloggen...';
         submitBtn.disabled = true;
         
-        // Simulate API call
         setTimeout(() => {
-            submitBtn.textContent = 'Inloggen';
+            submitBtn.textContent = originalText;
             submitBtn.disabled = false;
-            
-            // Success
             this.closeModal('loginModal');
-            this.modules.formHandler.showNotification('Succesvol ingelogd!', 'success');
             
-            // Update UI
-            const loginBtn = document.querySelector('.btn-login');
-            if (loginBtn) {
-                loginBtn.innerHTML = '<svg>...</svg> Mijn Dashboard';
+            if (this.modules.formHandler) {
+                this.modules.formHandler.showNotification('Succesvol ingelogd!', 'success');
             }
         }, 1500);
     }
 
-    startDirectAanvraag() {
-        console.log('Starting direct application...');
-        
-        // Check if user has calculation results
-        const results = sessionStorage.getItem('calculationResults');
-        
-        if (results) {
-            // Proceed with saved data
-            window.location.href = '#aanvraag-form';
-        } else {
-            // Start with calculator
-            this.startCalculator();
-            this.modules.formHandler.showNotification('Vul eerst de calculator in voor een persoonlijk aanbod', 'info');
-        }
-    }
-
-    showDemo() {
-        console.log('Showing demo...');
-        
-        // Create demo video modal
-        const demoModal = document.createElement('div');
-        demoModal.className = 'modal active';
-        demoModal.innerHTML = `
-            <div class="modal-content" style="max-width: 800px;">
-                <span class="modal-close" onclick="this.closest('.modal').remove()">×</span>
-                <h2>112Energie Demo</h2>
-                <div style="position: relative; padding-bottom: 56.25%; height: 0;">
-                    <iframe 
-                        src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
-                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-                        frameborder="0" 
-                        allowfullscreen>
-                    </iframe>
-                </div>
-            </div>
-        `;
-        
-        document.body.appendChild(demoModal);
-    }
-
     destroy() {
-        // Clean up all modules
         Object.values(this.modules).forEach(module => {
             if (module.destroy) {
                 module.destroy();
@@ -1074,10 +583,10 @@ class App112Energie {
     }
 }
 
-// ==================== INITIALIZE APPLICATION ====================
+// Initialize the enhanced application
 const app = new App112Energie();
 
 // Export for debugging
-if (CONFIG.DEBUG_MODE) {
+if (typeof window !== 'undefined') {
     window.app112Energie = app;
 }

@@ -1,0 +1,779 @@
+/* ===== CSS FILE: styles.css ===== */
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #0094ff;
+    --primary-dark: #0066ff;
+    --secondary: #00d4ff;
+    --accent: #764ba2;
+    --electric: #4dffff;
+    --dark-bg: #0a0e27;
+    --dark-surface: #1a1f3a;
+    --glow: rgba(0, 148, 255, 0.5);
+    --text: #ffffff;
+    
+    --transition: cubic-bezier(0.23, 1, 0.320, 1);
+    --elastic: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --bounce: cubic-bezier(0.87, -0.41, 0.19, 1.44);
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, var(--dark-bg) 0%, var(--dark-surface) 100%);
+    min-height: 100vh;
+    color: var(--text);
+    overflow-x: hidden;
+    cursor: none;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+}
+
+.hero-section {
+    text-align: center;
+    margin-bottom: 5rem;
+    position: relative;
+}
+
+/* Glitch Effect for Title */
+.glitch {
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    position: relative;
+    color: var(--electric);
+    letter-spacing: 0.05em;
+    animation: glitch-skew 1s infinite linear alternate-reverse;
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.glitch::before {
+    animation: glitch-1 0.5s infinite;
+    color: var(--primary);
+    z-index: -1;
+}
+
+.glitch::after {
+    animation: glitch-2 0.5s infinite;
+    color: var(--secondary);
+    z-index: -2;
+}
+
+@keyframes glitch-1 {
+    0%, 100% { clip-path: inset(0 0 0 0); transform: translate(0); }
+    20% { clip-path: inset(20% 0 30% 0); transform: translate(-2px, 2px); }
+    40% { clip-path: inset(50% 0 20% 0); transform: translate(2px, -2px); }
+    60% { clip-path: inset(70% 0 10% 0); transform: translate(-1px, 1px); }
+    80% { clip-path: inset(10% 0 60% 0); transform: translate(1px, -1px); }
+}
+
+@keyframes glitch-2 {
+    0%, 100% { clip-path: inset(0 0 0 0); transform: translate(0); }
+    20% { clip-path: inset(60% 0 20% 0); transform: translate(2px, 1px); }
+    40% { clip-path: inset(10% 0 70% 0); transform: translate(-2px, 2px); }
+    60% { clip-path: inset(30% 0 40% 0); transform: translate(1px, -2px); }
+    80% { clip-path: inset(80% 0 5% 0); transform: translate(-1px, -1px); }
+}
+
+@keyframes glitch-skew {
+    0%, 100% { transform: skew(0deg); }
+    20% { transform: skew(-2deg); }
+    40% { transform: skew(1deg); }
+    60% { transform: skew(-1deg); }
+    80% { transform: skew(2deg); }
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    opacity: 0.8;
+    margin-top: 1rem;
+    letter-spacing: 0.2em;
+}
+
+/* Section Styles */
+.section {
+    margin-bottom: 4rem;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    opacity: 0.7;
+}
+
+.electric-text {
+    background: linear-gradient(90deg, var(--electric), var(--primary), var(--electric));
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: electric-flow 3s linear infinite;
+}
+
+@keyframes electric-flow {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.holographic-text {
+    background: linear-gradient(45deg, #ff0080, #ff8c00, #40e0d0, #ff0080);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: holographic 5s ease infinite;
+}
+
+@keyframes holographic {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.aurora-text {
+    background: linear-gradient(90deg, #00ffcc, #ff00ff, #00ffcc);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: aurora-shift 4s ease infinite;
+}
+
+@keyframes aurora-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.wave-text {
+    background: linear-gradient(90deg, var(--secondary), var(--primary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: wave 2s ease-in-out infinite;
+}
+
+@keyframes wave {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+}
+
+/* Button Group */
+.button-group {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Base Button Styles */
+.btn {
+    position: relative;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    border: none;
+    cursor: none;
+    outline: none;
+    overflow: hidden;
+    transition: all 0.3s var(--transition);
+    text-transform: uppercase;
+}
+
+.btn-text {
+    position: relative;
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* Emergency Button - Ultimate CTA */
+.btn-emergency {
+    padding: 1.25rem 2.5rem;
+    background: linear-gradient(135deg, #ff0044, #ff6b00);
+    color: white;
+    border-radius: 60px;
+    font-size: 1.1rem;
+    box-shadow: 
+        0 10px 40px rgba(255, 0, 68, 0.4),
+        inset 0 2px 0 rgba(255, 255, 255, 0.2),
+        inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+    animation: emergency-pulse 2s infinite;
+}
+
+@keyframes emergency-pulse {
+    0%, 100% { 
+        box-shadow: 
+            0 10px 40px rgba(255, 0, 68, 0.4),
+            inset 0 2px 0 rgba(255, 255, 255, 0.2),
+            inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+    }
+    50% { 
+        box-shadow: 
+            0 15px 60px rgba(255, 0, 68, 0.6),
+            inset 0 2px 0 rgba(255, 255, 255, 0.2),
+            inset 0 -2px 0 rgba(0, 0, 0, 0.2),
+            0 0 80px rgba(255, 107, 0, 0.3);
+    }
+}
+
+.btn-lightning {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='white' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M13 2L3 14h9l-1 8 10-12h-9l1-8z'/%3E%3C/svg%3E") center/contain no-repeat;
+    opacity: 0;
+    animation: lightning-strike 3s infinite;
+    pointer-events: none;
+}
+
+@keyframes lightning-strike {
+    0%, 90%, 100% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+    95% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+}
+
+.btn-pulse {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    border-radius: 60px;
+    background: radial-gradient(circle, rgba(255, 107, 0, 0.5), transparent);
+    animation: pulse-expand 2s infinite;
+    pointer-events: none;
+}
+
+@keyframes pulse-expand {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0; }
+    50% { transform: translate(-50%, -50%) scale(1.5); opacity: 0.3; }
+}
+
+/* Quantum Button - 3D Flip */
+.btn-quantum {
+    background: transparent;
+    color: var(--electric);
+    border-radius: 16px;
+    transform-style: preserve-3d;
+    transition: transform 0.6s var(--transition);
+}
+
+.btn-front,
+.btn-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    border-radius: 16px;
+    backface-visibility: hidden;
+    box-shadow: 0 10px 30px var(--glow);
+}
+
+.btn-back {
+    transform: rotateX(180deg);
+    background: linear-gradient(135deg, var(--accent), #f953c6);
+}
+
+.btn-quantum:hover {
+    transform: rotateX(180deg);
+}
+
+/* Liquid Button */
+.btn-liquid {
+    background: var(--dark-surface);
+    color: var(--electric);
+    border: 2px solid var(--primary);
+    border-radius: 50px;
+    overflow: hidden;
+}
+
+.liquid {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+    transition: all 0.5s var(--transition);
+    transform: translate(-50%, -50%) scale(0);
+    border-radius: 50%;
+}
+
+.btn-liquid:hover .liquid {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* Neon Button */
+.btn-neon {
+    background: transparent;
+    color: var(--secondary);
+    border: 2px solid var(--secondary);
+    border-radius: 12px;
+    box-shadow: 
+        0 0 20px rgba(0, 212, 255, 0.5),
+        inset 0 0 20px rgba(0, 212, 255, 0.1);
+    text-shadow: 0 0 10px currentColor;
+}
+
+.btn-gradient {
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, var(--secondary), var(--primary), var(--electric), var(--secondary));
+    background-size: 400% 400%;
+    border-radius: 12px;
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.3s;
+    animation: gradient-rotate 3s linear infinite;
+}
+
+@keyframes gradient-rotate {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 400% 50%; }
+}
+
+.btn-neon:hover {
+    color: white;
+    text-shadow: 0 0 20px currentColor;
+    box-shadow: 
+        0 0 40px rgba(0, 212, 255, 0.8),
+        inset 0 0 20px rgba(0, 212, 255, 0.2);
+}
+
+.btn-neon:hover .btn-gradient {
+    opacity: 1;
+}
+
+/* Morph Button */
+.btn-morph {
+    background: transparent;
+    color: var(--text);
+    border: none;
+    padding: 0;
+}
+
+.btn-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.btn-shape {
+    width: 100%;
+    height: 100%;
+    fill: none;
+    stroke: var(--primary);
+    stroke-width: 2;
+    stroke-dasharray: 140 540;
+    stroke-dashoffset: -474;
+    transition: all 0.8s var(--transition);
+}
+
+.btn-morph:hover .btn-shape {
+    stroke-dasharray: 760;
+    stroke-dashoffset: 0;
+    stroke: var(--electric);
+}
+
+.btn-morph .btn-text {
+    display: block;
+    padding: 1rem 2rem;
+}
+
+/* Cyber Button */
+.btn-cyber {
+    background: linear-gradient(135deg, var(--dark-surface), #2a3050);
+    color: var(--electric);
+    border: 1px solid var(--primary);
+    border-radius: 4px;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+    overflow: visible;
+}
+
+.btn-glitch {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+    opacity: 0;
+    transform: translate(0);
+    transition: all 0.2s;
+}
+
+.btn-glitch-1 {
+    animation: cyber-glitch-1 2s infinite;
+}
+
+.btn-glitch-2 {
+    animation: cyber-glitch-2 2s infinite;
+}
+
+@keyframes cyber-glitch-1 {
+    0%, 85%, 100% { opacity: 0; transform: translate(0); }
+    90% { opacity: 0.8; transform: translate(-2px, -2px); }
+    95% { opacity: 0.5; transform: translate(2px, 2px); }
+}
+
+@keyframes cyber-glitch-2 {
+    0%, 85%, 100% { opacity: 0; transform: translate(0); }
+    87% { opacity: 0.6; transform: translate(2px, -1px); }
+    93% { opacity: 0.4; transform: translate(-1px, 1px); }
+}
+
+.btn-cyber:hover {
+    animation: cyber-shake 0.3s;
+}
+
+@keyframes cyber-shake {
+    0%, 100% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+}
+
+/* Matrix Button */
+.btn-matrix {
+    background: #000;
+    color: #00ff00;
+    border: 1px solid #00ff00;
+    border-radius: 8px;
+    position: relative;
+}
+
+.matrix-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+/* Particle Button */
+.btn-particle {
+    background: linear-gradient(135deg, var(--dark-surface), var(--dark-bg));
+    color: var(--text);
+    border: 2px solid transparent;
+    border-radius: 16px;
+    background-clip: padding-box;
+}
+
+.btn-particle::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(45deg, var(--primary), var(--accent), var(--secondary));
+    border-radius: 16px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.btn-particle:hover::before {
+    opacity: 1;
+}
+
+.particle-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+/* Glass Button */
+.btn-glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: var(--text);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+    transform-style: preserve-3d;
+    transform: perspective(1000px) rotateX(0) rotateY(0);
+    transition: transform 0.3s var(--transition);
+}
+
+.btn-glass:hover {
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 
+        0 12px 48px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+}
+
+.btn-inner {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-icon {
+    font-size: 1.5rem;
+    animation: icon-pulse 2s infinite;
+}
+
+@keyframes icon-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+/* Aurora Button */
+.btn-aurora {
+    background: var(--dark-surface);
+    color: var(--text);
+    border: none;
+    border-radius: 50px;
+    overflow: hidden;
+}
+
+.aurora-bg {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(ellipse at center, 
+        rgba(120, 119, 198, 0.3),
+        rgba(255, 119, 198, 0.3),
+        rgba(255, 219, 88, 0.3),
+        rgba(120, 219, 255, 0.3));
+    animation: aurora-rotate 10s linear infinite;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+@keyframes aurora-rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.btn-aurora:hover .aurora-bg {
+    opacity: 1;
+}
+
+/* Void Button */
+.btn-void {
+    background: #000;
+    color: var(--text);
+    border: 2px solid var(--primary);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.void-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+    transform: translate(-50%, -50%);
+    transition: all 0.5s var(--transition);
+    border-radius: 50%;
+}
+
+.btn-void:hover .void-bg {
+    width: 300%;
+    height: 300%;
+}
+
+/* Minimal Button */
+.btn-minimal {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s var(--transition);
+}
+
+.btn-arrow {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s var(--transition);
+}
+
+.btn-minimal:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    transform: translateX(5px);
+}
+
+.btn-minimal:hover .btn-arrow {
+    transform: translateX(5px);
+}
+
+/* Float Button */
+.btn-float {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: var(--text);
+    border: none;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 10px 30px var(--glow);
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+.btn-float:hover {
+    animation-play-state: paused;
+    transform: translateY(-5px) scale(1.05);
+}
+
+/* Split Button */
+.btn-split {
+    background: transparent;
+    color: var(--text);
+    border: 2px solid var(--primary);
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-top,
+.btn-bottom {
+    display: block;
+    transition: all 0.3s var(--transition);
+}
+
+.btn-bottom {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    text-align: center;
+}
+
+.btn-split:hover .btn-top {
+    transform: translateY(-100%);
+}
+
+.btn-split:hover .btn-bottom {
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Custom Cursors */
+.mouse-follower {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--primary);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transition: all 0.1s ease;
+    transform: translate(-50%, -50%);
+    opacity: 0.5;
+}
+
+.cursor-glow {
+    position: fixed;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, var(--glow) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    opacity: 0.3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .button-group {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .btn {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .mouse-follower,
+    .cursor-glow {
+        display: none;
+    }
+    
+    body {
+        cursor: auto;
+    }
+    
+    .btn {
+        cursor: pointer;
+    }
+}
+
+/* Performance Optimizations */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
