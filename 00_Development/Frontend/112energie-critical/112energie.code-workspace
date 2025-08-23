@@ -1,0 +1,55 @@
+﻿{
+  "folders": [
+    {
+      "name": "🚀 Frontend - Main App",
+      "path": "00_Development/Frontend/main-app"
+    },
+    {
+      "name": "⚡ Frontend - Critical",
+      "path": "00_Development/Frontend/112energie"
+    },
+    {
+      "name": "🔧 Backend Services",
+      "path": "00_Development/Backend/services"
+    },
+    {
+      "name": "📊 Marketing Website",
+      "path": "07_Marketing/Website/Current"
+    },
+    {
+      "name": "📁 Root",
+      "path": "."
+    }
+  ],
+  "settings": {
+    "files.exclude": {
+      "**/_Archive": true,
+      "**/_Budget": true,
+      "**/_Meetings": true,
+      "**/node_modules": true
+    },
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    },
+    "editor.tabSize": 2,
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 1000,
+    "terminal.integrated.defaultProfile.windows": "PowerShell",
+    "git.autofetch": true,
+    "git.confirmSync": false,
+    "git.enableSmartCommit": true
+  },
+  "extensions": {
+    "recommendations": [
+      "dbaeumer.vscode-eslint",
+      "esbenp.prettier-vscode",
+      "formulahendry.auto-rename-tag",
+      "ritwickdey.liveserver",
+      "bradlc.vscode-tailwindcss",
+      "dsznajder.es7-react-js-snippets",
+      "github.copilot",
+      "eamodio.gitlens"
+    ]
+  }
+}

@@ -1,0 +1,46 @@
+﻿# Dependencies
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# Build outputs
+dist/
+build/
+*.min.js
+*.min.css
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/settings.json
+.idea/
+*.sublime-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+logs/
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Backup files
+*.backup
+*.bak
+*~
+
+# Sensitive data
+01_Organization/Finance/**/*.xlsx
+01_Organization/Human_Resources/**/*.pdf
+06_Clients/**/*.csv
+08_Sales/Contracts/**/*.docx
+11_Security/Certificates/**/*

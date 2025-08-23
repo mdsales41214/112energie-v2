@@ -1,0 +1,26 @@
+﻿{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch Chrome - Critical Project",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:5500/00_Development/Frontend/112energie/index.html",
+      "webRoot": "${workspaceFolder}"
+    },
+    {
+      "name": "Launch Chrome - Main App",
+      "type": "chrome", 
+      "request": "launch",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceFolder}/00_Development/Frontend/main-app"
+    },
+    {
+      "name": "Debug Node.js - Backend",
+      "type": "node",
+      "request": "launch",
+      "skipFiles": ["<node_internals>/**"],
+      "program": "${workspaceFolder}/00_Development/Backend/services/api-gateway/src/index.js"
+    }
+  ]
+}
