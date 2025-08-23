@@ -1,0 +1,919 @@
+﻿<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>112Energie - Uw Betrouwbare Energiepartner | Energie Zonder Borg</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="112Energie - Energie zonder borg, spoedaansluitingen binnen 24 uur. Betrouwbare energieleverancier voor particulier en zakelijk.">
+    <meta name="keywords" content="energie zonder borg, spoedaansluiting, energieleverancier, groene energie, 112energie">
+    <meta name="author" content="112Energie">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="112Energie - Energie Zonder Borg">
+    <meta property="og:description" content="Direct energie zonder borg. Spoedaansluitingen binnen 24 uur.">
+    <meta property="og:image" content="/assets/images/og-image.jpg">
+    <meta property="og:url" content="https://112energie.nl">
+    <meta property="og:type" content="website">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="styles/112energie.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Critical CSS (Inline for performance) -->
+    <style>
+        :root {
+            --primary-green: #00A651;
+            --primary-dark: #1a1a1a;
+            --accent-orange: #FF6B35;
+            --bg-light: #f8f9fa;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--primary-dark);
+        }
+        
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s;
+        }
+        
+        .loading-screen.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+     <!-- Header Placeholder -->
+    <!-- 112 Energie Header Component -->
+<header class="main-header" id="mainHeader">
+    <!-- Emergency Banner -->
+    <div class="emergency-banner" id="emergencyBanner">
+        <div class="container">
+            <span class="emergency-icon">⚡</span>
+            <span>24/7 SPOED: Direct energie zonder waarborg!</span>
+            <a href="tel:0800112" class="btn btn-white btn-sm">Bel Direct</a>
+            <button class="close-banner" onclick="closeBanner()" aria-label="Sluit banner">×</button>
+        </div>
+    </div>
+    
+    <!-- Main Navigation -->
+      <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <!-- Logo -->
+                <a href="/" class="logo">
+                    <img src="/assets/logo.png" alt="112 Energie Logo" style="height: 40px; width: auto;">
+                </a>
+                
+                <!-- Desktop Menu -->
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#home" class="nav-link">Home</a></li>
+                    <li><a href="#diensten" class="nav-link">Diensten</a></li>
+                    <li><a href="#over-ons" class="nav-link">Over Ons</a></li>
+                    <li><a href="#calculator" class="nav-link">Calculator</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+                
+                <!-- CTA Button -->
+                <div class="nav-cta">
+                    <a href="tel:0800112" class="btn btn-primary">
+                        <svg width="16" height="16" fill="currentColor">
+                            <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
+                        </svg>
+                        0800-112
+                    </a>
+                </div>
+                
+                <!-- Mobile Menu Toggle -->
+                <button class="nav-toggle" id="navToggle" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<style>
+/* Header Specific Styles */
+.main-header {
+    background: var(--color-white);
+    box-shadow: var(--shadow-sm);
+    position: sticky;
+    top: 0;
+    z-index: var(--z-sticky);
+}
+
+.navbar {
+    padding: 1rem 0;
+}
+
+.nav-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.5rem;
+    color: var(--primary-700);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.logo-icon {
+    color: var(--electric-blue);
+    font-size: 2rem;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-link {
+    color: var(--color-gray-700);
+    font-weight: 500;
+    position: relative;
+    transition: color var(--transition-fast);
+}
+
+.nav-link:hover {
+    color: var(--primary-600);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gradient-brand);
+    transition: width var(--transition-base);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.25rem;
+}
+
+.nav-toggle span {
+    width: 25px;
+    height: 3px;
+    background: var(--primary-600);
+    margin: 2px 0;
+    transition: var(--transition-fast);
+    border-radius: 2px;
+}
+
+@media (max-width: 768px) {
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        flex-direction: column;
+        background: var(--color-white);
+        width: 100%;
+        padding: 2rem;
+        box-shadow: var(--shadow-lg);
+        transition: var(--transition-base);
+    }
+    
+    .nav-menu.active {
+        left: 0;
+    }
+    
+    .nav-toggle {
+        display: flex;
+    }
+    
+    .nav-cta {
+        display: none;
+    }
+}
+</style>
+
+    
+    <!-- Your main content here -->
+    <main>
+        <!-- Page content -->
+    </main>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader">
+            <svg width="50" height="50" viewBox="0 0 50 50">
+                <circle cx="25" cy="25" r="20" stroke="#00A651" stroke-width="5" fill="none" stroke-dasharray="31.415, 31.415" stroke-dashoffset="0">
+                    <animateTransform attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="1s" repeatCount="indefinite"/>
+                </circle>
+            </svg>
+        </div>
+    </div>
+
+    <!-- Emergency Alert Banner -->
+    <div class="emergency-banner" id="emergencyBanner" style="display: none;">
+        <div class="container">
+            <span class="emergency-icon">âš ï¸</span>
+            <span class="emergency-text">Storing in uw regio? Bel direct: <strong>0800-112-3637</strong></span>
+            <button class="close-banner" onclick="closeEmergencyBanner()">Ã—</button>
+        </div>
+    </div>
+
+<!-- Hero Section -->
+<section class="hero">
+    <!-- 3D Grid Background -->
+    <div class="grid-3d">
+        <div class="grid-plane"></div>
+    </div>
+
+    <!-- Particle System -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Hero Content -->
+    <div class="hero-container">
+        <div class="hero-content">
+            <h1>
+                <span class="glitch" data-text="The Future of">The Future of</span><br>
+                <span class="glitch" data-text="Energy is Here">Energy is Here</span>
+            </h1>
+
+            <p class="subtitle">
+                <span class="subtitle-highlight">AI-optimized</span> energy distribution. 
+                <span class="subtitle-highlight">Zero deposit</span>. 
+                <span class="subtitle-highlight">Instant activation</span>. 
+                Join the decentralized energy revolution powered by 
+                <span class="quantum-text">quantum computing</span> and 
+                <span class="neural-text">neural networks</span>.
+            </p>
+
+            <!-- Heartbeat Line -->
+            <div class="heartbeat-container">
+                <svg class="heartbeat-line" viewBox="0 0 400 40" preserveAspectRatio="none">
+                    <path class="heartbeat-path" d="M0,20 L80,20 L90,10 L100,30 L110,5 L120,35 L130,20 L400,20" 
+                          stroke="url(#heartbeat-gradient)" 
+                          stroke-width="2" 
+                          fill="none"/>
+                    <defs>
+                        <linearGradient id="heartbeat-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#0A84FF;stop-opacity:0" />
+                            <stop offset="50%" style="stop-color:#5E5CE6;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#30D158;stop-opacity:0" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <div class="heartbeat-glow"></div>
+            </div>
+
+            <!-- AI Features -->
+            <div class="ai-features">
+                <div class="ai-feature">
+                    <div class="ai-dot"></div>
+                    <span>AI Price Prediction</span>
+                </div>
+                <div class="ai-feature">
+                    <div class="ai-dot"></div>
+                    <span>Quantum Optimization</span>
+                </div>
+                <div class="ai-feature">
+                    <div class="ai-dot"></div>
+                    <span>Neural Grid</span>
+                </div>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="cta-section">
+                <a href="#start" class="cta-primary">
+                    <span class="cta-text">Initialize Connection</span>
+                    <span class="cta-arrow">â†’</span>
+                </a>
+                <a href="#learn" class="cta-secondary">
+                    <span>Explore Tech</span>
+                </a>
+            </div>
+
+            <!-- Live Stats -->
+            <div class="live-stats">
+                <div class="stat">
+                    <div class="stat-value" id="activeNodes">127,439</div>
+                    <div class="stat-label">Active Nodes</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" id="energySaved">â‚¬3,859</div>
+                    <div class="stat-label">Saved Today</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" id="aiAccuracy">99.7%</div>
+                    <div class="stat-label">AI Accuracy</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hero Visual - Static Card + Energy Chart -->
+        <div class="hero-visual">
+            <!-- Main Metrics Card (Static) -->
+            <div class="metrics-card-main">
+                <div class="card-header">
+                    <h3 class="card-title">Real-Time Metrics</h3>
+                    <div class="card-status">
+                        <span class="status-dot"></span>
+                        <span class="status-text">LIVE</span>
+                    </div>
+                </div>
+                
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <span class="metric-title">Energy Usage</span>
+                            <span class="metric-badge metric-badge-live">LIVE</span>
+                        </div>
+                        <div class="metric-value">248<span class="metric-unit">kWh</span></div>
+                        <div class="metric-change metric-change-down">â†“ 12% from yesterday</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <span class="metric-title">Cost Prediction</span>
+                            <span class="metric-badge metric-badge-ai">AI</span>
+                        </div>
+                        <div class="metric-value">â‚¬89<span class="metric-unit">/mo</span></div>
+                        <div class="metric-change metric-change-down">â†“ â‚¬45 optimized</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <span class="metric-title">Grid Status</span>
+                            <span class="metric-badge metric-badge-optimal">OPTIMAL</span>
+                        </div>
+                        <div class="metric-value">98.7<span class="metric-unit">%</span></div>
+                        <div class="metric-change">Neural balanced</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <span class="metric-title">Carbon Offset</span>
+                            <span class="metric-badge metric-badge-eco">ECO</span>
+                        </div>
+                        <div class="metric-value">-2.4<span class="metric-unit">t</span></div>
+                        <div class="metric-change metric-change-eco">100% renewable</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Energy Chart Card (Half Size) -->
+            <div class="energy-chart-card">
+                <div class="chart-header">
+                    <span class="chart-title">Energy Flow</span>
+                    <span class="chart-time">24H</span>
+                </div>
+                <div class="energy-visualization">
+                    <!-- Energy Bars -->
+                    <div class="energy-bars">
+                        <div class="energy-bar" style="--height: 60%;"></div>
+                        <div class="energy-bar" style="--height: 75%;"></div>
+                        <div class="energy-bar" style="--height: 45%;"></div>
+                        <div class="energy-bar" style="--height: 80%;"></div>
+                        <div class="energy-bar" style="--height: 65%;"></div>
+                        <div class="energy-bar" style="--height: 90%;"></div>
+                        <div class="energy-bar" style="--height: 70%;"></div>
+                        <div class="energy-bar" style="--height: 85%;"></div>
+                        <div class="energy-bar" style="--height: 50%;"></div>
+                        <div class="energy-bar" style="--height: 75%;"></div>
+                        <div class="energy-bar" style="--height: 60%;"></div>
+                        <div class="energy-bar" style="--height: 95%;"></div>
+                    </div>
+                    <!-- Energy Wave -->
+                    <svg class="energy-wave" viewBox="0 0 300 100" preserveAspectRatio="none">
+                        <path class="wave-path" d="M0,50 Q25,30 50,50 T100,50 T150,50 T200,50 T250,50 T300,50" 
+                              stroke="url(#wave-gradient)" 
+                              stroke-width="3" 
+                              fill="none"/>
+                        <defs>
+                            <linearGradient id="wave-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#0A84FF;stop-opacity:0.8">
+                                    <animate attributeName="stop-color" values="#0A84FF;#5E5CE6;#30D158;#0A84FF" dur="4s" repeatCount="indefinite"/>
+                                </stop>
+                                <stop offset="100%" style="stop-color:#30D158;stop-opacity:0.8">
+                                    <animate attributeName="stop-color" values="#30D158;#0A84FF;#5E5CE6;#30D158" dur="4s" repeatCount="indefinite"/>
+                                </stop>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <div class="chart-stats">
+                    <div class="chart-stat">
+                        <span class="chart-stat-value">â†‘ 24%</span>
+                        <span class="chart-stat-label">Peak Load</span>
+                    </div>
+                    <div class="chart-stat">
+                        <span class="chart-stat-value">3.2MW</span>
+                        <span class="chart-stat-label">Current</span>
+                    </div>
+                    <div class="chart-stat">
+                        <span class="chart-stat-value">â‚¬0.18</span>
+                        <span class="chart-stat-label">per kWh</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Services Section -->
+    <section class="services-section" id="producten">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Onze Diensten</h2>
+                <p class="section-subtitle">Alles wat je nodig hebt voor zorgeloos energie</p>
+            </div>
+            
+            <div class="services-grid">
+                <!-- Service 1: Energie Zonder Borg -->
+                <div class="service-card" data-service="no-deposit">
+                    <div class="service-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                            <circle cx="24" cy="24" r="20" stroke="#00A651" stroke-width="3"/>
+                            <path d="M24 12V36M12 24H36" stroke="#00A651" stroke-width="3" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Energie Zonder Borg</h3>
+                    <p class="service-description">
+                        Start direct zonder waarborgsom. Ideaal voor starters, studenten en iedereen die snel energie wil.
+                    </p>
+                    <ul class="service-features">
+                        <li>âœ“ Geen borg van â‚¬200-500</li>
+                        <li>âœ“ Direct aangesloten</li>
+                        <li>âœ“ Flexibel opzegbaar</li>
+                        <li>âœ“ Transparante tarieven</li>
+                    </ul>
+                    <button class="btn-service" onclick="selectService('no-deposit')">Meer Info</button>
+                </div>
+                
+                <!-- Service 2: Spoedaansluiting -->
+                <div class="service-card featured" data-service="emergency">
+                    <div class="service-badge">Populair</div>
+                    <div class="service-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                            <path d="M24 4L26.5 18H42L29.5 27L34 44L24 35L14 44L18.5 27L6 18H21.5L24 4Z" fill="#FF6B35" stroke="#FF6B35" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">24-Uurs Spoedaansluiting</h3>
+                    <p class="service-description">
+                        Verhuizing of noodgeval? Wij regelen binnen 24 uur je energieaansluiting. Ook in het weekend!
+                    </p>
+                    <ul class="service-features">
+                        <li>âœ“ Binnen 24 uur aangesloten</li>
+                        <li>âœ“ 7 dagen per week</li>
+                        <li>âœ“ Geen extra kosten</li>
+                        <li>âœ“ Persoonlijke begeleiding</li>
+                    </ul>
+                    <button class="btn-service primary" onclick="selectService('emergency')">Direct Aanvragen</button>
+                </div>
+                
+                <!-- Service 3: Groene Energie -->
+                <div class="service-card" data-service="green">
+                    <div class="service-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                            <path d="M24 4C24 4 16 12 16 24C16 32 20 36 24 36C28 36 32 32 32 24C32 12 24 4 24 4Z" fill="#00A651" stroke="#00A651" stroke-width="2"/>
+                            <path d="M24 36V44" stroke="#00A651" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">100% Groene Energie</h3>
+                    <p class="service-description">
+                        Kies voor duurzaam met onze 100% groene stroom uit Nederlandse wind en zon.
+                    </p>
+                    <ul class="service-features">
+                        <li>âœ“ CO2-neutraal</li>
+                        <li>âœ“ Nederlandse bronnen</li>
+                        <li>âœ“ Groencertificaten</li>
+                        <li>âœ“ Zonnepaneel advies</li>
+                    </ul>
+                    <button class="btn-service" onclick="selectService('green')">Meer Info</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculator Section -->
+    <section class="calculator-section" id="tarieven">
+        <div class="container">
+            <div class="calculator-wrapper">
+                <div class="calculator-header">
+                    <h2>Bereken Je Maandbedrag</h2>
+                    <p>Krijg direct inzicht in je energiekosten</p>
+                </div>
+                
+                <div class="calculator-body">
+                    <div class="calc-input-group">
+                        <label for="householdSize">Huishoudgrootte</label>
+                        <select id="householdSize" onchange="updateCalculation()">
+                            <option value="1">1 persoon</option>
+                            <option value="2" selected>2 personen</option>
+                            <option value="3">3 personen</option>
+                            <option value="4">4 personen</option>
+                            <option value="5">5+ personen</option>
+                        </select>
+                    </div>
+                    
+                    <div class="calc-input-group">
+                        <label for="homeType">Type Woning</label>
+                        <select id="homeType" onchange="updateCalculation()">
+                            <option value="apartment">Appartement</option>
+                            <option value="row-house" selected>Rijtjeshuis</option>
+                            <option value="corner-house">Hoekwoning</option>
+                            <option value="detached">Vrijstaand</option>
+                        </select>
+                    </div>
+                    
+                    <div class="calc-input-group">
+                        <label for="solarPanels">Zonnepanelen</label>
+                        <div class="switch-container">
+                            <input type="checkbox" id="solarPanels" onchange="updateCalculation()">
+                            <label for="solarPanels" class="switch"></label>
+                        </div>
+                    </div>
+                    
+                    <div class="calc-results">
+                        <div class="result-item">
+                            <span class="result-label">Geschat Stroomverbruik</span>
+                            <span class="result-value"><span id="estimatedPower">2800</span> kWh/jaar</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">Geschat Gasverbruik</span>
+                            <span class="result-value"><span id="estimatedGas">1200</span> mÂ³/jaar</span>
+                        </div>
+                        <div class="result-divider"></div>
+                        <div class="result-item total">
+                            <span class="result-label">Maandbedrag</span>
+                            <span class="result-value">â‚¬<span id="monthlyAmount">145</span>,-</span>
+                        </div>
+                    </div>
+                    
+                    <button class="btn-primary btn-large full-width" onclick="proceedWithCalculation()">
+                        Start Aanvraag Met Deze Gegevens
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Indicators -->
+    <section class="trust-section">
+        <div class="container">
+            <div class="trust-grid">
+                <div class="trust-item">
+                    <img src="/assets/images/keurmerk-1.png" alt="Keurmerk">
+                    <span>Erkend Energieleverancier</span>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-rating">
+                        <span class="stars">â˜…â˜…â˜…â˜…â˜…</span>
+                        <span>4.8/5 (2.341 reviews)</span>
+                    </div>
+                </div>
+                <div class="trust-item">
+                    <img src="/assets/images/green-cert.png" alt="Groene Energie">
+                    <span>100% Groene Energie</span>
+                </div>
+                <div class="trust-item">
+                    <span class="trust-number">50.000+</span>
+                    <span>Tevreden Klanten</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Placeholder -->
+    <!-- 112 Energie Footer Component -->
+<footer class="main-footer">
+    <!-- Footer Main -->
+    <div class="footer-main">
+        <div class="container">
+            <div class="footer-grid">
+               <!-- Company Info -->
+                <div class="footer-column">
+                    <div class="footer-brand">
+                        <img src="/assets/logo.png" alt="112 Energie Logo" style="height: 40px; width: auto;">
+                    </div>
+                    <p class="footer-description">
+                        Specialist in energie zonder waarborg. 24/7 bereikbaar voor spoedaansluitingen.
+                    </p>
+                    <div class="footer-badges">
+                        <img src="assets/images/badge-24-7.svg" alt="24/7 Service" width="60">
+                        <img src="assets/images/badge-geen-borg.svg" alt="Geen Borg" width="60">
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div class="footer-column">
+                    <h4>Diensten</h4>
+                    <ul class="footer-links">
+                        <li><a href="#energie-zonder-borg">Energie Zonder Borg</a></li>
+                        <li><a href="#spoedaansluiting">Spoedaansluiting 24/7</a></li>
+                        <li><a href="#zakelijk">Zakelijke Energie</a></li>
+                        <li><a href="#overstappen">Overstap Service</a></li>
+                        <li><a href="#bespaarcheck">Gratis Bespaarcheck</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Support -->
+                <div class="footer-column">
+                    <h4>Ondersteuning</h4>
+                    <ul class="footer-links">
+                        <li><a href="#faq">Veelgestelde Vragen</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#voorwaarden">Algemene Voorwaarden</a></li>
+                        <li><a href="#privacy">Privacy Beleid</a></li>
+                        <li><a href="#cookies">Cookie Instellingen</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Info -->
+                <div class="footer-column">
+                    <h4>Direct Contact</h4>
+                    <div class="footer-contact">
+                        <a href="tel:0800112" class="contact-item">
+                            <span class="contact-icon">📞</span>
+                            <div>
+                                <strong>0800-112</strong>
+                                <small>24/7 Bereikbaar</small>
+                            </div>
+                        </a>
+                        <a href="mailto:info@112energie.nl" class="contact-item">
+                            <span class="contact-icon">✉️</span>
+                            <div>
+                                <strong>info@112energie.nl</strong>
+                                <small>Antwoord binnen 1 uur</small>
+                            </div>
+                        </a>
+                        <div class="contact-item">
+                            <span class="contact-icon">📍</span>
+                            <div>
+                                <strong>Amsterdam</strong>
+                                <small>Heel Nederland</small>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Social Media -->
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook">
+                            <svg width="20" height="20" fill="currentColor"><path d="M20 10c0-5.523-4.477-10-10-10S0 4.477 0 10c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V10h2.54V7.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V10h2.773l-.443 2.89h-2.33v6.988C16.343 19.128 20 14.991 20 10z"/></svg>
+                        </a>
+                        <a href="#" aria-label="LinkedIn">
+                            <svg width="20" height="20" fill="currentColor"><path d="M18.335 18.339H15.67v-4.177c0-.996-.02-2.278-1.39-2.278-1.389 0-1.601 1.084-1.601 2.205v4.25h-2.666V9.75h2.56v1.17h.035c.358-.674 1.228-1.387 2.528-1.387 2.7 0 3.2 1.778 3.2 4.091v4.715zM5.005 8.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.764H6.34V9.75H3.667v8.589zM20 0H0v20h20V0z"/></svg>
+                        </a>
+                        <a href="#" aria-label="Twitter">
+                            <svg width="20" height="20" fill="currentColor"><path d="M6.29 18.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0020 3.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.073 4.073 0 01.8 7.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 010 16.407a11.616 11.616 0 006.29 1.84"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="footer-bottom-content">
+                <p>&copy; 2025 112 Energie. Alle rechten voorbehouden. KvK: 12345678</p>
+                <div class="footer-payments">
+                    <img src="assets/images/ideal.svg" alt="iDEAL" height="24">
+                    <img src="assets/images/bancontact.svg" alt="Bancontact" height="24">
+                    <img src="assets/images/sepa.svg" alt="SEPA" height="24">
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<style>
+/* Footer Specific Styles */
+.main-footer {
+    background: var(--color-gray-900);
+    color: var(--color-gray-300);
+    margin-top: auto;
+}
+
+.footer-main {
+    padding: 4rem 0 3rem;
+    border-bottom: 1px solid var(--color-gray-800);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: 3rem;
+}
+
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.5rem;
+    color: var(--color-white);
+    margin-bottom: 1rem;
+}
+
+.footer-description {
+    color: var(--color-gray-400);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.footer-badges {
+    display: flex;
+    gap: 1rem;
+}
+
+.footer-column h4 {
+    color: var(--color-white);
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 0.75rem;
+}
+
+.footer-links a {
+    color: var(--color-gray-400);
+    transition: color var(--transition-fast);
+}
+
+.footer-links a:hover {
+    color: var(--electric-blue);
+}
+
+.footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--color-gray-300);
+    text-decoration: none;
+}
+
+.contact-item:hover {
+    color: var(--color-white);
+}
+
+.contact-icon {
+    font-size: 1.25rem;
+}
+
+.contact-item strong {
+    display: block;
+    color: var(--color-white);
+}
+
+.contact-item small {
+    color: var(--color-gray-500);
+    font-size: 0.875rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-links a {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-gray-800);
+    border-radius: var(--radius-md);
+    color: var(--color-gray-400);
+    transition: all var(--transition-fast);
+}
+
+.social-links a:hover {
+    background: var(--primary-600);
+    color: var(--color-white);
+    transform: translateY(-2px);
+}
+
+.footer-bottom {
+    padding: 1.5rem 0;
+    background: var(--color-gray-950);
+}
+
+.footer-bottom-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-bottom p {
+    margin: 0;
+    color: var(--color-gray-500);
+    font-size: 0.875rem;
+}
+
+.footer-payments {
+    display: flex;
+    gap: 1rem;
+}
+
+@media (max-width: 768px) {
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .footer-bottom-content {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+}
+</style>
+
+    
+    <!-- Scripts -->
+    <script src="scripts/components.js"></script>
+    <script src="scripts/112energie.js"></script>
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeLoginModal()">&times;</span>
+            <h2>Inloggen</h2>
+            <form id="loginForm" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label for="email">E-mailadres</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Wachtwoord</label>
+                    <input type="password" id="password" required>
+                </div>
+                <button type="submit" class="btn-primary full-width">Inloggen</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="scripts/112energie.js" defer></script>
+    <script>
+        // Remove loading screen when page is loaded
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.getElementById('loadingScreen').classList.add('hidden');
+            }, 500);
+        });
+    </script>
+</body>
+</html>
