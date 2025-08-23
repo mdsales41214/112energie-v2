@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>112Energie - Uw Betrouwbare Energiepartner | Energie Zonder Borg</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="112Energie - Energie zonder borg, spoedaansluitingen binnen 24 uur. Betrouwbare energieleverancier voor particulier en zakelijk.">
+    <meta name="keywords" content="energie zonder borg, spoedaansluiting, energieleverancier, groene energie, 112energie">
+    <meta name="author" content="112Energie">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="112Energie - Energie Zonder Borg">
+    <meta property="og:description" content="Direct energie zonder borg. Spoedaansluitingen binnen 24 uur.">
+    <meta property="og:image" content="/assets/images/og-image.jpg">
+    <meta property="og:url" content="https://112energie.nl">
+    <meta property="og:type" content="website">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="styles/112energie.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Critical CSS (Inline for performance) -->
+    <style>
+        :root {
+            --primary-green: #00A651;
+            --primary-dark: #1a1a1a;
+            --accent-orange: #FF6B35;
+            --bg-light: #f8f9fa;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--primary-dark);
+        }
+        
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s;
+        }
+        
+        .loading-screen.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+     <!-- Header Placeholder -->
+    <div id="header-placeholder"></div>
+    
+    <!-- Your main content here -->
+    <main>
+        <!-- Page content -->
+    </main>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader">
+            <svg width="50" height="50" viewBox="0 0 50 50">
+                <circle cx="25" cy="25" r="20" stroke="#00A651" stroke-width="5" fill="none" stroke-dasharray="31.415, 31.415" stroke-dashoffset="0">
+                    <animateTransform attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="1s" repeatCount="indefinite"/>
+                </circle>
+            </svg>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="highlight-green">Energie Zonder Borg</span><br>
+                    Direct Aangesloten!
+                </h1>
+                <p class="hero-subtitle">
+                    Geen borg, geen gedoe. Binnen 24 uur aangesloten op energie.
+                    Join 50.000+ tevreden klanten die kozen voor 112Energie.
+                </p>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="24">0</span>
+                        <span class="stat-label">Uur Aansluiting</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="0">0</span>
+                        <span class="stat-label">Euro Borg</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="100">0</span>%
+                        <span class="stat-label">Groene Energie</span>
+                    </div>
+                </div>
+                
+                <div class="hero-cta">
+                    <button class="btn-large btn-primary" onclick="startCalculator()">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M9 2V4M15 2V4M9 20V22M15 20V22M20 9H22M20 14H22M2 9H4M2 14H4" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                            <rect x="5" y="5" width="14" height="14" rx="2" stroke="white" stroke-width="2"/>
+                        </svg>
+                        Bereken Je Maandbedrag
+                    </button>
+                    <button class="btn-large btn-secondary" onclick="showDemo()">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <polygon points="5 3 19 12 5 21 5 3" fill="currentColor"/>
+                        </svg>
+                        Bekijk Demo
+                    </button>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="energy-monitor">
+                    <div class="monitor-screen">
+                        <div class="monitor-header">
+                            <h3>Live Energie Monitor</h3>
+                            <span class="status-indicator online">● Online</span>
+                        </div>
+                        
+                        <div class="monitor-stats">
+                            <div class="monitor-stat">
+                                <span class="stat-icon">⚡</span>
+                                <div class="stat-info">
+                                    <span class="stat-value" id="currentUsage">3.2</span> kW
+                                    <span class="stat-name">Huidig Verbruik</span>
+                                </div>
+                            </div>
+                            
+                            <div class="monitor-stat">
+                                <span class="stat-icon">☀️</span>
+                                <div class="stat-info">
+                                    <span class="stat-value" id="solarProduction">1.8</span> kW
+                                    <span class="stat-name">Zonne-energie</span>
+                                </div>
+                            </div>
+                            
+                            <div class="monitor-stat">
+                                <span class="stat-icon">💰</span>
+                                <div class="stat-info">
+                                    €<span class="stat-value" id="dailyCost">12.45</span>
+                                    <span class="stat-name">Kosten Vandaag</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <canvas id="energyChart" width="400" height="200"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section" id="producten">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Onze Diensten</h2>
+                <p class="section-subtitle">Alles wat je nodig hebt voor zorgeloos energie</p>
+            </div>
+            
+            <div class="services-grid">
+                <!-- Service 1: Energie Zonder Borg -->
+                <div class="service-card" data-service="no-deposit">
+                    <div class="service-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                            <circle cx="24" cy="24" r="20" stroke="#00A651" stroke-width="3"/>
+                            <path d="M24 12V36M12 24H36" stroke="#00A651" stroke-width="3" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Energie Zonder Borg</h3>
+                    <p class="service-description">
+                        Start direct zonder waarborgsom. Ideaal voor starters, studenten en iedereen die snel energie wil.
+                    </p>
+                    <ul class="service-features">
+                        <li>✓ Geen borg van €200-500</li>
+                        <li>✓ Direct aangesloten</li>
+                        <li>✓ Flexibel opzegbaar</li>
+                        <li>✓ Transparante tarieven</li>
+                    </ul>
+                    <button class="btn-service" onclick="selectService('no-deposit')">Meer Info</button>
+                </div>
+                
+                <!-- Service 2: Spoedaansluiting -->
+                <div class="service-card featured" data-service="emergency">
+                    <div class="service-badge">Populair</div>
+                    <div class="service-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                            <path d="M24 4L26.5 18H42L29.5 27L34 44L24 35L14 44L18.5 27L6 18H21.5L24 4Z" fill="#FF6B35" stroke="#FF6B35" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">24-Uurs Spoedaansluiting</h3>
+                    <p class="service-description">
+                        Verhuizing of noodgeval? Wij regelen binnen 24 uur je energieaansluiting. Ook in het weekend!
+                    </p>
+                    <ul class="service-features">
+                        <li>✓ Binnen 24 uur aangesloten</li>
+                        <li>✓ 7 dagen per week</li>
+                        <li>✓ Geen extra kosten</li>
+                        <li>✓ Persoonlijke begeleiding</li>
+                    </ul>
+                    <button class="btn-service primary" onclick="selectService('emergency')">Direct Aanvragen</button>
+                </div>
+                
+                <!-- Service 3: Groene Energie -->
+                <div class="service-card" data-service="green">
+                    <div class="service-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                            <path d="M24 4C24 4 16 12 16 24C16 32 20 36 24 36C28 36 32 32 32 24C32 12 24 4 24 4Z" fill="#00A651" stroke="#00A651" stroke-width="2"/>
+                            <path d="M24 36V44" stroke="#00A651" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">100% Groene Energie</h3>
+                    <p class="service-description">
+                        Kies voor duurzaam met onze 100% groene stroom uit Nederlandse wind en zon.
+                    </p>
+                    <ul class="service-features">
+                        <li>✓ CO2-neutraal</li>
+                        <li>✓ Nederlandse bronnen</li>
+                        <li>✓ Groencertificaten</li>
+                        <li>✓ Zonnepaneel advies</li>
+                    </ul>
+                    <button class="btn-service" onclick="selectService('green')">Meer Info</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculator Section -->
+    <section class="calculator-section" id="tarieven">
+        <div class="container">
+            <div class="calculator-wrapper">
+                <div class="calculator-header">
+                    <h2>Bereken Je Maandbedrag</h2>
+                    <p>Krijg direct inzicht in je energiekosten</p>
+                </div>
+                
+                <div class="calculator-body">
+                    <div class="calc-input-group">
+                        <label for="householdSize">Huishoudgrootte</label>
+                        <select id="householdSize" onchange="updateCalculation()">
+                            <option value="1">1 persoon</option>
+                            <option value="2" selected>2 personen</option>
+                            <option value="3">3 personen</option>
+                            <option value="4">4 personen</option>
+                            <option value="5">5+ personen</option>
+                        </select>
+                    </div>
+                    
+                    <div class="calc-input-group">
+                        <label for="homeType">Type Woning</label>
+                        <select id="homeType" onchange="updateCalculation()">
+                            <option value="apartment">Appartement</option>
+                            <option value="row-house" selected>Rijtjeshuis</option>
+                            <option value="corner-house">Hoekwoning</option>
+                            <option value="detached">Vrijstaand</option>
+                        </select>
+                    </div>
+                    
+                    <div class="calc-input-group">
+                        <label for="solarPanels">Zonnepanelen</label>
+                        <div class="switch-container">
+                            <input type="checkbox" id="solarPanels" onchange="updateCalculation()">
+                            <label for="solarPanels" class="switch"></label>
+                        </div>
+                    </div>
+                    
+                    <div class="calc-results">
+                        <div class="result-item">
+                            <span class="result-label">Geschat Stroomverbruik</span>
+                            <span class="result-value"><span id="estimatedPower">2800</span> kWh/jaar</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">Geschat Gasverbruik</span>
+                            <span class="result-value"><span id="estimatedGas">1200</span> m³/jaar</span>
+                        </div>
+                        <div class="result-divider"></div>
+                        <div class="result-item total">
+                            <span class="result-label">Maandbedrag</span>
+                            <span class="result-value">€<span id="monthlyAmount">145</span>,-</span>
+                        </div>
+                    </div>
+                    
+                    <button class="btn-primary btn-large full-width" onclick="proceedWithCalculation()">
+                        Start Aanvraag Met Deze Gegevens
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Indicators -->
+    <section class="trust-section">
+        <div class="container">
+            <div class="trust-grid">
+                <div class="trust-item">
+                    <img src="/assets/images/keurmerk-1.png" alt="Keurmerk">
+                    <span>Erkend Energieleverancier</span>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-rating">
+                        <span class="stars">★★★★★</span>
+                        <span>4.8/5 (2.341 reviews)</span>
+                    </div>
+                </div>
+                <div class="trust-item">
+                    <img src="/assets/images/green-cert.png" alt="Groene Energie">
+                    <span>100% Groene Energie</span>
+                </div>
+                <div class="trust-item">
+                    <span class="trust-number">50.000+</span>
+                    <span>Tevreden Klanten</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+    
+    <!-- Scripts -->
+    <script src="scripts/components.js"></script>
+    <script src="scripts/112energie.js"></script>
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeLoginModal()">&times;</span>
+            <h2>Inloggen</h2>
+            <form id="loginForm" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label for="email">E-mailadres</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Wachtwoord</label>
+                    <input type="password" id="password" required>
+                </div>
+                <button type="submit" class="btn-primary full-width">Inloggen</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="scripts/112energie.js" defer></script>
+    <script>
+        // Remove loading screen when page is loaded
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.getElementById('loadingScreen').classList.add('hidden');
+            }, 500);
+        });
+    </script>
+</body>
+</html>
