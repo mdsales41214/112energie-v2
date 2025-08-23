@@ -1,377 +1,1499 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="nl" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>112Energie - Uw Betrouwbare Energiepartner | Energie Zonder Borg</title>
+    <title>112Energie - Energie Zonder Borg | Spoedaansluitingen 24/7 | Betrouwbare Energieleverancier Nederland</title>
     
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="112Energie - Energie zonder borg, spoedaansluitingen binnen 24 uur. Betrouwbare energieleverancier voor particulier en zakelijk.">
-    <meta name="keywords" content="energie zonder borg, spoedaansluiting, energieleverancier, groene energie, 112energie">
-    <meta name="author" content="112Energie">
+    <!-- Advanced SEO Meta Tags -->
+    <meta name="description" content="112Energie - Marktleider in energie zonder borg. ✓ Spoedaansluitingen binnen 24 uur ✓ Geen waarborgsom ✓ 100% groene energie ✓ Scherpe tarieven. Sluit vandaag nog aan!">
+    <meta name="keywords" content="energie zonder borg, spoedaansluiting energie, energieleverancier zonder borg, groene energie nederland, 112energie, energie aansluiting 24 uur, geen borg energie, studenten energie, starter energie pakket">
+    <meta name="author" content="112Energie B.V.">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow">
+    <meta name="bingbot" content="index, follow">
+    <meta name="rating" content="general">
+    <meta name="distribution" content="global">
+    <meta name="revisit-after" content="7 days">
+    <meta name="language" content="Dutch">
+    <meta name="geo.region" content="NL">
+    <meta name="geo.placename" content="Nederland">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://112energie.nl">
     
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="112Energie - Energie Zonder Borg">
-    <meta property="og:description" content="Direct energie zonder borg. Spoedaansluitingen binnen 24 uur.">
-    <meta property="og:image" content="/assets/images/og-image.jpg">
+    <meta property="og:title" content="112Energie - Energie Zonder Borg | Direct Aangesloten">
+    <meta property="og:description" content="Geen borg, geen gedoe. Binnen 24 uur aangesloten op energie. Join 50.000+ tevreden klanten.">
+    <meta property="og:image" content="https://112energie.nl/assets/images/og-image-1200x630.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:url" content="https://112energie.nl">
     <meta property="og:type" content="website">
+    <meta property="og:locale" content="nl_NL">
+    <meta property="og:site_name" content="112Energie">
     
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
-    <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:creator" content="@112energie">
+    <meta name="twitter:site" content="@112energie">
+    <meta name="twitter:title" content="112Energie - Energie Zonder Borg">
+    <meta name="twitter:description" content="Direct energie zonder borg. Spoedaansluitingen binnen 24 uur.">
+    <meta name="twitter:image" content="https://112energie.nl/assets/images/twitter-card.jpg">
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "EnergyCompany",
+        "name": "112Energie",
+        "alternateName": "112 Energie B.V.",
+        "url": "https://112energie.nl",
+        "logo": "https://112energie.nl/assets/images/logo.png",
+        "description": "Energieleverancier zonder borg met spoedaansluitingen binnen 24 uur",
+        "telephone": "+31-800-112-3637",
+        "email": "info@112energie.nl",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Energiestraat 112",
+            "addressLocality": "Amsterdam",
+            "postalCode": "1012 AB",
+            "addressCountry": "NL"
+        },
+        "sameAs": [
+            "https://www.facebook.com/112energie",
+            "https://twitter.com/112energie",
+            "https://www.linkedin.com/company/112energie",
+            "https://www.instagram.com/112energie"
+        ],
+        "openingHoursSpecification": [{
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+            "opens": "00:00",
+            "closes": "23:59"
+        }],
+        "priceRange": "€€",
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "reviewCount": "2341"
+        }
+    }
+    </script>
+    
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="mask-icon" href="/assets/icons/safari-pinned-tab.svg" color="#00a651">
+    <meta name="msapplication-TileColor" content="#00a651">
+    <meta name="theme-color" content="#00a651">
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="/styles/112energie.css" as="style">
+    <link rel="preload" href="/scripts/112energie.js" as="script">
+    <link rel="preload" href="/assets/fonts/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/Inter-Bold.woff2" as="font" type="font/woff2" crossorigin>
     
     <!-- CSS Files -->
-    <link rel="stylesheet" href="styles/112energie.css">
+    <link rel="stylesheet" href="/styles/112energie.css">
+    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     
-    <!-- Critical CSS (Inline for performance) -->
+    <!-- Critical CSS -->
     <style>
         :root {
             --primary-green: #00A651;
-            --primary-dark: #1a1a1a;
-            --accent-orange: #FF6B35;
-            --bg-light: #f8f9fa;
+            --primary-green-dark: #007A3D;
+            --primary-green-light: #E8F5E9;
+            --secondary-orange: #FF6B35;
+            --secondary-orange-dark: #E55A2B;
+            --secondary-blue: #0066CC;
+            --dark: #1a1a1a;
+            --gray-900: #111827;
+            --gray-800: #1F2937;
+            --gray-700: #374151;
+            --gray-600: #4B5563;
+            --gray-500: #6B7280;
+            --gray-400: #9CA3AF;
+            --gray-300: #D1D5DB;
+            --gray-200: #E5E7EB;
+            --gray-100: #F3F4F6;
+            --gray-50: #F9FAFB;
+            --white: #FFFFFF;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --error: #EF4444;
+            --info: #3B82F6;
         }
         
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        html { 
+            font-size: 16px; 
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
         
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             line-height: 1.6;
-            color: var(--primary-dark);
+            color: var(--dark);
+            background: var(--white);
+            overflow-x: hidden;
         }
         
-        .loading-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
+        .container {
             width: 100%;
-            height: 100%;
-            background: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.5s;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
         }
         
-        .loading-screen.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
+        @media (min-width: 768px) { .container { padding: 0 2rem; } }
+        @media (min-width: 1280px) { .container { padding: 0 3rem; } }
     </style>
+    
+    <!-- PWA -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="112Energie">
 </head>
 <body>
-     <!-- Header Placeholder -->
-    <div id="header-placeholder"></div>
+    <!-- Skip to Content -->
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
     
-    <!-- Your main content here -->
-    <main>
-        <!-- Page content -->
-    </main>
-    <!-- Loading Screen -->
-    <div class="loading-screen" id="loadingScreen">
-        <div class="loader">
-            <svg width="50" height="50" viewBox="0 0 50 50">
-                <circle cx="25" cy="25" r="20" stroke="#00A651" stroke-width="5" fill="none" stroke-dasharray="31.415, 31.415" stroke-dashoffset="0">
-                    <animateTransform attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="1s" repeatCount="indefinite"/>
-                </circle>
-            </svg>
+    <!-- Announcement Bar -->
+    <div class="announcement-bar" id="announcementBar">
+        <div class="container">
+            <div class="announcement-content">
+                <span class="announcement-badge">NIEUW</span>
+                <span class="announcement-text">Speciale winteractie: Eerste 3 maanden 20% korting op je energierekening!</span>
+                <a href="#winter-actie" class="announcement-link">Bekijk actie →</a>
+                <button class="announcement-close" aria-label="Sluit melding" onclick="closeAnnouncement()">×</button>
+            </div>
         </div>
     </div>
-
-    <!-- Hero Section -->
-    <section class="hero-section" id="home">
-        <div class="container hero-container">
-            <div class="hero-content">
-                <h1 class="hero-title">
-                    <span class="highlight-green">Energie Zonder Borg</span><br>
-                    Direct Aangesloten!
-                </h1>
-                <p class="hero-subtitle">
-                    Geen borg, geen gedoe. Binnen 24 uur aangesloten op energie.
-                    Join 50.000+ tevreden klanten die kozen voor 112Energie.
-                </p>
-                
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <span class="stat-number" data-count="24">0</span>
-                        <span class="stat-label">Uur Aansluiting</span>
+    
+    <!-- Emergency Alert Banner -->
+    <div class="emergency-banner" id="emergencyBanner" role="alert" aria-live="assertive" style="display: none;">
+        <div class="container">
+            <div class="emergency-content">
+                <svg class="emergency-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2L2 22h20L12 2zm0 6l6.5 11h-13L12 8z" fill="currentColor"/>
+                </svg>
+                <span class="emergency-text">Storing in uw regio? Bel direct onze storingsdienst:</span>
+                <a href="tel:0800-112-3637" class="emergency-phone">0800-112-3637</a>
+                <button class="emergency-close" onclick="closeEmergencyBanner()" aria-label="Sluit noodmelding">×</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Main Header -->
+    <header class="main-header" id="mainHeader" role="banner">
+        <!-- Top Bar -->
+        <div class="header-top-bar">
+            <div class="container">
+                <div class="top-bar-content">
+                    <div class="top-bar-left">
+                        <span class="top-bar-item">
+                            <svg width="16" height="16"><use xlink:href="#icon-phone"></use></svg>
+                            <a href="tel:0800-112-3637">0800-112-3637</a>
+                        </span>
+                        <span class="top-bar-item">
+                            <svg width="16" height="16"><use xlink:href="#icon-email"></use></svg>
+                            <a href="mailto:info@112energie.nl">info@112energie.nl</a>
+                        </span>
                     </div>
-                    <div class="stat-item">
-                        <span class="stat-number" data-count="0">0</span>
-                        <span class="stat-label">Euro Borg</span>
+                    <div class="top-bar-right">
+                        <span class="top-bar-item">
+                            <svg width="16" height="16"><use xlink:href="#icon-clock"></use></svg>
+                            24/7 Bereikbaar
+                        </span>
+                        <div class="language-selector">
+                            <button class="language-btn" aria-label="Taal selecteren">
+                                <span>NL</span>
+                                <svg width="12" height="12"><use xlink:href="#icon-chevron-down"></use></svg>
+                            </button>
+                            <div class="language-dropdown">
+                                <a href="#" data-lang="nl">Nederlands</a>
+                                <a href="#" data-lang="en">English</a>
+                                <a href="#" data-lang="de">Deutsch</a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="stat-item">
-                        <span class="stat-number" data-count="100">0</span>%
-                        <span class="stat-label">Groene Energie</span>
-                    </div>
-                </div>
-                
-                <div class="hero-cta">
-                    <button class="btn-large btn-primary" onclick="startCalculator()">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <path d="M9 2V4M15 2V4M9 20V22M15 20V22M20 9H22M20 14H22M2 9H4M2 14H4" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                            <rect x="5" y="5" width="14" height="14" rx="2" stroke="white" stroke-width="2"/>
-                        </svg>
-                        Bereken Je Maandbedrag
-                    </button>
-                    <button class="btn-large btn-secondary" onclick="showDemo()">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <polygon points="5 3 19 12 5 21 5 3" fill="currentColor"/>
-                        </svg>
-                        Bekijk Demo
-                    </button>
                 </div>
             </div>
+        </div>
+        
+        <!-- Main Navigation -->
+        <nav class="navbar" role="navigation" aria-label="Hoofdnavigatie">
+            <div class="container nav-container">
+                <!-- Logo -->
+                <div class="nav-brand">
+                    <a href="/" aria-label="112Energie Homepage">
+                        <img src="/assets/images/112energie-logo.svg" alt="112Energie Logo" width="180" height="48" class="logo">
+                    </a>
+                </div>
+                
+                <!-- Navigation Menu -->
+                <div class="nav-menu" id="navMenu">
+                    <ul class="nav-list" role="menubar">
+                        <li class="nav-item" role="none">
+                            <a href="#home" class="nav-link active" role="menuitem">Home</a>
+                        </li>
+                        
+                        <li class="nav-item dropdown" role="none">
+                            <button class="nav-link dropdown-toggle" role="menuitem" aria-haspopup="true" aria-expanded="false">
+                                Producten <svg width="12" height="12"><use xlink:href="#icon-chevron-down"></use></svg>
+                            </button>
+                            <div class="dropdown-menu mega-menu" role="menu">
+                                <div class="mega-menu-content">
+                                    <div class="mega-menu-column">
+                                        <h3 class="mega-menu-title">Particulier</h3>
+                                        <ul>
+                                            <li><a href="#energie-zonder-borg" class="mega-menu-link">
+                                                <span class="mega-icon">⚡</span>
+                                                <div>
+                                                    <strong>Energie Zonder Borg</strong>
+                                                    <small>Direct starten zonder waarborgsom</small>
+                                                </div>
+                                            </a></li>
+                                            <li><a href="#spoedaansluiting" class="mega-menu-link">
+                                                <span class="mega-icon">🚨</span>
+                                                <div>
+                                                    <strong>Spoedaansluiting 24/7</strong>
+                                                    <small>Binnen 24 uur aangesloten</small>
+                                                </div>
+                                            </a></li>
+                                            <li><a href="#groene-energie" class="mega-menu-link">
+                                                <span class="mega-icon">🌱</span>
+                                                <div>
+                                                    <strong>100% Groene Energie</strong>
+                                                    <small>Duurzame energie uit Nederland</small>
+                                                </div>
+                                            </a></li>
+                                            <li><a href="#starters-pakket" class="mega-menu-link">
+                                                <span class="mega-icon">🎓</span>
+                                                <div>
+                                                    <strong>Starters & Studenten</strong>
+                                                    <small>Speciale pakketten voor jongeren</small>
+                                                </div>
+                                            </a></li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="mega-menu-column">
+                                        <h3 class="mega-menu-title">Zakelijk</h3>
+                                        <ul>
+                                            <li><a href="#mkb" class="mega-menu-link">
+                                                <span class="mega-icon">🏢</span>
+                                                <div>
+                                                    <strong>MKB Oplossingen</strong>
+                                                    <small>Maatwerk voor kleine bedrijven</small>
+                                                </div>
+                                            </a></li>
+                                            <li><a href="#grootzakelijk" class="mega-menu-link">
+                                                <span class="mega-icon">🏭</span>
+                                                <div>
+                                                    <strong>Grootzakelijk</strong>
+                                                    <small>Enterprise energieoplossingen</small>
+                                                </div>
+                                            </a></li>
+                                            <li><a href="#energie-management" class="mega-menu-link">
+                                                <span class="mega-icon">📊</span>
+                                                <div>
+                                                    <strong>Energie Management</strong>
+                                                    <small>Inzicht en besparing</small>
+                                                </div>
+                                            </a></li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="mega-menu-column featured">
+                                        <div class="mega-menu-promo">
+                                            <img src="/assets/images/promo-winter.jpg" alt="Winter Actie">
+                                            <h4>Winter Actie</h4>
+                                            <p>3 maanden 20% korting</p>
+                                            <a href="#winter-actie" class="btn-small">Bekijk actie</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        
+                        <li class="nav-item dropdown" role="none">
+                            <button class="nav-link dropdown-toggle" role="menuitem" aria-haspopup="true" aria-expanded="false">
+                                Tarieven <svg width="12" height="12"><use xlink:href="#icon-chevron-down"></use></svg>
+                            </button>
+                            <div class="dropdown-menu" role="menu">
+                                <a href="#actuele-tarieven" class="dropdown-link">Actuele Tarieven</a>
+                                <a href="#variabel-tarief" class="dropdown-link">Variabel Tarief</a>
+                                <a href="#vast-tarief" class="dropdown-link">1 Jaar Vast</a>
+                                <a href="#daluren" class="dropdown-link">Dal/Piek Tarief</a>
+                                <a href="#calculator" class="dropdown-link">Tarief Calculator</a>
+                            </div>
+                        </li>
+                        
+                        <li class="nav-item" role="none">
+                            <a href="#duurzaamheid" class="nav-link" role="menuitem">Duurzaamheid</a>
+                        </li>
+                        
+                        <li class="nav-item dropdown" role="none">
+                            <button class="nav-link dropdown-toggle" role="menuitem" aria-haspopup="true" aria-expanded="false">
+                                Service <svg width="12" height="12"><use xlink:href="#icon-chevron-down"></use></svg>
+                            </button>
+                            <div class="dropdown-menu" role="menu">
+                                <a href="#klantenservice" class="dropdown-link">Klantenservice</a>
+                                <a href="#veelgestelde-vragen" class="dropdown-link">Veelgestelde Vragen</a>
+                                <a href="#contact" class="dropdown-link">Contact</a>
+                                <a href="#storing-melden" class="dropdown-link">Storing Melden</a>
+                                <a href="#verhuizen" class="dropdown-link">Verhuizen</a>
+                            </div>
+                        </li>
+                        
+                        <li class="nav-item" role="none">
+                            <a href="#over-ons" class="nav-link" role="menuitem">Over Ons</a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Nav Actions -->
+                <div class="nav-actions">
+                    <!-- Search -->
+                    <button class="nav-search-btn" aria-label="Zoeken">
+                        <svg width="20" height="20"><use xlink:href="#icon-search"></use></svg>
+                    </button>
+                    
+                    <!-- Account -->
+                    <button class="btn-login" onclick="openLoginModal()" aria-label="Mijn Account">
+                        <svg width="20" height="20"><use xlink:href="#icon-user"></use></svg>
+                        <span class="btn-login-text">Mijn Account</span>
+                    </button>
+                    
+                    <!-- CTA Button -->
+                    <button class="btn-primary btn-cta" onclick="startDirectAanvraag()">
+                        <span>Direct Aanvragen</span>
+                        <svg width="16" height="16"><use xlink:href="#icon-arrow-right"></use></svg>
+                    </button>
+                </div>
+                
+                <!-- Mobile Menu Toggle -->
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Menu" aria-expanded="false">
+                    <span class="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                </button>
+            </div>
+        </nav>
+        
+        <!-- Search Bar (Hidden by default) -->
+        <div class="search-bar" id="searchBar" style="display: none;">
+            <div class="container">
+                <form class="search-form" action="/search" method="GET">
+                    <input type="search" class="search-input" placeholder="Zoek naar producten, diensten of informatie..." aria-label="Zoeken">
+                    <button type="submit" class="search-submit">Zoeken</button>
+                </form>
+                <button class="search-close" onclick="closeSearchBar()">×</button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Main Content -->
+    <main id="main-content" role="main">
+        
+        <!-- Hero Section with Video Background -->
+        <section class="hero-section hero-advanced" id="home">
+            <div class="hero-background">
+                <video autoplay muted loop playsinline class="hero-video">
+                    <source src="/assets/videos/energy-hero.mp4" type="video/mp4">
+                </video>
+                <div class="hero-overlay"></div>
+            </div>
             
-            <div class="hero-visual">
-                <div class="energy-monitor">
-                    <div class="monitor-screen">
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <span class="badge-icon">⚡</span>
+                        <span>50.000+ Tevreden Klanten</span>
+                    </div>
+                    
+                    <h1 class="hero-title">
+                        <span class="hero-title-line">Energie Zonder Borg</span>
+                        <span class="hero-title-highlight">Direct Aangesloten!</span>
+                    </h1>
+                    
+                    <p class="hero-subtitle">
+                        Stap over naar 112Energie en bespaar direct. Geen borg, geen gedoe. 
+                        Binnen 24 uur aangesloten op 100% groene energie.
+                    </p>
+                    
+                    <!-- Hero Stats -->
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <div class="stat-icon">⏱️</div>
+                            <div class="stat-content">
+                                <span class="stat-number" data-count="24">0</span>
+                                <span class="stat-label">Uur Aansluiting</span>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon">💰</div>
+                            <div class="stat-content">
+                                <span class="stat-currency">€</span>
+                                <span class="stat-number" data-count="0">0</span>
+                                <span class="stat-label">Euro Borg</span>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon">🌱</div>
+                            <div class="stat-content">
+                                <span class="stat-number" data-count="100">0</span>%
+                                <span class="stat-label">Groene Energie</span>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon">⭐</div>
+                            <div class="stat-content">
+                                <span class="stat-number" data-count="4.8">0</span>
+                                <span class="stat-label">Klantenscore</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Hero CTA Buttons -->
+                    <div class="hero-cta">
+                        <button class="btn-large btn-primary" onclick="startCalculator()">
+                            <svg width="24" height="24"><use xlink:href="#icon-calculator"></use></svg>
+                            <span>Bereken Je Maandbedrag</span>
+                        </button>
+                        <button class="btn-large btn-secondary" onclick="watchVideo()">
+                            <svg width="24" height="24"><use xlink:href="#icon-play"></use></svg>
+                            <span>Bekijk Uitlegvideo</span>
+                        </button>
+                    </div>
+                    
+                    <!-- Trust Badges -->
+                    <div class="hero-trust">
+                        <img src="/assets/images/trust-badge-1.png" alt="Erkend Leverancier" width="60" height="60">
+                        <img src="/assets/images/trust-badge-2.png" alt="100% Groen" width="60" height="60">
+                        <img src="/assets/images/trust-badge-3.png" alt="Keurmerk" width="60" height="60">
+                        <img src="/assets/images/trust-badge-4.png" alt="ACM Geregistreerd" width="60" height="60">
+                    </div>
+                </div>
+                
+                <!-- Live Energy Monitor Widget -->
+                <div class="hero-widget">
+                    <div class="energy-monitor-widget">
                         <div class="monitor-header">
                             <h3>Live Energie Monitor</h3>
-                            <span class="status-indicator online">● Online</span>
+                            <span class="monitor-status online">
+                                <span class="status-dot"></span>
+                                Online
+                            </span>
                         </div>
                         
-                        <div class="monitor-stats">
-                            <div class="monitor-stat">
-                                <span class="stat-icon">⚡</span>
-                                <div class="stat-info">
-                                    <span class="stat-value" id="currentUsage">3.2</span> kW
-                                    <span class="stat-name">Huidig Verbruik</span>
+                        <div class="monitor-display">
+                            <!-- Current Usage Gauge -->
+                            <div class="usage-gauge">
+                                <canvas id="usageGauge" width="200" height="200"></canvas>
+                                <div class="gauge-center">
+                                    <span class="gauge-value" id="currentUsageValue">3.2</span>
+                                    <span class="gauge-unit">kW</span>
                                 </div>
                             </div>
                             
-                            <div class="monitor-stat">
-                                <span class="stat-icon">☀️</span>
-                                <div class="stat-info">
-                                    <span class="stat-value" id="solarProduction">1.8</span> kW
-                                    <span class="stat-name">Zonne-energie</span>
+                            <!-- Live Stats -->
+                            <div class="monitor-stats-grid">
+                                <div class="monitor-stat">
+                                    <span class="stat-icon">⚡</span>
+                                    <div>
+                                        <span class="stat-value" id="currentPower">2.8</span> kW
+                                        <span class="stat-name">Verbruik Nu</span>
+                                    </div>
+                                </div>
+                                <div class="monitor-stat">
+                                    <span class="stat-icon">☀️</span>
+                                    <div>
+                                        <span class="stat-value" id="solarPower">1.5</span> kW
+                                        <span class="stat-name">Opwekking</span>
+                                    </div>
+                                </div>
+                                <div class="monitor-stat">
+                                    <span class="stat-icon">🔌</span>
+                                    <div>
+                                        <span class="stat-value" id="gridPower">1.3</span> kW
+                                        <span class="stat-name">Van Net</span>
+                                    </div>
+                                </div>
+                                <div class="monitor-stat">
+                                    <span class="stat-icon">💰</span>
+                                    <div>
+                                        €<span class="stat-value" id="currentCost">0.82</span>/u
+                                        <span class="stat-name">Kosten Nu</span>
+                                    </div>
                                 </div>
                             </div>
                             
-                            <div class="monitor-stat">
-                                <span class="stat-icon">💰</span>
-                                <div class="stat-info">
-                                    €<span class="stat-value" id="dailyCost">12.45</span>
-                                    <span class="stat-name">Kosten Vandaag</span>
+                            <!-- Live Chart -->
+                            <div class="monitor-chart">
+                                <canvas id="liveEnergyChart" width="400" height="150"></canvas>
+                            </div>
+                            
+                            <!-- Daily Summary -->
+                            <div class="monitor-summary">
+                                <div class="summary-item">
+                                    <span>Vandaag verbruikt:</span>
+                                    <strong>18.4 kWh</strong>
+                                </div>
+                                <div class="summary-item">
+                                    <span>Kosten vandaag:</span>
+                                    <strong>€12.45</strong>
+                                </div>
+                                <div class="summary-item">
+                                    <span>CO₂ bespaard:</span>
+                                    <strong>8.2 kg</strong>
                                 </div>
                             </div>
                         </div>
-                        
-                        <canvas id="energyChart" width="400" height="200"></canvas>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section class="services-section" id="producten">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Onze Diensten</h2>
-                <p class="section-subtitle">Alles wat je nodig hebt voor zorgeloos energie</p>
             </div>
             
-            <div class="services-grid">
-                <!-- Service 1: Energie Zonder Borg -->
-                <div class="service-card" data-service="no-deposit">
-                    <div class="service-icon">
-                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-                            <circle cx="24" cy="24" r="20" stroke="#00A651" stroke-width="3"/>
-                            <path d="M24 12V36M12 24H36" stroke="#00A651" stroke-width="3" stroke-linecap="round"/>
-                        </svg>
-                    </div>
-                    <h3 class="service-title">Energie Zonder Borg</h3>
-                    <p class="service-description">
-                        Start direct zonder waarborgsom. Ideaal voor starters, studenten en iedereen die snel energie wil.
-                    </p>
-                    <ul class="service-features">
-                        <li>✓ Geen borg van €200-500</li>
-                        <li>✓ Direct aangesloten</li>
-                        <li>✓ Flexibel opzegbaar</li>
-                        <li>✓ Transparante tarieven</li>
-                    </ul>
-                    <button class="btn-service" onclick="selectService('no-deposit')">Meer Info</button>
-                </div>
-                
-                <!-- Service 2: Spoedaansluiting -->
-                <div class="service-card featured" data-service="emergency">
-                    <div class="service-badge">Populair</div>
-                    <div class="service-icon">
-                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-                            <path d="M24 4L26.5 18H42L29.5 27L34 44L24 35L14 44L18.5 27L6 18H21.5L24 4Z" fill="#FF6B35" stroke="#FF6B35" stroke-width="2"/>
-                        </svg>
-                    </div>
-                    <h3 class="service-title">24-Uurs Spoedaansluiting</h3>
-                    <p class="service-description">
-                        Verhuizing of noodgeval? Wij regelen binnen 24 uur je energieaansluiting. Ook in het weekend!
-                    </p>
-                    <ul class="service-features">
-                        <li>✓ Binnen 24 uur aangesloten</li>
-                        <li>✓ 7 dagen per week</li>
-                        <li>✓ Geen extra kosten</li>
-                        <li>✓ Persoonlijke begeleiding</li>
-                    </ul>
-                    <button class="btn-service primary" onclick="selectService('emergency')">Direct Aanvragen</button>
-                </div>
-                
-                <!-- Service 3: Groene Energie -->
-                <div class="service-card" data-service="green">
-                    <div class="service-icon">
-                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-                            <path d="M24 4C24 4 16 12 16 24C16 32 20 36 24 36C28 36 32 32 32 24C32 12 24 4 24 4Z" fill="#00A651" stroke="#00A651" stroke-width="2"/>
-                            <path d="M24 36V44" stroke="#00A651" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
-                    </div>
-                    <h3 class="service-title">100% Groene Energie</h3>
-                    <p class="service-description">
-                        Kies voor duurzaam met onze 100% groene stroom uit Nederlandse wind en zon.
-                    </p>
-                    <ul class="service-features">
-                        <li>✓ CO2-neutraal</li>
-                        <li>✓ Nederlandse bronnen</li>
-                        <li>✓ Groencertificaten</li>
-                        <li>✓ Zonnepaneel advies</li>
-                    </ul>
-                    <button class="btn-service" onclick="selectService('green')">Meer Info</button>
+            <!-- Scroll Indicator -->
+            <div class="scroll-indicator">
+                <span>Scroll voor meer</span>
+                <svg width="24" height="24"><use xlink:href="#icon-arrow-down"></use></svg>
+            </div>
+        </section>
+        
+        <!-- Quick Actions Bar -->
+        <section class="quick-actions-bar">
+            <div class="container">
+                <div class="quick-actions-grid">
+                    <a href="#aanvraag" class="quick-action">
+                        <span class="quick-action-icon">📝</span>
+                        <span class="quick-action-text">Direct Aanvragen</span>
+                    </a>
+                    <a href="#calculator" class="quick-action">
+                        <span class="quick-action-icon">🧮</span>
+                        <span class="quick-action-text">Tarief Berekenen</span>
+                    </a>
+                    <a href="#contact" class="quick-action">
+                        <span class="quick-action-icon">💬</span>
+                        <span class="quick-action-text">Contact Opnemen</span>
+                    </a>
+                    <a href="#faq" class="quick-action">
+                        <span class="quick-action-icon">❓</span>
+                        <span class="quick-action-text">Hulp & FAQ</span>
+                    </a>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Calculator Section -->
-    <section class="calculator-section" id="tarieven">
-        <div class="container">
-            <div class="calculator-wrapper">
-                <div class="calculator-header">
-                    <h2>Bereken Je Maandbedrag</h2>
-                    <p>Krijg direct inzicht in je energiekosten</p>
+        </section>
+        
+        <!-- Services Section -->
+        <section class="services-section section-padding" id="producten">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">Onze Diensten</span>
+                    <h2 class="section-title">Alles wat je nodig hebt voor zorgeloos energie</h2>
+                    <p class="section-subtitle">
+                        Kies de oplossing die bij jou past. Van spoedaansluitingen tot complete energie management.
+                    </p>
                 </div>
                 
-                <div class="calculator-body">
-                    <div class="calc-input-group">
-                        <label for="householdSize">Huishoudgrootte</label>
-                        <select id="householdSize" onchange="updateCalculation()">
-                            <option value="1">1 persoon</option>
-                            <option value="2" selected>2 personen</option>
-                            <option value="3">3 personen</option>
-                            <option value="4">4 personen</option>
-                            <option value="5">5+ personen</option>
-                        </select>
-                    </div>
-                    
-                    <div class="calc-input-group">
-                        <label for="homeType">Type Woning</label>
-                        <select id="homeType" onchange="updateCalculation()">
-                            <option value="apartment">Appartement</option>
-                            <option value="row-house" selected>Rijtjeshuis</option>
-                            <option value="corner-house">Hoekwoning</option>
-                            <option value="detached">Vrijstaand</option>
-                        </select>
-                    </div>
-                    
-                    <div class="calc-input-group">
-                        <label for="solarPanels">Zonnepanelen</label>
-                        <div class="switch-container">
-                            <input type="checkbox" id="solarPanels" onchange="updateCalculation()">
-                            <label for="solarPanels" class="switch"></label>
+                <div class="services-grid">
+                    <!-- Service Card 1 -->
+                    <article class="service-card" data-service="no-deposit">
+                        <div class="service-header">
+                            <div class="service-icon-wrapper">
+                                <svg class="service-icon" width="48" height="48">
+                                    <use xlink:href="#icon-no-deposit"></use>
+                                </svg>
+                            </div>
+                            <h3 class="service-title">Energie Zonder Borg</h3>
                         </div>
-                    </div>
+                        
+                        <p class="service-description">
+                            Start direct zonder waarborgsom. Perfect voor starters, studenten en iedereen 
+                            die snel energie wil zonder grote voorinvestering.
+                        </p>
+                        
+                        <ul class="service-features">
+                            <li>
+                                <svg width="16" height="16"><use xlink:href="#icon-check"></use></svg>
+                                <span>Geen borg van €200-500</span>
+                            </li>
+                            <li>
+                                <svg width="16" height="16"><use xlink:href="#icon-check"></use></svg>
+                                <span>Direct aangesloten</span>
+                            </li>
+                            <li>
+                                <svg width="16" height="16"><use xlink:href="#icon-check"></use></svg>
+                                <span>Maandelijks opzegbaar</span>
+                            </li>
+                            <li>
+                                <svg width="16" height="16"><use xlink:href="#icon-check"></use></svg>
+                                <span>Transparante tarieven</span>
+                            </li>
+                        </ul>
+                        
+                        <div class="service-footer">
+                            <div class="service-price">
+                                <span class="price-label">Vanaf</span>
+                                <span class="price-amount">€89</span>
+                                <span class="price-period">/maand</span>
+                            </div>
+                            <button class="btn-service" onclick="selectService('no-deposit')">
+                                Meer Informatie
+                            </button>
+                        </div>
+                    </article>
                     
-                    <div class="calc-results">
-                        <div class="result-item">
-                            <span class="result-label">Geschat Stroomverbruik</span>
-                            <span class="result-value"><span id="estimatedPower">2800</span> kWh/jaar</span>
+                    <!-- Service Card 2 (Featured) -->
+                    <article class="service-card featured" data-service="emergency">
+                        <div class="service-badge">Meest Gekozen</div>
+                        <div class="service-header">
+                            <div class="service-icon-wrapper">
+                                <svg class="service-icon" width="48" height="48">
+                                    <use xlink:href="#icon-emergency"></use>
+                                </svg>
+                            </div>
+                            <h3 class="service-title">24-Uurs Spoedaansluiting</h3>
                         </div>
-                        <div class="result-item">
-                            <span class="result-label">Geschat Gasverbruik</span>
-                            <span class="result-value"><span id="estimatedGas">1200</span> m³/jaar</span>
+                        
+                        <p class="service-description">
+                            Verhuizing of noodgeval? Wij regelen binnen 24 uur je energieaansluiting. 
+                            Ook in het weekend en op feestdagen!
+                        </p>
+                        
+                        <ul class="service-features">
+                            <li>
+                                <svg width="16" height="16"><use xlink:href="#icon-check"></use></svg>
+                                <span>Gegarandeerd binnen 24 uur</span>
+                            </li>
+                            <li>
+                                <svg width="16" height="16"><use xlink:href="#icon-check"></use></svg>
+                                <span>7 dagen per week bereikbaar</span>
+                            </li>
+                            <li>
+                                <svg width="16" height="16"><use xlink:href="#icon-check"></use></svg>
+                                <span>Geen extra spoedkosten</span>
+                            </li>
+                            <li>
+                                <svg width="16" height="16"><use xlink:href="#icon-check"></use></svg>
+                                <span>Persoonlijke begeleiding</span>
+                            </li>
+                            <li>
+                                <svg width="16" height="16"><use xlink:href="#icon-check"></use></svg>
+                                <span>Tijdelijke aansluiting mogelijk</span>
+                            </li>
+                        </ul>
+                        
+                        <div class="service-footer">
+                            <div class="service-price">
+                                <span class="price-label">Eenmalig</span>
+                                <span class="price-amount">€0</span>
+                                <span class="price-period">aansluitkosten</span>
+                            </div>
+                            <button class="btn-service primary" onclick="selectService('emergency')">
+                                Direct Aanvragen
+                            </button>
                         </div>
-                        <div class="result-divider"></div>
-                        <div class="result-item total">
-                            <span class="result-label">Maandbedrag</span>
-                            <span class="result-value">€<span id="monthlyAmount">145</span>,-</span>
-                        </div>
-                    </div>
+                    </article>
                     
-                    <button class="btn-primary btn-large full-width" onclick="proceedWithCalculation()">
-                        Start Aanvraag Met Deze Gegevens
-                    </button>
+                    <!-- Service Card 3 -->
+                    <article class="service-card" data-service="green">
+                        <div class="service-header">
+                            <div class="service-icon-wrapper">
+                                <svg class="service-icon" width="48" height="48">
+                                    <use xlink:href="#icon-green-energy"></use>
+                                </svg>
+                            </div>
+                            <h3 class="service-title">100% Groene Energie</h3>
+                        </div>
+                        
+                        <p class="service-description">
+                            Kies voor duurzaam met onze 100% groene stroom uit Nederlandse wind- en zonneparken.
+                        </p>
+                        
+                        <ul class="service-features">
+                            <li>
+                                <svg width="16" height="16"><use xlink:href="#icon-check"></use></svg>
+                                <span>100% CO₂-neutraal</span>
+                            </li>
+                            <li>
+                                <svg width="16" height="16"><use xlink:href="#icon-check"></use></svg>
+                                <span>Nederlandse bronnen</span>
+                            </li>
+                            <li>
+                                <svg width="16" height="16"><use xlink:href="#icon-check"></use></svg>
+                                <span>Groencertificaten inbegrepen</span>
+                            </li>
+                            <li>
+                                <svg width="16" height="16"><use xlink:href="#icon-check"></use></svg>
+                                <span>Gratis zonnepaneel advies</span>
+                            </li>
+                        </ul>
+                        
+                        <div class="service-footer">
+                            <div class="service-price">
+                                <span class="price-label">Vanaf</span>
+                                <span class="price-amount">€95</span>
+                                <span class="price-period">/maand</span>
+                            </div>
+                            <button class="btn-service" onclick="selectService('green')">
+                                Meer Informatie
+                            </button>
+                        </div>
+                    </article>
+                    
+                    <!-- Service Card 4 -->
+                    <article class="service-card" data-service="business">
+                        <div class="service-header">
+                            <div class="service-icon-wrapper">
+                                <svg class="service-icon" width="48" height="48">
+                                    <use xlink:href="#icon-business"></use>
+                                </svg>
+                            </div>
+                            <h3 class="service-title">Zakelijke Energie</h3>
+                        </div>
+                        
+                        <p class="service-description">
+                            Maatwerk energieoplossingen voor MKB en grootzakelijk. Met persoonlijk advies en account management.
+                        </p>
+                        
+                        <ul class="service-features">
+                            <li>
+                                <svg width="16" height="16"><use xlink:href="#icon-check"></use></svg>
+                                <span>Vaste accountmanager</span>
+                            </li>
+                            <li>
+                                <svg width="16" height="16"><use xlink:href="#icon-check"></use></svg>
+                                <span>Flexibele contracten</span>
+                            </li>
+                            <li>
+                                <svg width="16" height="16"><use xlink:href="#icon-check"></use></svg>
+                                <span>Energie management systeem</span>
+                            </li>
+                            <li>
+                                <svg width="16" height="16"><use xlink:href="#icon-check"></use></svg>
+                                <span>Grootverbruik kortingen</span>
+                            </li>
+                        </ul>
+                        
+                        <div class="service-footer">
+                            <div class="service-price">
+                                <span class="price-label">Op maat</span>
+                            </div>
+                            <button class="btn-service" onclick="selectService('business')">
+                                Offerte Aanvragen
+                            </button>
+                        </div>
+                    </article>
+                    
+                    <!-- Service Card 5 -->
+                    <article class="service-card" data-service="solar">
+                        <div class="service-header">
+                            <div class="service-icon-wrapper">
+                                <svg class="service-icon" width="48" height="48">
+                                    <use xlink:href="#icon-solar"></use>
+                                </svg>
+                            </div>
+                            <h3 class="service-title">Zonnepanelen</h3>
+                        </div>
+                        
+                        <p class="service-description">
+                            Complete zonnepaneel installatie met teruglevering. Inclusief monitoring en onderhoud.
+                        </p>
+                        
+                        <ul class="service-features">
+                            <li>
+                                <svg width="16" height="16"><use xlink:href="#icon-check"></use></svg>
+                                <span>Gratis dakinspectie</span>
+                            </li>
+                            <li>
+                                <svg width="16" height="16"><use xlink:href="#icon-check"></use></svg>
+                                <span>Premium panelen</span>
+                            </li>
+                            <li>
+                                <svg width="16" height="16"><use xlink:href="#icon-check"></use></svg>
+                                <span>25 jaar garantie</span>
+                            </li>
+                            <li>
+                                <svg width="16" height="16"><use xlink:href="#icon-check"></use></svg>
+                                <span>Salderingsregeling</span>
+                            </li>
+                        </ul>
+                        
+                        <div class="service-footer">
+                            <div class="service-price">
+                                <span class="price-label">Vanaf</span>
+                                <span class="price-amount">€3.950</span>
+                            </div>
+                            <button class="btn-service" onclick="selectService('solar')">
+                                Gratis Advies
+                            </button>
+                        </div>
+                    </article>
+                    
+                    <!-- Service Card 6 -->
+                    <article class="service-card" data-service="smart-home">
+                        <div class="service-header">
+                            <div class="service-icon-wrapper">
+                                <svg class="service-icon" width="48" height="48">
+                                    <use xlink:href="#icon-smart-home"></use>
+                                </svg>
+                            </div>
+                            <h3 class="service-title">Smart Home Energie</h3>
+                        </div>
+                        
+                        <p class="service-description">
+                            Slimme energie met app-bediening, automatisering en real-time inzicht in je verbruik.
+                        </p>
+                        
+                        <ul class="service-features">
+                            <li>
+                                <svg width="16" height="16"><use xlink:href="#icon-check"></use></svg>
+                                <span>Slimme meter inclusief</span>
+                            </li>
+                            <li>
+                                <svg width="16" height="16"><use xlink:href="#icon-check"></use></svg>
+                                <span>Real-time verbruik app</span>
+                            </li>
+                            <li>
+                                <svg width="16" height="16"><use xlink:href="#icon-check"></use></svg>
+                                <span>Automatische optimalisatie</span>
+                            </li>
+                            <li>
+                                <svg width="16" height="16"><use xlink:href="#icon-check"></use></svg>
+                                <span>Slimme thermostaat</span>
+                            </li>
+                        </ul>
+                        
+                        <div class="service-footer">
+                            <div class="service-price">
+                                <span class="price-label">+</span>
+                                <span class="price-amount">€9.95</span>
+                                <span class="price-period">/maand</span>
+                            </div>
+                            <button class="btn-service" onclick="selectService('smart-home')">
+                                Meer Info
+                            </button>
+                        </div>
+                    </article>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Trust Indicators -->
-    <section class="trust-section">
-        <div class="container">
-            <div class="trust-grid">
-                <div class="trust-item">
-                    <img src="/assets/images/keurmerk-1.png" alt="Keurmerk">
-                    <span>Erkend Energieleverancier</span>
-                </div>
-                <div class="trust-item">
-                    <div class="trust-rating">
-                        <span class="stars">★★★★★</span>
-                        <span>4.8/5 (2.341 reviews)</span>
+        </section>
+        
+        <!-- Interactive Calculator Section -->
+        <section class="calculator-section section-padding" id="calculator">
+            <div class="container">
+                <div class="calculator-wrapper">
+                    <div class="calculator-header">
+                        <h2 class="calculator-title">Bereken Je Energiekosten</h2>
+                        <p class="calculator-subtitle">
+                            Krijg direct inzicht in je maandelijkse energiekosten met onze slimme calculator
+                        </p>
+                    </div>
+                    
+                    <div class="calculator-body">
+                        <!-- Step 1: Basic Info -->
+                        <div class="calc-step active" data-step="1">
+                            <h3 class="step-title">Stap 1: Basis Informatie</h3>
+                            
+                            <div class="calc-form-grid">
+                                <div class="calc-input-group">
+                                    <label for="postalCode">Postcode</label>
+                                    <input type="text" id="postalCode" placeholder="1234 AB" maxlength="7" required>
+                                    <span class="input-help">Voor nauwkeurige netbeheerkosten</span>
+                                </div>
+                                
+                                <div class="calc-input-group">
+                                    <label for="houseNumber">Huisnummer</label>
+                                    <input type="text" id="houseNumber" placeholder="123" required>
+                                </div>
+                                
+                                <div class="calc-input-group">
+                                    <label for="householdSize">Aantal Personen</label>
+                                    <div class="input-stepper">
+                                        <button type="button" onclick="stepperDecrease('householdSize')">-</button>
+                                        <input type="number" id="householdSize" value="2" min="1" max="10" readonly>
+                                        <button type="button" onclick="stepperIncrease('householdSize')">+</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="calc-input-group">
+                                    <label for="homeType">Type Woning</label>
+                                    <select id="homeType" onchange="updateCalculation()">
+                                        <option value="apartment">Appartement</option>
+                                        <option value="row-house" selected>Rijtjeshuis</option>
+                                        <option value="corner-house">Hoekwoning</option>
+                                        <option value="semi-detached">2-onder-1-kap</option>
+                                        <option value="detached">Vrijstaand Huis</option>
+                                        <option value="villa">Villa</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 2: Energy Usage -->
+                        <div class="calc-step" data-step="2">
+                            <h3 class="step-title">Stap 2: Energieverbruik</h3>
+                            
+                            <div class="usage-selector">
+                                <div class="usage-option">
+                                    <input type="radio" id="usageKnown" name="usageType" value="known" checked>
+                                    <label for="usageKnown">Ik weet mijn verbruik</label>
+                                </div>
+                                <div class="usage-option">
+                                    <input type="radio" id="usageEstimate" name="usageType" value="estimate">
+                                    <label for="usageEstimate">Schat voor mij</label>
+                                </div>
+                            </div>
+                            
+                            <div class="calc-form-grid" id="knownUsageInputs">
+                                <div class="calc-input-group">
+                                    <label for="electricityUsage">Stroom Verbruik (kWh/jaar)</label>
+                                    <input type="number" id="electricityUsage" value="2800" min="0" max="50000">
+                                    <div class="input-slider">
+                                        <input type="range" min="500" max="10000" value="2800" oninput="updateElectricityUsage(this.value)">
+                                    </div>
+                                </div>
+                                
+                                <div class="calc-input-group">
+                                    <label for="gasUsage">Gas Verbruik (m³/jaar)</label>
+                                    <input type="number" id="gasUsage" value="1200" min="0" max="10000">
+                                    <div class="input-slider">
+                                        <input type="range" min="0" max="5000" value="1200" oninput="updateGasUsage(this.value)">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 3: Preferences -->
+                        <div class="calc-step" data-step="3">
+                            <h3 class="step-title">Stap 3: Voorkeuren</h3>
+                            
+                            <div class="preference-cards">
+                                <div class="pref-card">
+                                    <input type="checkbox" id="greenEnergy" checked>
+                                    <label for="greenEnergy">
+                                        <span class="pref-icon">🌱</span>
+                                        <span class="pref-title">100% Groene Energie</span>
+                                        <span class="pref-desc">Duurzame energie uit Nederland</span>
+                                    </label>
+                                </div>
+                                
+                                <div class="pref-card">
+                                    <input type="checkbox" id="solarPanels">
+                                    <label for="solarPanels">
+                                        <span class="pref-icon">☀️</span>
+                                        <span class="pref-title">Zonnepanelen</span>
+                                        <span class="pref-desc">Ik heb zonnepanelen</span>
+                                    </label>
+                                </div>
+                                
+                                <div class="pref-card">
+                                    <input type="checkbox" id="smartMeter" checked>
+                                    <label for="smartMeter">
+                                        <span class="pref-icon">📊</span>
+                                        <span class="pref-title">Slimme Meter</span>
+                                        <span class="pref-desc">Voor real-time inzicht</span>
+                                    </label>
+                                </div>
+                                
+                                <div class="pref-card">
+                                    <input type="checkbox" id="electricVehicle">
+                                    <label for="electricVehicle">
+                                        <span class="pref-icon">🚗</span>
+                                        <span class="pref-title">Elektrische Auto</span>
+                                        <span class="pref-desc">Laadpaal thuis</span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="calc-form-grid">
+                                <div class="calc-input-group">
+                                    <label for="contractType">Contract Type</label>
+                                    <select id="contractType">
+                                        <option value="variable">Variabel Tarief</option>
+                                        <option value="fixed-1" selected>1 Jaar Vast</option>
+                                        <option value="fixed-3">3 Jaar Vast</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="calc-input-group">
+                                    <label for="paymentMethod">Betaalwijze</label>
+                                    <select id="paymentMethod">
+                                        <option value="monthly" selected>Maandelijks</option>
+                                        <option value="quarterly">Per Kwartaal</option>
+                                        <option value="yearly">Jaarlijks</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Navigation -->
+                        <div class="calc-navigation">
+                            <button class="btn-secondary" onclick="calcPrevStep()" id="calcPrev" style="display: none;">
+                                Vorige
+                            </button>
+                            <div class="calc-steps-indicator">
+                                <span class="step-dot active" data-step="1"></span>
+                                <span class="step-dot" data-step="2"></span>
+                                <span class="step-dot" data-step="3"></span>
+                            </div>
+                            <button class="btn-primary" onclick="calcNextStep()" id="calcNext">
+                                Volgende
+                            </button>
+                        </div>
+                        
+                        <!-- Results -->
+                        <div class="calc-results" id="calcResults" style="display: none;">
+                            <h3 class="results-title">Jouw Persoonlijke Energieadvies</h3>
+                            
+                            <div class="results-summary">
+                                <div class="result-card primary">
+                                    <span class="result-label">Maandbedrag</span>
+                                    <span class="result-value">€<span id="monthlyAmount">145</span></span>
+                                    <span class="result-detail">Inclusief BTW en netbeheerkosten</span>
+                                </div>
+                                
+                                <div class="result-card">
+                                    <span class="result-label">Jaarbedrag</span>
+                                    <span class="result-value">€<span id="yearlyAmount">1.740</span></span>
+                                </div>
+                                
+                                <div class="result-card">
+                                    <span class="result-label">Besparing t.o.v. Markt</span>
+                                    <span class="result-value success">€<span id="savingsAmount">240</span></span>
+                                    <span class="result-detail">Per jaar</span>
+                                </div>
+                            </div>
+                            
+                            <div class="results-breakdown">
+                                <h4>Kostenverdeling</h4>
+                                <div class="breakdown-list">
+                                    <div class="breakdown-item">
+                                        <span>Stroom (2800 kWh)</span>
+                                        <span>€65,00</span>
+                                    </div>
+                                    <div class="breakdown-item">
+                                        <span>Gas (1200 m³)</span>
+                                        <span>€48,00</span>
+                                    </div>
+                                    <div class="breakdown-item">
+                                        <span>Netbeheerkosten</span>
+                                        <span>€22,00</span>
+                                    </div>
+                                    <div class="breakdown-item">
+                                        <span>Energiebelasting</span>
+                                        <span>€10,00</span>
+                                    </div>
+                                    <div class="breakdown-item total">
+                                        <span>Totaal per maand</span>
+                                        <span>€145,00</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="results-actions">
+                                <button class="btn-primary btn-large" onclick="proceedWithOffer()">
+                                    <svg width="20" height="20"><use xlink:href="#icon-check"></use></svg>
+                                    Direct Overstappen
+                                </button>
+                                <button class="btn-secondary" onclick="downloadCalculation()">
+                                    <svg width="20" height="20"><use xlink:href="#icon-download"></use></svg>
+                                    Download Berekening
+                                </button>
+                            </div>
+                            
+                            <div class="results-disclaimer">
+                                <p>* Deze berekening is een indicatie op basis van de door jou opgegeven gegevens en actuele tarieven.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="trust-item">
-                    <img src="/assets/images/green-cert.png" alt="Groene Energie">
-                    <span>100% Groene Energie</span>
+            </div>
+        </section>
+        
+        <!-- Why Choose Us Section -->
+        <section class="why-us-section section-padding">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">Waarom 112Energie</span>
+                    <h2 class="section-title">De Voordelen van 112Energie</h2>
                 </div>
-                <div class="trust-item">
-                    <span class="trust-number">50.000+</span>
-                    <span>Tevreden Klanten</span>
+                
+                <div class="advantages-grid">
+                    <div class="advantage-item">
+                        <div class="advantage-icon">
+                            <svg width="48" height="48"><use xlink:href="#icon-no-deposit"></use></svg>
+                        </div>
+                        <h3>Geen Borg</h3>
+                        <p>Start direct zonder waarborgsom van €200-500</p>
+                    </div>
+                    
+                    <div class="advantage-item">
+                        <div class="advantage-icon">
+                            <svg width="48" height="48"><use xlink:href="#icon-fast"></use></svg>
+                        </div>
+                        <h3>24 Uur Aansluiting</h3>
+                        <p>Gegarandeerd binnen 24 uur aangesloten</p>
+                    </div>
+                    
+                    <div class="advantage-item">
+                        <div class="advantage-icon">
+                            <svg width="48" height="48"><use xlink:href="#icon-green"></use></svg>
+                        </div>
+                        <h3>100% Groen</h3>
+                        <p>Duurzame energie uit Nederlandse bronnen</p>
+                    </div>
+                    
+                    <div class="advantage-item">
+                        <div class="advantage-icon">
+                            <svg width="48" height="48"><use xlink:href="#icon-support"></use></svg>
+                        </div>
+                        <h3>24/7 Service</h3>
+                        <p>Altijd bereikbaar voor hulp en storingen</p>
+                    </div>
+                    
+                    <div class="advantage-item">
+                        <div class="advantage-icon">
+                            <svg width="48" height="48"><use xlink:href="#icon-transparent"></use></svg>
+                        </div>
+                        <h3>Transparant</h3>
+                        <p>Geen verborgen kosten, alles duidelijk</p>
+                    </div>
+                    
+                    <div class="advantage-item">
+                        <div class="advantage-icon">
+                            <svg width="48" height="48"><use xlink:href="#icon-flexible"></use></svg>
+                        </div>
+                        <h3>Flexibel</h3>
+                        <p>Maandelijks opzegbaar, geen boetes</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Footer Placeholder -->
-    <div id="footer-placeholder"></div>
+        </section>
+        
+        <!-- Testimonials Section -->
+        <section class="testimonials-section section-padding">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">Klanten aan het woord</span>
+                    <h2 class="section-title">Wat onze klanten zeggen</h2>
+                </div>
+                
+                <div class="testimonials-slider" id="testimonialsSlider">
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                        <p class="testimonial-text">
+                            "Fantastische service! Binnen 24 uur aangesloten en geen gedoe met borg. 
+                            Precies wat ik nodig had voor mijn nieuwe appartement."
+                        </p>
+                        <div class="testimonial-author">
+                            <img src="/assets/images/testimonial-1.jpg" alt="Sophie">
+                            <div>
+                                <strong>Sophie de Vries</strong>
+                                <span>Student, Amsterdam</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                        <p class="testimonial-text">
+                            "Als ondernemer heb ik weinig tijd. 112Energie regelde alles perfect. 
+                            Zakelijke aansluiting was binnen een dag geregeld."
+                        </p>
+                        <div class="testimonial-author">
+                            <img src="/assets/images/testimonial-2.jpg" alt="Mark">
+                            <div>
+                                <strong>Mark Janssen</strong>
+                                <span>Ondernemer, Utrecht</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                        <p class="testimonial-text">
+                            "Na mijn scheiding moest ik snel energie regelen. Geen borg betalen was een uitkomst. 
+                            Super vriendelijke klantenservice ook!"
+                        </p>
+                        <div class="testimonial-author">
+                            <img src="/assets/images/testimonial-3.jpg" alt="Linda">
+                            <div>
+                                <strong>Linda Bakker</strong>
+                                <span>Verpleegkundige, Rotterdam</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonials-nav">
+                    <button onclick="prevTestimonial()">←</button>
+                    <div class="testimonial-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                    <button onclick="nextTestimonial()">→</button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- FAQ Section -->
+        <section class="faq-section section-padding" id="faq">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">Veelgestelde vragen</span>
+                    <h2 class="section-title">Alles wat je wilt weten</h2>
+                </div>
+                
+                <div class="faq-container">
+                    <div class="faq-categories">
+                        <button class="faq-category active" data-category="general">Algemeen</button>
+                        <button class="faq-category" data-category="billing">Facturatie</button>
+                        <button class="faq-category" data-category="technical">Technisch</button>
+                        <button class="faq-category" data-category="switching">Overstappen</button>
+                    </div>
+                    
+                    <div class="faq-items">
+                        <div class="faq-item" data-category="general">
+                            <button class="faq-question">
+                                Wat betekent 'Energie Zonder Borg'?
+                                <svg width="20" height="20"><use xlink:href="#icon-plus"></use></svg>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Bij 112Energie hoef je geen waarborgsom te betalen. Normaal vragen energieleveranciers 
+                                €200-500 borg, maar wij niet. Je start direct met alleen je maandelijkse termijnbedrag.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item" data-category="general">
+                            <button class="faq-question">
+                                Hoe snel kan ik aangesloten worden?
+                                <svg width="20" height="20"><use xlink:href="#icon-plus"></use></svg>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Wij garanderen aansluiting binnen 24 uur. Ook in het weekend en op feestdagen. 
+                                In spoedeisende gevallen kunnen we zelfs binnen enkele uren regelen.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item" data-category="billing">
+                            <button class="faq-question">
+                                Hoe wordt mijn maandbedrag bepaald?
+                                <svg width="20" height="20"><use xlink:href="#icon-plus"></use></svg>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Je maandbedrag is gebaseerd op je verwachte jaarverbruik, de actuele energietarieven 
+                                en netbeheerkosten. We maken een inschatting op basis van je woningtype en gezinsgrootte.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item" data-category="switching">
+                            <button class="faq-question">
+                                Kan ik zomaar overstappen?
+                                <svg width="20" height="20"><use xlink:href="#icon-plus"></use></svg>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Ja! Wij regelen de hele overstap voor je. Je huidige leverancier zeggen wij op en 
+                                je blijft gewoon energie ontvangen. Er is geen onderbreking in je levering.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-content">
+                    <h2 class="cta-title">Klaar om over te stappen?</h2>
+                    <p class="cta-subtitle">
+                        Join 50.000+ tevreden klanten en start vandaag nog met besparen
+                    </p>
+                    <div class="cta-buttons">
+                        <button class="btn-large btn-white" onclick="startDirectAanvraag()">
+                            Direct Aanvragen
+                        </button>
+                        <button class="btn-large btn-outline-white" onclick="openChat()">
+                            Chat met ons
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+    </main>
     
-    <!-- Scripts -->
-    <script src="scripts/components.js"></script>
-    <script src="scripts/112energie.js"></script>
-    <!-- Login Modal -->
-    <div class="modal" id="loginModal">
-        <div class="modal-content">
-            <span class="modal-close" onclick="closeLoginModal()">&times;</span>
-            <h2>Inloggen</h2>
-            <form id="loginForm" onsubmit="handleLogin(event)">
-                <div class="form-group">
-                    <label for="email">E-mailadres</label>
-                    <input type="email" id="email" required>
+    <!-- Footer -->
+    <footer class="main-footer" role="contentinfo">
+        <div class="footer-top">
+            <div class="container">
+                <div class="footer-grid">
+                    <!-- Company Info -->
+                    <div class="footer-column">
+                        <img src="/assets/images/112energie-logo-white.svg" alt="112Energie" class="footer-logo">
+                        <p class="footer-description">
+                            Jouw betrouwbare energiepartner voor energie zonder borg en spoedaansluitingen. 
+                            100% groene energie, 100% transparant.
+                        </p>
+                        <div class="social-links">
+                            <a href="#" aria-label="Facebook">
+                                <svg width="24" height="24"><use xlink:href="#icon-facebook"></use></svg>
+                            </a>
+                            <a href="#" aria-label="Twitter">
+                                <svg width="24" height="24"><use xlink:href="#icon-twitter"></use></svg>
+                            </a>
+                            <a href="#" aria-label="LinkedIn">
+                                <svg width="24" height="24"><use xlink:href="#icon-linkedin"></use></svg>
+                            </a>
+                            <a href="#" aria-label="Instagram">
+                                <svg width="24" height="24"><use xlink:href="#icon-instagram"></use></svg>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Products -->
+                    <div class="footer-column">
+                        <h4 class="footer-title">Producten</h4>
+                        <ul class="footer-links">
+                            <li><a href="#energie-zonder-borg">Energie Zonder Borg</a></li>
+                            <li><a href="#spoedaansluiting">Spoedaansluiting 24/7</a></li>
+                            <li><a href="#groene-energie">100% Groene Energie</a></li>
+                            <li><a href="#zakelijk">Zakelijke Energie</a></li>
+                            <li><a href="#zonnepanelen">Zonnepanelen</a></li>
+                            <li><a href="#smart-home">Smart Home</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Service -->
+                    <div class="footer-column">
+                        <h4 class="footer-title">Klantenservice</h4>
+                        <ul class="footer-links">
+                            <li><a href="tel:0800-112-3637">📞 0800-112-3637</a></li>
+                            <li><a href="mailto:info@112energie.nl">✉️ info@112energie.nl</a></li>
+                            <li><a href="#contact">Contact Formulier</a></li>
+                            <li><a href="#faq">Veelgestelde Vragen</a></li>
+                            <li><a href="#storing">Storing Melden</a></li>
+                            <li><a href="#verhuizen">Verhuizen</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Legal -->
+                    <div class="footer-column">
+                        <h4 class="footer-title">Juridisch</h4>
+                        <ul class="footer-links">
+                            <li><a href="#privacy">Privacy Policy</a></li>
+                            <li><a href="#terms">Algemene Voorwaarden</a></li>
+                            <li><a href="#cookies">Cookie Beleid</a></li>
+                            <li><a href="#disclaimer">Disclaimer</a></li>
+                            <li><a href="#klachten">Klachtenprocedure</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Newsletter -->
+                    <div class="footer-column">
+                        <h4 class="footer-title">Nieuwsbrief</h4>
+                        <p>Ontvang energietips en exclusieve aanbiedingen</p>
+                        <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
+                            <input type="email" placeholder="Je e-mailadres" required>
+                            <button type="submit">Aanmelden</button>
+                        </form>
+                        <p class="newsletter-privacy">
+                            <small>We respecteren je privacy. Uitschrijven kan altijd.</small>
+                        </p>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="password">Wachtwoord</label>
-                    <input type="password" id="password" required>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="footer-bottom-content">
+                    <p class="copyright">
+                        &copy; 2025 112Energie B.V. - Alle rechten voorbehouden
+                    </p>
+                    <div class="footer-info">
+                        <span>KvK: 12345678</span>
+                        <span>BTW: NL123456789B01</span>
+                        <span>IBAN: NL12 BANK 0123 4567 89</span>
+                    </div>
                 </div>
-                <button type="submit" class="btn-primary full-width">Inloggen</button>
-            </form>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Chat Widget -->
+    <div class="chat-widget" id="chatWidget">
+        <button class="chat-button" onclick="toggleChat()">
+            <svg width="24" height="24"><use xlink:href="#icon-chat"></use></svg>
+            <span class="chat-badge">1</span>
+        </button>
+        <div class="chat-window" id="chatWindow" style="display: none;">
+            <div class="chat-header">
+                <span>Chat met 112Energie</span>
+                <button onclick="closeChat()">×</button>
+            </div>
+            <div class="chat-body">
+                <div class="chat-message bot">
+                    Hallo! Hoe kan ik je helpen? 👋
+                </div>
+            </div>
+            <div class="chat-footer">
+                <input type="text" placeholder="Type je bericht..." id="chatInput">
+                <button onclick="sendChatMessage()">→</button>
+            </div>
         </div>
     </div>
-
+    
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">
+        <svg width="24" height="24"><use xlink:href="#icon-arrow-up"></use></svg>
+    </button>
+    
+    <!-- Cookie Banner -->
+    <div class="cookie-banner" id="cookieBanner">
+        <div class="container">
+            <div class="cookie-content">
+                <p>
+                    Wij gebruiken cookies om je ervaring te verbeteren. 
+                    Door verder te gaan accepteer je ons <a href="#cookies">cookiebeleid</a>.
+                </p>
+                <div class="cookie-actions">
+                    <button class="btn-small btn-secondary" onclick="acceptCookies()">Accepteren</button>
+                    <button class="btn-small btn-outline" onclick="manageCookies()">Beheren</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- SVG Sprite -->
+    <svg style="display: none;">
+        <defs>
+            <symbol id="icon-phone" viewBox="0 0 24 24">
+                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" fill="currentColor"/>
+            </symbol>
+            <!-- Add more icons here -->
+        </defs>
+    </svg>
+    
     <!-- Scripts -->
-    <script src="scripts/112energie.js" defer></script>
-    <script>
-        // Remove loading screen when page is loaded
-        window.addEventListener('load', function() {
-            setTimeout(() => {
-                document.getElementById('loadingScreen').classList.add('hidden');
-            }, 500);
-        });
-    </script>
+    <script src="/scripts/112energie.js" defer></script>
 </body>
 </html>
