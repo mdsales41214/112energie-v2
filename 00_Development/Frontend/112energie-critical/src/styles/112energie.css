@@ -4,13 +4,34 @@
    Updated: 2025
    ===================================================== */
 
-/* ==================== CSS VARIABLES ==================== */
 :root {
-    /* Brand Colors */
-    --color-primary-green: #00A651;
+    /* ============================================
+       PRIMARY BLUES - Modern Energy Palette
+       ============================================ */
+    
+    /* Main Blues - Premium Corporate Energy */
+    --primary-50: #e6f2ff;
+    --primary-100: #bae0ff;
+    --primary-200: #7cc4ff;
+    --primary-300: #36a9ff;
+    --primary-400: #0091ff;
+    --primary-500: #0077e6;  /* Main Brand Blue */
+    --primary-600: #0062cc;
+    --primary-700: #004fb3;
+    --primary-800: #003d99;
+    --primary-900: #002e80;
+    --primary-950: #001f5c;
+    
+    /* Keep your existing color names for compatibility */
+    --color-primary-green: var(--primary-500);  /* Now blue */
     --color-primary-dark: #1a1a1a;
     --color-accent-orange: #FF6B35;
-    --color-accent-blue: #0066CC;
+    --color-accent-blue: var(--primary-600);
+    
+    /* Electric Blues - Energy & Innovation */
+    --electric-blue: #00d4ff;
+    --electric-glow: #00ffff;
+    --electric-deep: #0099cc;
     
     /* Neutral Colors */
     --color-white: #FFFFFF;
@@ -25,11 +46,11 @@
     --color-gray-800: #1f2937;
     --color-gray-900: #111827;
     
-    /* Status Colors */
+    /* Status Colors - Enhanced */
     --color-success: #10b981;
     --color-warning: #f59e0b;
     --color-error: #ef4444;
-    --color-info: #3b82f6;
+    --color-info: var(--primary-400);
     
     /* Typography */
     --font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -62,11 +83,16 @@
     --radius-xl: 1.5rem;
     --radius-full: 9999px;
     
-    /* Shadows */
-    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
-    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+    /* Enhanced Blue Shadows */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 119, 230, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 119, 230, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 119, 230, 0.1);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 119, 230, 0.15);
+    --shadow-glow: 0 0 20px rgba(0, 212, 255, 0.5);
+    
+    /* Premium Gradients */
+    --gradient-brand: linear-gradient(135deg, #0062cc 0%, #00d4ff 100%);
+    --gradient-hero: linear-gradient(180deg, #004fb3 0%, #0077e6 50%, #00d4ff 100%);
     
     /* Transitions */
     --transition-fast: 150ms ease-in-out;
@@ -136,7 +162,6 @@ img {
     height: auto;
     display: block;
 }
-
 /* ==================== UTILITY CLASSES ==================== */
 .container {
     width: 100%;

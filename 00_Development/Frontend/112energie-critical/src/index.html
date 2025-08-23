@@ -70,6 +70,20 @@
     </style>
 </head>
 <body>
+     <!-- Header Placeholder -->
+    <div id="header-placeholder"></div>
+    
+    <!-- Your main content here -->
+    <main>
+        <!-- Page content -->
+    </main>
+    
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+    
+    <!-- Scripts -->
+    <script src="scripts/components.js"></script>
+    <script src="scripts/112energie.js"></script>
     <!-- Loading Screen -->
     <div class="loading-screen" id="loadingScreen">
         <div class="loader">
@@ -89,52 +103,6 @@
             <button class="close-banner" onclick="closeEmergencyBanner()">×</button>
         </div>
     </div>
-
-    <!-- Header Navigation -->
-    <header class="main-header" id="mainHeader">
-        <nav class="navbar">
-            <div class="container nav-container">
-                <div class="nav-brand">
-                    <img src="/assets/images/112energie-logo.svg" alt="112Energie Logo" class="logo">
-                </div>
-                
-                <div class="nav-menu" id="navMenu">
-                    <ul class="nav-list">
-                        <li class="nav-item"><a href="#home" class="nav-link active">Home</a></li>
-                        <li class="nav-item dropdown">
-                            <a href="#producten" class="nav-link">Producten <span class="arrow">▼</span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#energie-zonder-borg">Energie Zonder Borg</a></li>
-                                <li><a href="#spoedaansluiting">Spoedaansluiting 24/7</a></li>
-                                <li><a href="#groene-energie">100% Groene Energie</a></li>
-                                <li><a href="#zakelijk">Zakelijke Oplossingen</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item"><a href="#tarieven" class="nav-link">Tarieven</a></li>
-                        <li class="nav-item"><a href="#over-ons" class="nav-link">Over Ons</a></li>
-                        <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
-                    </ul>
-                </div>
-                
-                <div class="nav-actions">
-                    <button class="btn-login" onclick="openLoginModal()">
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                            <path d="M10 10C12.7614 10 15 7.76142 15 5C15 2.23858 12.7614 0 10 0C7.23858 0 5 2.23858 5 5C5 7.76142 7.23858 10 10 10Z" fill="currentColor"/>
-                            <path d="M10 12.5C5 12.5 0.5 15.5 0.5 20H19.5C19.5 15.5 15 12.5 10 12.5Z" fill="currentColor"/>
-                        </svg>
-                        Mijn Account
-                    </button>
-                    <button class="btn-primary" onclick="startDirectAanvraag()">Direct Aanvragen</button>
-                </div>
-                
-                <button class="mobile-menu-toggle" id="mobileMenuToggle">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
-        </nav>
-    </header>
 
     <!-- Hero Section -->
     <section class="hero-section" id="home">
