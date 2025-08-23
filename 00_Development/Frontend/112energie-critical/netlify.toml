@@ -66,27 +66,25 @@ nav a:hover {
     color: white;
 }
 
-.hero h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-}
+.hero h# Navigate to the critical project
+cd "00_Development\Frontend\112energie-critical"
 
-.hero p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-}
+# Create netlify.toml configuration
+@"
+[build]
+  publish = "src"
+  
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
 
-.cta {
-    background: var(--secondary);
-    color: white;
-    border: none;
-    padding: 1rem 2rem;
-    font-size: 1.1rem;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: transform 0.3s;
-}
+[build.environment]
+  NODE_VERSION = "18"
 
-.cta:hover {
-    transform: translateY(-2px);
-}
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
