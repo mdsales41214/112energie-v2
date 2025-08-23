@@ -1,0 +1,115 @@
+﻿/* Hero Section Styles - SCOPED VERSION */
+/* Only affects elements inside .hero section */
+
+/* Hero Section Container */
+.hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 6rem 3rem 3rem;
+    overflow: hidden;
+    background: #000000;
+}
+
+/* Scoped styles - only affect hero section */
+.hero h1 {
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    margin-bottom: 2rem;
+    color: #FFFFFF;
+}
+
+.hero .subtitle {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.hero .hero-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+    width: 100%;
+}
+
+.hero .cta-primary {
+    padding: 1.25rem 2.5rem;
+    background: linear-gradient(135deg, #0A84FF, #5E5CE6);
+    color: #FFFFFF;
+    text-decoration: none;
+    border-radius: 100px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.hero .cta-primary:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(10, 132, 255, 0.3);
+}
+
+/* Grid background - scoped */
+.hero .grid-3d {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+}
+
+/* Particles - scoped */
+.hero .particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.hero .particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: #0A84FF;
+    border-radius: 50%;
+    filter: blur(0.5px);
+    animation: hero-float-particle 15s infinite linear;
+}
+
+@keyframes hero-float-particle {
+    from {
+        transform: translateY(100vh) translateX(0);
+        opacity: 0;
+    }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    to {
+        transform: translateY(-100vh) translateX(100px);
+        opacity: 0;
+    }
+}
+
+/* Mobile responsive - scoped */
+@media (max-width: 768px) {
+    .hero .hero-container {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+}
