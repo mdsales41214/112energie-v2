@@ -1,3 +1,5 @@
+functionsDirectory = "C:\\Users\\Erik\\Desktop\\112-energie-v1\\112-energie 23-08-2025\\112energie-v2\\netlify\\functions"
+functionsDirectoryOrigin = "config-v1"
 plugins = []
 headers = []
 redirects = []
@@ -7,8 +9,11 @@ redirects = []
 [functions."*"]
 
 [build]
-publish = "C:\\Users\\Erik\\Desktop\\112-energie-v1\\112-energie 23-08-2025\\112energie-v2"
-publishOrigin = "default"
+publish = "C:\\Users\\Erik\\Desktop\\112-energie-v1\\112-energie 23-08-2025\\112energie-v2\\git add ."
+publishOrigin = "config"
+commandOrigin = "config"
+command = "# no build command"
+functions = "C:\\Users\\Erik\\Desktop\\112-energie-v1\\112-energie 23-08-2025\\112energie-v2\\netlify\\functions"
 
 [build.environment]
 
