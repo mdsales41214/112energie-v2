@@ -1,4 +1,8 @@
-﻿/* Hero Section Styles */
+﻿/* ===================================
+   Hero Section Styles
+   Advanced Futuristic Energy Interface
+   ================================= */
+
 /* Variables */
 :root {
     --neural-blue: #0A84FF;
@@ -344,75 +348,6 @@
     margin-bottom: 3rem;
 }
 
-.hero .cta-primary {
-    padding: 1.25rem 2.5rem;
-    background: linear-gradient(135deg, var(--neural-blue), var(--plasma-purple));
-    color: var(--pure-white);
-    text-decoration: none;
-    border-radius: 100px;
-    font-weight: 600;
-    font-size: 1.1rem;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.75rem;
-}
-
-.hero .cta-primary::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-    transition: left 0.5s ease;
-}
-
-.hero .cta-primary:hover::before {
-    left: 100%;
-}
-
-.hero .cta-primary:hover {
-    transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(10, 132, 255, 0.3);
-}
-
-.hero .cta-primary:hover .cta-arrow {
-    transform: translateX(5px);
-}
-
-.hero .cta-text {
-    position: relative;
-    z-index: 1;
-}
-
-.hero .cta-arrow {
-    position: relative;
-    z-index: 1;
-    transition: transform 0.3s ease;
-}
-
-.hero .cta-secondary {
-    padding: 1.25rem 2.5rem;
-    background: transparent;
-    color: var(--text-primary);
-    text-decoration: none;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 100px;
-    font-weight: 600;
-    font-size: 1.1rem;
-    transition: all 0.3s ease;
-}
-
-.hero .cta-secondary:hover {
-    background: var(--glass-white);
-    border-color: rgba(255, 255, 255, 0.3);
-    transform: translateY(-3px);
-}
-
 /* Live Stats */
 .hero .live-stats {
     display: flex;
@@ -433,6 +368,7 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    transition: opacity 0.3s ease;
 }
 
 .hero .stat-label {
@@ -450,7 +386,7 @@
     gap: 1.5rem;
 }
 
-/* Main Metrics Card (Static) */
+/* Main Metrics Card */
 .hero .metrics-card-main {
     background: linear-gradient(135deg, var(--glass-white), rgba(255,255,255,0.02));
     backdrop-filter: blur(10px);
@@ -723,6 +659,10 @@
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
+    .hero {
+        padding: 4rem 1rem 2rem;
+    }
+    
     .hero .hero-container {
         grid-template-columns: 1fr;
         gap: 3rem;
@@ -742,12 +682,7 @@
 
     .hero .cta-section {
         flex-direction: column;
-    }
-
-    .hero .cta-primary,
-    .hero .cta-secondary {
         width: 100%;
-        justify-content: center;
     }
 
     .hero .metrics-grid {
@@ -756,10 +691,40 @@
 
     .hero .live-stats {
         gap: 1.5rem;
+        justify-content: space-between;
     }
 
     .hero .stat-value {
         font-size: 1.5rem;
     }
 
-    .hero .energy-chart-card
+    .hero .energy-chart-card {
+        height: 200px;
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    .hero .glitch,
+    .hero .glitch::before,
+    .hero .glitch::after {
+        animation: none;
+    }
+    
+    .hero .heartbeat-path,
+    .hero .heartbeat-glow {
+        animation: none;
+    }
+    
+    .hero .ai-dot {
+        animation: none;
+    }
+    
+    .hero .grid-plane {
+        animation: none;
+    }
+    
+    .hero .particle {
+        animation: none;
+    }
+}

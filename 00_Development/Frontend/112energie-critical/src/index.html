@@ -1,42 +1,68 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="nl" dir="ltr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>112Energie - Uw Betrouwbare Energiepartner | Energie Zonder Borg</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0A84FF">
+    <meta name="color-scheme" content="dark light">
     
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="112Energie - Energie zonder borg, spoedaansluitingen binnen 24 uur. Betrouwbare energieleverancier voor particulier en zakelijk.">
-    <meta name="keywords" content="energie zonder borg, spoedaansluiting, energieleverancier, groene energie, 112energie">
-    <meta name="author" content="112Energie">
+    <!-- Primary Meta Tags -->
+    <title>112energie - De Toekomst van Energie is Hier | AI-Geoptimaliseerde Energiedistributie</title>
+    <meta name="title" content="112energie - De Toekomst van Energie is Hier | AI-Geoptimaliseerde Energiedistributie">
+    <meta name="description" content="Revolutionaire AI-geoptimaliseerde energiedistributie. Zero deposit, instant activering. Bespaar tot €45 per maand met onze quantumcomputing en neurale netwerken.">
+    <meta name="keywords" content="energie, AI, quantum computing, smart grid, duurzame energie, energiebesparing, 112energie">
     
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="112Energie - Energie Zonder Borg">
-    <meta property="og:description" content="Direct energie zonder borg. Spoedaansluitingen binnen 24 uur.">
-    <meta property="og:image" content="/assets/images/og-image.jpg">
-    <meta property="og:url" content="https://112energie.nl">
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://112energie.nl/">
+    <meta property="og:title" content="112energie - De Toekomst van Energie is Hier">
+    <meta property="og:description" content="Revolutionaire AI-geoptimaliseerde energiedistributie. Zero deposit, instant activering.">
+    <meta property="og:image" content="https://112energie.nl/assets/images/og-image.jpg">
+    <meta property="og:site_name" content="112energie">
+    <meta property="og:locale" content="nl_NL">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://112energie.nl/">
+    <meta property="twitter:title" content="112energie - De Toekomst van Energie is Hier">
+    <meta property="twitter:description" content="Revolutionaire AI-geoptimaliseerde energiedistributie. Zero deposit, instant activering.">
+    <meta property="twitter:image" content="https://112energie.nl/assets/images/og-image.jpg">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">ø
-    <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
+    <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+    <link rel="manifest" href="/manifest.json">
     
-    <!-- CSS Files -->
-    <link rel="stylesheet" href="http://127.0.0.1:5500/00_Development/Frontend/112energie-critical/assets/css/112energie.css">
-    <link rel="stylesheet" href="http://127.0.0.1:5500/00_Development/Frontend/112energie-critical/assets/css/hero.css">
-    <link rel="stylesheet" href="http://127.0.0.1:5500/00_Development/Frontend/112energie-critical/assets/css/button-styles.css">
+    <!-- Preconnect to external domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+       <!-- Preload critical resources -->
+    <link rel="stylesheet" href="../assets/css/112energie.css">
+    <link rel="stylesheet" href="../assets/css/hero.css">
+    <link rel="stylesheet" href="../assets/css/buttons.css">
     
-    <!-- Critical CSS (Inline for performance) -->
+    <!-- Fallback for CSS loading -->
+    <noscript>
+    <link rel="stylesheet" href="../assets/css/112energie.css">
+    <link rel="stylesheet" href="../assets/css/hero.css">
+    <link rel="stylesheet" href="../assets/css/buttons.css">
+    </noscript>
+    
+    <!-- Critical CSS (inlined for performance) -->
     <style>
+        /* Critical CSS for above-the-fold content */
         :root {
-            --primary-green: #00A651;
-            --primary-dark: #1a1a1a;
-            --accent-orange: #FF6B35;
-            --bg-light: #f8f9fa;
+            --neural-blue: #0A84FF;
+            --plasma-purple: #5E5CE6;
+            --quantum-green: #30D158;
+            --void-black: #000000;
+            --pure-white: #FFFFFF;
+            --glass-white: rgba(255, 255, 255, 0.08);
+            --text-primary: #FFFFFF;
+            --text-secondary: rgba(255, 255, 255, 0.7);
+            --grid-color: rgba(255, 255, 255, 0.03);
         }
         
         * {
@@ -46,499 +72,310 @@
         }
         
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             line-height: 1.6;
-            color: var(--primary-dark);
+            color: var(--text-primary);
+            background: var(--void-black);
+            overflow-x: hidden;
         }
         
-        .loading-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.5s;
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: var(--neural-blue);
+            color: white;
+            padding: 8px;
+            text-decoration: none;
+            border-radius: 4px;
+            z-index: 1000;
         }
         
-        .loading-screen.hidden {
-            opacity: 0;
-            pointer-events: none;
+        .skip-link:focus {
+            top: 6px;
         }
     </style>
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "112energie",
+        "url": "https://112energie.nl",
+        "logo": "https://112energie.nl/assets/logo.png",
+        "description": "AI-geoptimaliseerde energiedistributie voor de toekomst",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+31-20-123-4567",
+            "contactType": "customer service",
+            "availableLanguage": "Dutch"
+        },
+        "sameAs": [
+            "https://www.linkedin.com/company/112energie",
+            "https://twitter.com/112energie"
+        ]
+    }
+    </script>
 </head>
 <body>
-     <!-- Header Placeholder -->
-    <div id="header-placeholder"></div>
+    <!-- Skip to main content link for accessibility -->
+    <a href="#main-content" class="skip-link">Spring naar hoofdinhoud</a>
     
-    <!-- Your main content here -->
-    <main>
-        <!-- Page content -->
+    <!-- Header Component -->
+    <div id="header-container"></div>
+    
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="hero" id="hero" role="banner" aria-label="Hero sectie">
+            <!-- 3D Grid Background -->
+            <div class="grid-3d" aria-hidden="true">
+                <div class="grid-plane"></div>
+            </div>
+            
+            <!-- Particle System -->
+            <div class="particles" aria-hidden="true" id="particles-container"></div>
+            
+            <!-- Hero Content -->
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1>
+                        <span class="glitch" data-text="De Toekomst van">De Toekomst van</span><br>
+                        <span class="glitch" data-text="Energie is Hier">Energie is Hier</span>
+                    </h1>
+
+                    <p class="subtitle">
+                        <span class="subtitle-highlight">AI-geoptimaliseerde</span> energiedistributie. 
+                        <span class="subtitle-highlight">Zero deposit</span>. 
+                        <span class="subtitle-highlight">Instant activering</span>. 
+                        Sluit je aan bij de gedecentraliseerde energierevolutie aangedreven door 
+                        <span class="quantum-text">quantum computing</span> en 
+                        <span class="neural-text">neurale netwerken</span>.
+                    </p>
+
+                    <!-- Heartbeat Line -->
+                    <div class="heartbeat-container" aria-hidden="true">
+                        <svg class="heartbeat-line" viewBox="0 0 400 40" preserveAspectRatio="none" role="img" aria-label="Energie heartbeat visualisatie">
+                            <path class="heartbeat-path" d="M0,20 L80,20 L90,10 L100,30 L110,5 L120,35 L130,20 L400,20" 
+                                  stroke="url(#heartbeat-gradient)" 
+                                  stroke-width="2" 
+                                  fill="none"/>
+                            <defs>
+                                <linearGradient id="heartbeat-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" style="stop-color:#0A84FF;stop-opacity:0" />
+                                    <stop offset="50%" style="stop-color:#5E5CE6;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#30D158;stop-opacity:0" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                        <div class="heartbeat-glow"></div>
+                    </div>
+
+                    <!-- AI Features -->
+                    <div class="ai-features">
+                        <div class="ai-feature" role="listitem">
+                            <div class="ai-dot" aria-hidden="true"></div>
+                            <span>AI Prijs Predictie</span>
+                        </div>
+                        <div class="ai-feature" role="listitem">
+                            <div class="ai-dot" aria-hidden="true"></div>
+                            <span>Quantum Optimalisatie</span>
+                        </div>
+                        <div class="ai-feature" role="listitem">
+                            <div class="ai-dot" aria-hidden="true"></div>
+                            <span>Neuraal Grid</span>
+                        </div>
+                    </div>
+
+                    <!-- CTA Section -->
+                    <div class="cta-section">
+                        <a href="#start" class="cta-primary btn-primary" role="button" aria-label="Start verbinding met 112energie">
+                            <span class="cta-text">Verbinding Starten</span>
+                            <span class="cta-arrow" aria-hidden="true">→</span>
+                        </a>
+                        <a href="#learn" class="cta-secondary btn-secondary" role="button" aria-label="Ontdek onze technologie">
+                            <span>Ontdek Tech</span>
+                        </a>
+                    </div>
+
+                    <!-- Live Stats -->
+                    <div class="live-stats" role="region" aria-label="Live statistieken">
+                        <div class="stat">
+                            <div class="stat-value" id="activeNodes" aria-live="polite">127,439</div>
+                            <div class="stat-label">Actieve Nodes</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value" id="energySaved" aria-live="polite">€3,859</div>
+                            <div class="stat-label">Vandaag Bespaard</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value" id="aiAccuracy" aria-live="polite">99.7%</div>
+                            <div class="stat-label">AI Nauwkeurigheid</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Visual - Static Card + Energy Chart -->
+                <div class="hero-visual">
+                    <!-- Main Metrics Card (Static) -->
+                    <div class="metrics-card-main" role="region" aria-label="Real-time energie metrics">
+                        <div class="card-header">
+                            <h3 class="card-title">Real-Time Metrics</h3>
+                            <div class="card-status">
+                                <span class="status-dot" aria-hidden="true"></span>
+                                <span class="status-text">LIVE</span>
+                            </div>
+                        </div>
+                        
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-header">
+                                    <span class="metric-title">Energieverbruik</span>
+                                    <span class="metric-badge metric-badge-live">LIVE</span>
+                                </div>
+                                <div class="metric-value">248<span class="metric-unit">kWh</span></div>
+                                <div class="metric-change metric-change-down">↓ 12% van gisteren</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-header">
+                                    <span class="metric-title">Kosten Predictie</span>
+                                    <span class="metric-badge metric-badge-ai">AI</span>
+                                </div>
+                                <div class="metric-value">€89<span class="metric-unit">/mnd</span></div>
+                                <div class="metric-change metric-change-down">↓ €45 geoptimaliseerd</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-header">
+                                    <span class="metric-title">Grid Status</span>
+                                    <span class="metric-badge metric-badge-optimal">OPTIMAAL</span>
+                                </div>
+                                <div class="metric-value">98.7<span class="metric-unit">%</span></div>
+                                <div class="metric-change">Neuraal gebalanceerd</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-header">
+                                    <span class="metric-title">CO₂ Offset</span>
+                                    <span class="metric-badge metric-badge-eco">ECO</span>
+                                </div>
+                                <div class="metric-value">-2.4<span class="metric-unit">t</span></div>
+                                <div class="metric-change metric-change-eco">100% duurzaam</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Energy Chart Card -->
+                    <div class="energy-chart-card" role="img" aria-label="Energie flow visualisatie">
+                        <div class="chart-header">
+                            <span class="chart-title">Energie Flow</span>
+                            <span class="chart-time">24U</span>
+                        </div>
+                        <div class="energy-visualization">
+                            <!-- Energy Bars -->
+                            <div class="energy-bars" role="img" aria-label="Energie verbruik over tijd">
+                                <div class="energy-bar" style="--height: 60%;" aria-label="Uur 1: 60%"></div>
+                                <div class="energy-bar" style="--height: 75%;" aria-label="Uur 2: 75%"></div>
+                                <div class="energy-bar" style="--height: 45%;" aria-label="Uur 3: 45%"></div>
+                                <div class="energy-bar" style="--height: 80%;" aria-label="Uur 4: 80%"></div>
+                                <div class="energy-bar" style="--height: 65%;" aria-label="Uur 5: 65%"></div>
+                                <div class="energy-bar" style="--height: 90%;" aria-label="Uur 6: 90%"></div>
+                                <div class="energy-bar" style="--height: 70%;" aria-label="Uur 7: 70%"></div>
+                                <div class="energy-bar" style="--height: 85%;" aria-label="Uur 8: 85%"></div>
+                                <div class="energy-bar" style="--height: 50%;" aria-label="Uur 9: 50%"></div>
+                                <div class="energy-bar" style="--height: 75%;" aria-label="Uur 10: 75%"></div>
+                                <div class="energy-bar" style="--height: 60%;" aria-label="Uur 11: 60%"></div>
+                                <div class="energy-bar" style="--height: 95%;" aria-label="Uur 12: 95%"></div>
+                            </div>
+                            <!-- Energy Wave -->
+                            <svg class="energy-wave" viewBox="0 0 300 100" preserveAspectRatio="none" aria-hidden="true">
+                                <path class="wave-path" d="M0,50 Q25,30 50,50 T100,50 T150,50 T200,50 T250,50 T300,50" 
+                                      stroke="url(#wave-gradient)" 
+                                      stroke-width="3" 
+                                      fill="none"/>
+                                <defs>
+                                    <linearGradient id="wave-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" style="stop-color:#0A84FF;stop-opacity:0.8">
+                                            <animate attributeName="stop-color" values="#0A84FF;#5E5CE6;#30D158;#0A84FF" dur="4s" repeatCount="indefinite"/>
+                                        </stop>
+                                        <stop offset="100%" style="stop-color:#30D158;stop-opacity:0.8">
+                                            <animate attributeName="stop-color" values="#30D158;#0A84FF;#5E5CE6;#30D158" dur="4s" repeatCount="indefinite"/>
+                                        </stop>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                        <div class="chart-stats">
+                            <div class="chart-stat">
+                                <span class="chart-stat-value">↑ 24%</span>
+                                <span class="chart-stat-label">Piek Load</span>
+                            </div>
+                            <div class="chart-stat">
+                                <span class="chart-stat-value">3.2MW</span>
+                                <span class="chart-stat-label">Huidig</span>
+                            </div>
+                            <div class="chart-stat">
+                                <span class="chart-stat-value">€0.18</span>
+                                <span class="chart-stat-label">per kWh</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features-section" id="features" role="region" aria-labelledby="features-title">
+            <div class="container">
+                <h2 id="features-title" class="section-title">Waarom 112energie?</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <img src="/assets/images/img1.png" alt="AI Optimalisatie icoon" loading="lazy" decoding="async">
+                        </div>
+                        <h3>AI-Gedreven Optimalisatie</h3>
+                        <p>Onze geavanceerde AI voorspelt energieprijzen en optimaliseert je verbruik 24/7 voor maximale besparingen.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <img src="/assets/images/img2.png" alt="Zero Deposit icoon" loading="lazy" decoding="async">
+                        </div>
+                        <h3>Zero Deposit Garantie</h3>
+                        <p>Start vandaag nog zonder vooruitbetaling. Onze AI-analyse maakt deposito's overbodig.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <img src="/assets/images/img3.png" alt="Instant Switching icoon" loading="lazy" decoding="async">
+                        </div>
+                        <h3>Instant Switching</h3>
+                        <p>Schakel binnen 24 uur over. Geen wachttijden, geen gedoe. Gewoon slimme energie.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-banner" id="start" role="region" aria-labelledby="cta-title">
+            <div class="container">
+                <h2 id="cta-title">Klaar voor de Energietoekomst?</h2>
+                <p>Sluit je aan bij duizenden huishoudens die al besparen met 112energie</p>
+                <a href="energiezonderborg.html" class="btn-primary large">Start Nu - Zero Deposit</a>
+            </div>
+        </section>
     </main>
-    <!-- Loading Screen -->
-    <div class="loading-screen" id="loadingScreen">
-        <div class="loader">
-            <svg width="50" height="50" viewBox="0 0 50 50">
-                <circle cx="25" cy="25" r="20" stroke="#00A651" stroke-width="5" fill="none" stroke-dasharray="31.415, 31.415" stroke-dashoffset="0">
-                    <animateTransform attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="1s" repeatCount="indefinite"/>
-                </circle>
-            </svg>
-        </div>
-    </div>
-<!-- Hero Section -->
-<section class="hero">
-    <!-- 3D Grid Background -->
-    <div class="grid-3d">
-        <div class="grid-plane"></div>
-    </div>
-
-    <!-- Particle System -->
-    <div class="particles" id="particles"></div>
-
-    <!-- Hero Content -->
-    <div class="hero-container">
-        <div class="hero-content">
-            <h1>
-                <span class="glitch" data-text="The Future of">The Future of</span><br>
-                <span class="glitch" data-text="Energy is Here">Energy is Here</span>
-            </h1>
-
-            <p class="subtitle">
-                <span class="subtitle-highlight">AI-optimized</span> energy distribution. 
-                <span class="subtitle-highlight">Zero deposit</span>. 
-                <span class="subtitle-highlight">Instant activation</span>. 
-                Join the decentralized energy revolution powered by 
-                <span class="quantum-text">quantum computing</span> and 
-                <span class="neural-text">neural networks</span>.
-            </p>
-
-            <!-- Heartbeat Line -->
-            <div class="heartbeat-container">
-                <svg class="heartbeat-line" viewBox="0 0 400 40" preserveAspectRatio="none">
-                    <path class="heartbeat-path" d="M0,20 L80,20 L90,10 L100,30 L110,5 L120,35 L130,20 L400,20" 
-                          stroke="url(#heartbeat-gradient)" 
-                          stroke-width="2" 
-                          fill="none"/>
-                    <defs>
-                        <linearGradient id="heartbeat-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                            <stop offset="0%" style="stop-color:#0A84FF;stop-opacity:0" />
-                            <stop offset="50%" style="stop-color:#5E5CE6;stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:#30D158;stop-opacity:0" />
-                        </linearGradient>
-                    </defs>
-                </svg>
-                <div class="heartbeat-glow"></div>
-            </div>
-
-            <!-- AI Features -->
-            <div class="ai-features">
-                <div class="ai-feature">
-                    <div class="ai-dot"></div>
-                    <span>AI Price Prediction</span>
-                </div>
-                <div class="ai-feature">
-                    <div class="ai-dot"></div>
-                    <span>Quantum Optimization</span>
-                </div>
-                <div class="ai-feature">
-                    <div class="ai-dot"></div>
-                    <span>Neural Grid</span>
-                </div>
-            </div>
-
-            <!-- CTA Section -->
-            <div class="cta-section">
-                <a href="#start" class="cta-primary">
-                    <span class="cta-text">Initialize Connection</span>
-                    <span class="cta-arrow">→</span>
-                </a>
-                <a href="#learn" class="cta-secondary">
-                    <span>Explore Tech</span>
-                </a>
-            </div>
-
-            <!-- Live Stats -->
-            <div class="live-stats">
-                <div class="stat">
-                    <div class="stat-value" id="activeNodes">127,439</div>
-                    <div class="stat-label">Active Nodes</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-value" id="energySaved">€3,859</div>
-                    <div class="stat-label">Saved Today</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-value" id="aiAccuracy">99.7%</div>
-                    <div class="stat-label">AI Accuracy</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Hero Visual - Static Card + Energy Chart -->
-        <div class="hero-visual">
-            <!-- Main Metrics Card (Static) -->
-            <div class="metrics-card-main">
-                <div class="card-header">
-                    <h3 class="card-title">Real-Time Metrics</h3>
-                    <div class="card-status">
-                        <span class="status-dot"></span>
-                        <span class="status-text">LIVE</span>
-                    </div>
-                </div>
-                
-                <div class="metrics-grid">
-                    <div class="metric-card">
-                        <div class="metric-header">
-                            <span class="metric-title">Energy Usage</span>
-                            <span class="metric-badge metric-badge-live">LIVE</span>
-                        </div>
-                        <div class="metric-value">248<span class="metric-unit">kWh</span></div>
-                        <div class="metric-change metric-change-down">↓ 12% from yesterday</div>
-                    </div>
-                    <div class="metric-card">
-                        <div class="metric-header">
-                            <span class="metric-title">Cost Prediction</span>
-                            <span class="metric-badge metric-badge-ai">AI</span>
-                        </div>
-                        <div class="metric-value">€89<span class="metric-unit">/mo</span></div>
-                        <div class="metric-change metric-change-down">↓ €45 optimized</div>
-                    </div>
-                    <div class="metric-card">
-                        <div class="metric-header">
-                            <span class="metric-title">Grid Status</span>
-                            <span class="metric-badge metric-badge-optimal">OPTIMAL</span>
-                        </div>
-                        <div class="metric-value">98.7<span class="metric-unit">%</span></div>
-                        <div class="metric-change">Neural balanced</div>
-                    </div>
-                    <div class="metric-card">
-                        <div class="metric-header">
-                            <span class="metric-title">Carbon Offset</span>
-                            <span class="metric-badge metric-badge-eco">ECO</span>
-                        </div>
-                        <div class="metric-value">-2.4<span class="metric-unit">t</span></div>
-                        <div class="metric-change metric-change-eco">100% renewable</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Energy Chart Card (Half Size) -->
-            <div class="energy-chart-card">
-                <div class="chart-header">
-                    <span class="chart-title">Energy Flow</span>
-                    <span class="chart-time">24H</span>
-                </div>
-                <div class="energy-visualization">
-                    <!-- Energy Bars -->
-                    <div class="energy-bars">
-                        <div class="energy-bar" style="--height: 60%;"></div>
-                        <div class="energy-bar" style="--height: 75%;"></div>
-                        <div class="energy-bar" style="--height: 45%;"></div>
-                        <div class="energy-bar" style="--height: 80%;"></div>
-                        <div class="energy-bar" style="--height: 65%;"></div>
-                        <div class="energy-bar" style="--height: 90%;"></div>
-                        <div class="energy-bar" style="--height: 70%;"></div>
-                        <div class="energy-bar" style="--height: 85%;"></div>
-                        <div class="energy-bar" style="--height: 50%;"></div>
-                        <div class="energy-bar" style="--height: 75%;"></div>
-                        <div class="energy-bar" style="--height: 60%;"></div>
-                        <div class="energy-bar" style="--height: 95%;"></div>
-                    </div>
-                    <!-- Energy Wave -->
-                    <svg class="energy-wave" viewBox="0 0 300 100" preserveAspectRatio="none">
-                        <path class="wave-path" d="M0,50 Q25,30 50,50 T100,50 T150,50 T200,50 T250,50 T300,50" 
-                              stroke="url(#wave-gradient)" 
-                              stroke-width="3" 
-                              fill="none"/>
-                        <defs>
-                            <linearGradient id="wave-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                <stop offset="0%" style="stop-color:#0A84FF;stop-opacity:0.8">
-                                    <animate attributeName="stop-color" values="#0A84FF;#5E5CE6;#30D158;#0A84FF" dur="4s" repeatCount="indefinite"/>
-                                </stop>
-                                <stop offset="100%" style="stop-color:#30D158;stop-opacity:0.8">
-                                    <animate attributeName="stop-color" values="#30D158;#0A84FF;#5E5CE6;#30D158" dur="4s" repeatCount="indefinite"/>
-                                </stop>
-                            </linearGradient>
-                        </defs>
-                    </svg>
-                </div>
-                <div class="chart-stats">
-                    <div class="chart-stat">
-                        <span class="chart-stat-value">↑ 24%</span>
-                        <span class="chart-stat-label">Peak Load</span>
-                    </div>
-                    <div class="chart-stat">
-                        <span class="chart-stat-value">3.2MW</span>
-                        <span class="chart-stat-label">Current</span>
-                    </div>
-                    <div class="chart-stat">
-                        <span class="chart-stat-value">€0.18</span>
-                        <span class="chart-stat-label">per kWh</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-    <!-- Services Section -->
-    <section class="services-section" id="producten">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Onze Diensten</h2>
-                <p class="section-subtitle">Alles wat je nodig hebt voor zorgeloos energie</p>
-            </div>
-            
-            <div class="services-grid">
-                <!-- Service 1: Energie Zonder Borg -->
-                <div class="service-card" data-service="no-deposit">
-                    <div class="service-icon">
-                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-                            <circle cx="24" cy="24" r="20" stroke="#00A651" stroke-width="3"/>
-                            <path d="M24 12V36M12 24H36" stroke="#00A651" stroke-width="3" stroke-linecap="round"/>
-                        </svg>
-                    </div>
-                    <h3 class="service-title">Energie Zonder Borg</h3>
-                    <p class="service-description">
-                        Start direct zonder waarborgsom. Ideaal voor starters, studenten en iedereen die snel energie wil.
-                    </p>
-                    <ul class="service-features">
-                        <li>✓ Geen borg van €200-500</li>
-                        <li>✓ Direct aangesloten</li>
-                        <li>✓ Flexibel opzegbaar</li>
-                        <li>✓ Transparante tarieven</li>
-                    </ul>
-                    <button class="btn-service" onclick="selectService('no-deposit')">Meer Info</button>
-                </div>
-                
-                <!-- Service 2: Spoedaansluiting -->
-                <div class="service-card featured" data-service="emergency">
-                    <div class="service-badge">Populair</div>
-                    <div class="service-icon">
-                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-                            <path d="M24 4L26.5 18H42L29.5 27L34 44L24 35L14 44L18.5 27L6 18H21.5L24 4Z" fill="#FF6B35" stroke="#FF6B35" stroke-width="2"/>
-                        </svg>
-                    </div>
-                    <h3 class="service-title">24-Uurs Spoedaansluiting</h3>
-                    <p class="service-description">
-                        Verhuizing of noodgeval? Wij regelen binnen 24 uur je energieaansluiting. Ook in het weekend!
-                    </p>
-                    <ul class="service-features">
-                        <li>✓ Binnen 24 uur aangesloten</li>
-                        <li>✓ 7 dagen per week</li>
-                        <li>✓ Geen extra kosten</li>
-                        <li>✓ Persoonlijke begeleiding</li>
-                    </ul>
-                    <button class="btn-service primary" onclick="selectService('emergency')">Direct Aanvragen</button>
-                </div>
-                
-                <!-- Service 3: Groene Energie -->
-                <div class="service-card" data-service="green">
-                    <div class="service-icon">
-                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-                            <path d="M24 4C24 4 16 12 16 24C16 32 20 36 24 36C28 36 32 32 32 24C32 12 24 4 24 4Z" fill="#00A651" stroke="#00A651" stroke-width="2"/>
-                            <path d="M24 36V44" stroke="#00A651" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
-                    </div>
-                    <h3 class="service-title">100% Groene Energie</h3>
-                    <p class="service-description">
-                        Kies voor duurzaam met onze 100% groene stroom uit Nederlandse wind en zon.
-                    </p>
-                    <ul class="service-features">
-                        <li>✓ CO2-neutraal</li>
-                        <li>✓ Nederlandse bronnen</li>
-                        <li>✓ Groencertificaten</li>
-                        <li>✓ Zonnepaneel advies</li>
-                    </ul>
-                    <button class="btn-service" onclick="selectService('green')">Meer Info</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Calculator Section -->
-<section class="calculator-section" id="calculator">
-    <div class="container">
-        <div class="calculator-wrapper">
-            <div class="calculator-header">
-                <h2>Bereken Je Energiekosten</h2>
-                <p>Krijg direct inzicht in je maandelijkse energiekosten</p>
-            </div>
-            
-            <div class="calculator-body">
-                <!-- Step 1: Basic Info -->
-                <div class="calc-step active" data-step="1">
-                    <h3>Stap 1: Basis Informatie</h3>
-                    
-                    <div class="calc-input-group">
-                        <label for="householdSize">Aantal Personen</label>
-                        <div class="input-stepper">
-                            <button type="button" onclick="stepperDecrease('householdSize')">-</button>
-                            <input type="number" id="householdSize" value="2" min="1" max="10" readonly>
-                            <button type="button" onclick="stepperIncrease('householdSize')">+</button>
-                        </div>
-                    </div>
-                    
-                    <div class="calc-input-group">
-                        <label for="homeType">Type Woning</label>
-                        <select id="homeType">
-                            <option value="apartment">Appartement</option>
-                            <option value="row-house" selected>Rijtjeshuis</option>
-                            <option value="corner-house">Hoekwoning</option>
-                            <option value="detached">Vrijstaand Huis</option>
-                        </select>
-                    </div>
-                </div>
-                
-                <!-- Step 2: Energy Usage -->
-                <div class="calc-step" data-step="2">
-                    <h3>Stap 2: Energieverbruik</h3>
-                    
-                    <div class="calc-input-group">
-                        <label for="electricityUsage">Stroom Verbruik (kWh/jaar)</label>
-                        <input type="number" id="electricityUsage" value="2800" min="0" max="50000">
-                    </div>
-                    
-                    <div class="calc-input-group">
-                        <label for="gasUsage">Gas Verbruik (m³/jaar)</label>
-                        <input type="number" id="gasUsage" value="1200" min="0" max="10000">
-                    </div>
-                </div>
-                
-                <!-- Step 3: Preferences -->
-                <div class="calc-step" data-step="3">
-                    <h3>Stap 3: Voorkeuren</h3>
-                    
-                    <div class="calc-input-group">
-                        <label>
-                            <input type="checkbox" id="greenEnergy" checked>
-                            100% Groene Energie
-                        </label>
-                    </div>
-                    
-                    <div class="calc-input-group">
-                        <label>
-                            <input type="checkbox" id="solarPanels">
-                            Ik heb zonnepanelen
-                        </label>
-                    </div>
-                </div>
-                
-                <!-- Navigation -->
-                <div class="calc-navigation">
-                    <button class="btn-secondary" onclick="calcPrevStep()" id="calcPrev" style="display: none;">
-                        Vorige
-                    </button>
-                    <div class="calc-steps-indicator">
-                        <span class="step-dot active" data-step="1"></span>
-                        <span class="step-dot" data-step="2"></span>
-                        <span class="step-dot" data-step="3"></span>
-                    </div>
-                    <button class="btn-primary" onclick="calcNextStep()" id="calcNext">
-                        Volgende
-                    </button>
-                </div>
-                
-                <!-- Results -->
-                <div class="calc-results" id="calcResults" style="display: none;">
-                    <h3>Jouw Persoonlijke Energieadvies</h3>
-                    
-                    <div class="results-summary">
-                        <div class="result-item">
-                            <span class="result-label">Maandbedrag</span>
-                            <span class="result-value">€<span id="monthlyAmount">145</span></span>
-                        </div>
-                        
-                        <div class="result-item">
-                            <span class="result-label">Jaarbedrag</span>
-                            <span class="result-value">€<span id="yearlyAmount">1740</span></span>
-                        </div>
-                        
-                        <div class="result-item">
-                            <span class="result-label">Besparing</span>
-                            <span class="result-value">€<span id="savingsAmount">240</span></span>
-                        </div>
-                    </div>
-                    
-                    <button class="btn-primary" onclick="proceedWithOffer()">
-                        Direct Overstappen
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-    <!-- Trust Indicators -->
-    <section class="trust-section">
-        <div class="container">
-            <div class="trust-grid">
-                <div class="trust-item">
-                    <img src="/assets/images/keurmerk-1.png" alt="Keurmerk">
-                    <span>Erkend Energieleverancier</span>
-                </div>
-                <div class="trust-item">
-                    <div class="trust-rating">
-                        <span class="stars">★★★★★</span>
-                        <span>4.8/5 (2.341 reviews)</span>
-                    </div>
-                </div>
-                <div class="trust-item">
-                    <img src="/assets/images/green-cert.png" alt="Groene Energie">
-                    <span>100% Groene Energie</span>
-                </div>
-                <div class="trust-item">
-                    <span class="trust-number">50.000+</span>
-                    <span>Tevreden Klanten</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer Placeholder -->
-    <div id="footer-placeholder"></div>
+    
+    <!-- Footer Component -->
+    <div id="footer-container"></div>
     
     <!-- Scripts -->
-    <script src="scripts/components.js"></script>
-    <script src="scripts/112energie.js"></script>
-    <!-- Login Modal -->
-    <div class="modal" id="loginModal">
-        <div class="modal-content">
-            <span class="modal-close" onclick="closeLoginModal()">&times;</span>
-            <h2>Inloggen</h2>
-            <form id="loginForm" onsubmit="handleLogin(event)">
-                <div class="form-group">
-                    <label for="email">E-mailadres</label>
-                    <input type="email" id="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Wachtwoord</label>
-                    <input type="password" id="password" required>
-                </div>
-                <button type="submit" class="btn-primary full-width">Inloggen</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Scripts -->
+    <script src="scripts/components.js" defer></script>
     <script src="scripts/112energie.js" defer></script>
     <script>
-        // Remove loading screen when page is loaded
-        window.addEventListener('load', function() {
-            setTimeout(() => {
-                document.getElementById('loadingScreen').classList.add('hidden');
-            }, 500);
+        // Load header and footer components
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load components
+            loadComponent('header-container', 'components/header.html');
+            loadComponent('footer-container', 'components/footer.html');
         });
     </script>
-     <!-- Voeg deze toe onderaan voor cursor effects -->
-    <div class="mouse-follower"></div>
-    <div class="cursor-glow"></div>
-    
-    <!-- Voeg het script toe -->
-    <script src="button-system.js"></script>
-    <script src="112energie.js"></script>
 </body>
 </html>
