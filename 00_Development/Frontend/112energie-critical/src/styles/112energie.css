@@ -1468,3 +1468,31 @@ input[type="checkbox"] {
         grid-template-columns: 1fr;
     }
 }
+/* Hide default cursor */
+body {
+    cursor: none;
+}
+
+/* Custom cursor styles */
+.mouse-follower {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #00A651;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.1s ease;
+    mix-blend-mode: difference;
+}
+
+.cursor-glow {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    background: radial-gradient(circle, rgba(0, 166, 81, 0.3) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transition: transform 0.2s ease;
+}
